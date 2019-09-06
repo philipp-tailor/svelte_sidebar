@@ -1,5 +1,5 @@
 # Svelte Sidebar
-A sidebar menu in svelte, thought to be used in svelte projects.
+A sidebar menu implemented using svelte.
 
 ## Features
 * Automatically collapses the inactive part of the hierarchy and unfolds the active part of the menu hierarchy.
