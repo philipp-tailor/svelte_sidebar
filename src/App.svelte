@@ -6,6 +6,10 @@
 </script>
 
 <style>
+	.route-content {
+		background-color: #ccc;
+		height: 100vh;
+	}
 </style>
 
 <Sidebar url={url} routes={routes} />
