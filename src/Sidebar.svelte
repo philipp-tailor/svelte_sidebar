@@ -3,6 +3,9 @@
 	export let routes = [];
 </script>
 
+<nav class="sidebar">
+</nav>
+
 <style>
 	.sidebar {
 		background-color: #3d3e40;
@@ -10,6 +13,3 @@
 		min-width: 320px;
 	}
 </style>
-
-<nav class="sidebar">
-</nav>
