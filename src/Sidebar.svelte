@@ -5,7 +5,7 @@
 	export let routes = [];
 </script>
 
-<nav class="sidebar">
+<nav>
 	<ul>
 		{#each routes as route (route.route)}
 			<SidebarLink url={url} {...route}/>
@@ -14,7 +14,7 @@
 </nav>
 
 <style>
-	.sidebar {
+	nav {
 		background-color: #3d3e40;
 		height: 100vh;
 		min-width: 320px;
