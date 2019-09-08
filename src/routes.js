@@ -50,15 +50,15 @@ export const authenticatedRoutes = [
       },
       {
         name: "Confirm",
-        route: "/checkout/confirm",
+        route: "/checkout/confirmation",
         childRoutes: [
           {
             name: "Order Success",
-            route: "/checkout/confirm/success"
+            route: "/checkout/confirmation/success"
           },
           {
             name: "Order Failure",
-            route: "/checkout/confirm/error"
+            route: "/checkout/confirmation/error"
           }
         ]
       }
