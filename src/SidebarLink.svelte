@@ -4,9 +4,11 @@
 	export let route;
 	export let childRoutes;
 	export let level = 1;
+
+	$: marginLeft = (level - 1) * 20;
 </script>
 
-<a href={route}>
+<a href={route} style='--marginLeft: {marginLeft}px'>
 	{name}
 </a>
 <br/>
@@ -16,3 +18,9 @@
 		<svelte:self url={url} {...route} level={level + 1}/>
 	{/each}
 {/if}
+
+<style>
+	a {
+		margin-left: var(--marginLeft);
+	}
+</style>
