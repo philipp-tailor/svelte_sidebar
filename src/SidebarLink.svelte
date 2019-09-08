@@ -10,3 +10,9 @@
 	{name}
 </a>
 <br/>
+
+{#if childRoutes}
+	{#each childRoutes as route (route.route)}
+		<svelte:self url={url} {...route} level={level + 1}/>
+	{/each}
+{/if}
