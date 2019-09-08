@@ -1,9 +1,14 @@
 <script>
+	import SidebarLink from './SidebarLink.svelte';
+
 	export let url;
 	export let routes = [];
 </script>
 
 <nav class="sidebar">
+	{#each routes as route (route.route)}
+		<SidebarLink url={url} {...route}/>
+	{/each}
 </nav>
 
 <style>
