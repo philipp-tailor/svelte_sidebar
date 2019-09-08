@@ -9,10 +9,11 @@
 	$: active = url === route;
 </script>
 
-<a href={route} style='margin-left: {marginLeft}px' class:active={active}>
-	{name}
-</a>
-<br/>
+<li class:active={active} style='margin-left: {marginLeft}px'>
+	<a href={route} class:active={active}>
+		{name}
+	</a>
+</li>
 
 {#if childRoutes}
 	{#each childRoutes as route (route.route)}

@@ -6,9 +6,11 @@
 </script>
 
 <nav class="sidebar">
-	{#each routes as route (route.route)}
-		<SidebarLink url={url} {...route}/>
-	{/each}
+	<ul>
+		{#each routes as route (route.route)}
+			<SidebarLink url={url} {...route}/>
+		{/each}
+	</ul>
 </nav>
 
 <style>
@@ -16,5 +18,11 @@
 		background-color: #3d3e40;
 		height: 100vh;
 		min-width: 320px;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
 	}
 </style>
