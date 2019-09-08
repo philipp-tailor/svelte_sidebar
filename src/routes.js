@@ -1,64 +1,64 @@
 export const unAuthenticatedRoutes = [
   {
     name: "Login",
-    url: "/login"
+    route: "/login"
   },
   {
     name: "Signup",
-    url: "/signup"
+    route: "/signup"
   },
   {
     name: "Password Reset",
-    url: "/password-reset"
+    route: "/password-reset"
   },
   {
     name: "Terms Of Service",
-    url: "/terms-of-service"
+    route: "/terms-of-service"
   }
 ];
 
 export const authenticatedRoutes = [
   {
     name: "Home",
-    url: "/"
+    route: "/"
   },
   {
     name: "Settings",
-    url: "/settings",
+    route: "/settings",
     childRoutes: [
       {
         name: "User Settings",
-        url: "/settings/user"
+        route: "/settings/user"
       },
       {
         name: "Organisation Settings",
-        url: "/settings/org"
+        route: "/settings/org"
       }
     ]
   },
   {
     name: "Checkout",
-    url: "/checkout",
+    route: "/checkout",
     childRoutes: [
       {
         name: "Cart",
-        url: "/checkout/cart"
+        route: "/checkout/cart"
       },
       {
         name: "Payment Details",
-        url: "/checkout/payment"
+        route: "/checkout/payment"
       },
       {
         name: "Confirm",
-        url: "/checkout/confirm",
+        route: "/checkout/confirm",
         childRoutes: [
           {
             name: "Order Success",
-            url: "/checkout/confirm/success"
+            route: "/checkout/confirm/success"
           },
           {
             name: "Order Failure",
-            url: "/checkout/confirm/error"
+            route: "/checkout/confirm/error"
           }
         ]
       }
