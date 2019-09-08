@@ -2,7 +2,7 @@
 	export let url;
 	export let name;
 	export let route;
-	export let childRoutes;
+	export let childRoutes = null;
 	export let level = 1;
 
 	$: marginLeft = (level - 1) * 20;
