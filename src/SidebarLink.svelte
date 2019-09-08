@@ -8,7 +8,7 @@
 	$: marginLeft = (level - 1) * 20;
 </script>
 
-<a href={route} style='--marginLeft: {marginLeft}px'>
+<a href={route} style='margin-left: {marginLeft}px'>
 	{name}
 </a>
 <br/>
@@ -18,9 +18,3 @@
 		<svelte:self url={url} {...route} level={level + 1}/>
 	{/each}
 {/if}
-
-<style>
-	a {
-		margin-left: var(--marginLeft);
-	}
-</style>
