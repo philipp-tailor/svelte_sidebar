@@ -2,8 +2,7 @@
   "name": "svelte_sidebar",
   "version": "0.0.1",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "rollup": "^1.21.0",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -11,7 +10,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-svelte": "^5.1.0",
     "rollup-plugin-terser": "^5.1.1",
-	"serve": "^11.1.0",
+    "serve": "^11.1.0",
     "svelte": "^3.10.0"
   },
   "scripts": {
