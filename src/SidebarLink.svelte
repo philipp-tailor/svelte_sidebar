@@ -1,5 +1,5 @@
 <script>
-	export let url;
+	export let activeUrl;
 	export let name;
 	export let route;
 	export let childRoutes = null;
@@ -7,7 +7,7 @@
 
 	let groupClosed = false;
 
-	$: active = url === route;
+	$: active = activeUrl === route;
 	$: marginLeft = (level - 1) * 40;
 	$: groupOpen = childRoutes && !groupClosed;
 
@@ -26,7 +26,7 @@
 
 {#if groupOpen}
 	{#each childRoutes as route (route.route)}
-		<svelte:self url={url} {...route} level={level + 1}/>
+		<svelte:self activeUrl={activeUrl} {...route} level={level + 1}/>
 	{/each}
 {/if}
 
