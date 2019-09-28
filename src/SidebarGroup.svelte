@@ -23,16 +23,16 @@
 </script>
 
 {#if name && route}
-	<SidebarLink name={name} route={route} />
 	<button class='group-indicator' class:open={groupOpen} on:click={toggleGroup}>
 		>
 	</button>
+	<SidebarLink name={name} route={route} activeGroup={activeSubRoute} />
 {/if}
 
 {#if groupOpen}
 	<ul>
 		{#each routes as route (route.route)}
-			<li class:group={route.childRoutes} class:groupActive={activeSubRoute === route.route}>
+			<li class:group={route.childRoutes}>
 				{#if route.childRoutes}
 					<svelte:self
 						routes={route.childRoutes}
@@ -41,7 +41,11 @@
 						on:active={handleActiveMessage}
 					/>
 				{:else}
-					<SidebarLink {...route} on:active={handleActiveMessage}/>
+					<SidebarLink
+						{...route}
+						on:active={handleActiveMessage}
+						activeGroup={activeSubRoute === route.route}
+					/>
 				{/if}
 			</li>
 		{/each}
