@@ -4,7 +4,7 @@
 	export let name;
 	export let route;
 
-	const { activeUrl } = getContext('sidebarContext');
+	const { activeUrl, onLinkClick } = getContext('sidebarContext');
 
 	$: active = activeUrl === route;
 
@@ -13,9 +13,16 @@
 	afterUpdate(() => {
 		active && dispatch('active', { activeSubRoute: route })
 	});
+
+	const onClick = (event) => {
+		if (onLinkClick) {
+			event.preventDefault();
+			onLinkClick(event);
+		}
+	};
 </script>
 
-<a href={route} class:active >
+<a on:click={onClick} href={route} class:active >
 	{name}
 </a>
 

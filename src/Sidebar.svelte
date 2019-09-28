@@ -4,8 +4,9 @@
 
 	export let activeUrl;
 	export let routes = [];
+	export let onLinkClick = null;
 
-	setContext('sidebarContext', { activeUrl });
+	setContext('sidebarContext', { activeUrl, onLinkClick });
 </script>
 
 <nav>
