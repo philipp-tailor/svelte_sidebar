@@ -5,6 +5,8 @@
 	export let route;
 	export let activeGroup = false;
 
+	let link;
+
 	const { activeUrl, onLinkClick } = getContext('sidebarContext');
 
 	$: active = activeUrl === route;
@@ -13,6 +15,7 @@
 
 	afterUpdate(() => {
 		active && dispatch('active', { activeSubRoute: route })
+		active && link.scrollIntoView({block: 'end', behavior: 'smooth'});
 	});
 
 	const onClick = (event) => {
@@ -23,7 +26,7 @@
 	};
 </script>
 
-<a on:click={onClick} href={route} {active} class:activeGroup>
+<a on:click={onClick} href={route} {active} class:activeGroup bind:this={link}>
 	{name}
 </a>
 
