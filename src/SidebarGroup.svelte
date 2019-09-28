@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-
+	import { scale } from 'svelte/transition';
 	import SidebarLink from './SidebarLink.svelte';
 
 	export let routes = [];
@@ -30,7 +30,7 @@
 {/if}
 
 {#if groupOpen}
-	<ul>
+	<ul in:scale='{{duration: 200}}'>
 		{#each routes as route (route.route)}
 			<li class:group={route.childRoutes}>
 				{#if route.childRoutes}
