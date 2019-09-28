@@ -19,6 +19,7 @@
 		height: 100vh;
 		min-width: 320px;
 		width: max(320px, 25vw);
+		box-sizing: border-box;
 		z-index: 2;
 	}
 </style>
