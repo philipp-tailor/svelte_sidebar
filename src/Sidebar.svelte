@@ -20,6 +20,7 @@
 		min-width: 320px;
 		width: max(320px, 25vw);
 		box-sizing: border-box;
+		overflow-y: auto;
 		z-index: 2;
 	}
 </style>
