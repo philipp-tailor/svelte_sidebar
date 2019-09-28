@@ -2,8 +2,9 @@
 Sidebar navigation implemented using svelte.
 
 ## Features
-* Automatically collapses the inactive part of the hierarchy and unfolds the active part of the menu hierarchy.
-* Reusable component API: is only passed two props:
-	- A generic application name + path mapping (as layed out in `./src/routes.js`)
-	- The current URL
-* Responsive.
+* Automatically uncollapses the active part of the menu hierarchy and scrolls it into view.
+* Reusable component API:
+	- `activeUrl`: The current URL.
+	- `routes`: A generic application name + path mapping (as laid out in `./src/routes.js`).
+	- `onLinkClick`: optional; Allows to customise the action that happens when a navigation link is clicked.
+	- `theme`: optional; Allows to customise the most important styles.
