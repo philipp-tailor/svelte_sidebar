@@ -23,7 +23,13 @@
 </script>
 
 {#if name && route}
-	<button class='group-indicator' class:open={groupOpen} on:click={toggleGroup}>
+	<button
+		class='group-indicator'
+		class:open={groupOpen}
+		on:click={toggleGroup}
+		aria-expanded={groupOpen}
+		aria-label="Toggle visibility of navigation link group"
+	>
 		>
 	</button>
 	<SidebarLink name={name} route={route} activeGroup={activeSubRoute} />
