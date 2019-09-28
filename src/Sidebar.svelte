@@ -39,8 +39,10 @@
 		box-sizing: border-box;
 		overflow-y: auto;
 		z-index: 2;
-		padding: calc(var(--fontSize) + 10px);
+		padding-top: calc(var(--fontSize) + 10px);
 		padding-right: calc(var(--fontSize) * 2 + 10px);
+		padding-bottom: calc(var(--fontSize) + 10px);
+		padding-left: calc(var(--fontSize));
 		background-color: var(--backgroundColor_nav);
 		box-shadow: calc(var(--fontSize) / 10) 0 var(--fontSize) 0 var(--backgroundColor_nav);
 		font-size: var(--fontSize);
