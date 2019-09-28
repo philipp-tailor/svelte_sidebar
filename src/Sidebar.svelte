@@ -19,5 +19,6 @@
 		height: 100vh;
 		min-width: 320px;
 		width: max(320px, 25vw);
+		z-index: 2;
 	}
 </style>
