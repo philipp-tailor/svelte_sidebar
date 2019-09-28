@@ -3,6 +3,7 @@
 
 	export let name;
 	export let route;
+	export let activeGroup = false;
 
 	const { activeUrl, onLinkClick } = getContext('sidebarContext');
 
@@ -22,17 +23,29 @@
 	};
 </script>
 
-<a on:click={onClick} href={route} class:active >
+<a on:click={onClick} href={route} {active} class:activeGroup>
 	{name}
 </a>
 
 <style>
 	a {
-		line-height: 1.5;
+		text-decoration: none;
+		color: var(--color_link);
+		opacity: 0.7;
+		word-wrap: break-word;
 	}
 
-	.active {
+	a.activeGroup, a:hover, a[active='true'], a:active {
+		opacity: 1;
+	}
+
+	a:hover {
+		text-decoration: underline;
+		color: var(--color_linkHover);
+	}
+
+	a[active='true'], a:active {
 		font-weight: bold;
-		color: black;
+		color: var(--color_linkActive);
 	}
 </style>
