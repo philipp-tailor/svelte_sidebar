@@ -13,6 +13,6 @@
 
 <style>
 	.route-content {
-		background-color: #ccc;
+		background-color: #F7F7F2;
 	}
 </style>
