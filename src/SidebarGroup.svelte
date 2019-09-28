@@ -49,30 +49,35 @@
 {/if}
 
 <style>
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		padding-left: 25px;
-	}
-
-	.groupActive {
-		background-color: white;
-	}
-
-	.group {
-		margin-bottom: 10px;
-	}
-
-	button {
-		width: 20px;
-	}
-
 	.group-indicator {
 		display: inline-block;
+		width: calc(var(--fontSize) + 5px);
+		height: calc(var(--fontSize) + 5px);
+		font-size: inherit;
+		background-color: transparent;
+		color: var(--color_link);
+		border: none;
+		cursor: pointer;
 	 }
 
 	.group-indicator.open {
 		transform: rotate(90deg);
+	}
+
+	.group-indicator:hover {
+		font-weight: bold;
+		color: var(--color_linkHover);
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		padding-left: calc(var(--fontSize) + 10px);
+		line-height: 2.25;
+	}
+
+	.group {
+		padding-bottom: var(--fontSize);
 	}
 </style>
