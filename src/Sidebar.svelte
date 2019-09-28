@@ -18,5 +18,6 @@
 		background-color: #3d3e40;
 		height: 100vh;
 		min-width: 320px;
+		width: max(320px, 25vw);
 	}
 </style>
