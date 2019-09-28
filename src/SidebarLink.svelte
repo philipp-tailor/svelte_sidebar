@@ -1,45 +1,30 @@
 <script>
+	import { afterUpdate, createEventDispatcher } from 'svelte';
+
 	export let activeUrl;
 	export let name;
 	export let route;
-	export let childRoutes = null;
-	export let level = 1;
-
-	let groupClosed = false;
 
 	$: active = activeUrl === route;
-	$: marginLeft = (level - 1) * 40;
-	$: groupOpen = childRoutes && !groupClosed;
 
-	const toggleGroup = () => groupClosed = !groupClosed;
+	const dispatch = createEventDispatcher();
+
+	afterUpdate(() => {
+		active && dispatch('active', { activeSubRoute: route })
+	});
 </script>
 
-<li class:active={active} style='margin-left: {marginLeft}px'>
-	{#if childRoutes}
-		<button class='group-indicator' class:open={groupOpen} on:click={toggleGroup}>> </button>
-	{/if}
-
-	<a href={route} class:active={active}>
-		{name}
-	</a>
-</li>
-
-{#if groupOpen}
-	{#each childRoutes as route (route.route)}
-		<svelte:self activeUrl={activeUrl} {...route} level={level + 1}/>
-	{/each}
-{/if}
+<a href={route} class:active >
+	{name}
+</a>
 
 <style>
-	.active {
-		font-weight: bold;
+	a {
+		line-height: 1.5;
 	}
 
-	.group-indicator {
-		display: inline-block;
-	 }
-
-	.group-indicator.open {
-		transform: rotate(90deg);
+	.active {
+		font-weight: bold;
+		color: black;
 	}
 </style>
