@@ -2,5 +2,18 @@ body {
 	margin: 0;
 	display: grid;
 	grid-template-columns: fit-content(25vw) auto;
+	font-family: sans-serif;
 	height: 100vh;
+}
+
+@media only screen and (max-width: 360px) {
+   html {
+      font-size: 13px;
+   }
+}
+
+@media only screen and (min-width: 360px) {
+   html {
+      font-size: 16px;
+   }
 }
