@@ -35,11 +35,12 @@
 	nav {
 		height: 100vh;
 		min-width: 320px;
-		width: max(320px, 25vw);
+		width: max(320px, 20vw);
 		box-sizing: border-box;
 		overflow-y: auto;
 		z-index: 2;
 		padding: calc(var(--fontSize) + 10px);
+		padding-right: calc(var(--fontSize) * 2 + 10px);
 		background-color: var(--backgroundColor_nav);
 		box-shadow: calc(var(--fontSize) / 10) 0 var(--fontSize) 0 var(--backgroundColor_nav);
 		font-size: var(--fontSize);

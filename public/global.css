@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	display: grid;
-	grid-template-columns: fit-content(25vw) auto;
+	grid-template-columns: fit-content(20vw) auto;
 	font-family: sans-serif;
 	height: 100vh;
 }
