@@ -23,8 +23,10 @@
 </script>
 
 {#if name && route}
-	<button class='group-indicator' class:open={groupOpen} on:click={toggleGroup}>> </button>
 	<SidebarLink name={name} route={route} />
+	<button class='group-indicator' class:open={groupOpen} on:click={toggleGroup}>
+		>
+	</button>
 {/if}
 
 {#if groupOpen}
