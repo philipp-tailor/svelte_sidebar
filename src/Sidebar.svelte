@@ -1,6 +1,5 @@
 <script>
 	import SidebarGroup from './SidebarGroup.svelte';
-	import SidebarLink from './SidebarLink.svelte';
 
 	export let activeUrl;
 	export let routes = [];
