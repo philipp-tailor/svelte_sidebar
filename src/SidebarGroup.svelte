@@ -3,7 +3,6 @@
 
 	import SidebarLink from './SidebarLink.svelte';
 
-	export let activeUrl;
 	export let routes = [];
 	export let isRoot = false;
 	export let name = null;
@@ -25,7 +24,7 @@
 
 {#if name && route}
 	<button class='group-indicator' class:open={groupOpen} on:click={toggleGroup}>> </button>
-	<SidebarLink activeUrl={activeUrl} name={name} route={route} />
+	<SidebarLink name={name} route={route} />
 {/if}
 
 {#if groupOpen}
@@ -34,14 +33,13 @@
 			<li class:group={route.childRoutes} class:groupActive={activeSubRoute === route.route}>
 				{#if route.childRoutes}
 					<svelte:self
-						activeUrl={activeUrl}
 						routes={route.childRoutes}
 						name={route.name}
 						route={route.route}
 						on:active={handleActiveMessage}
 					/>
 				{:else}
-					<SidebarLink activeUrl={activeUrl} {...route} on:active={handleActiveMessage}/>
+					<SidebarLink {...route} on:active={handleActiveMessage}/>
 				{/if}
 			</li>
 		{/each}

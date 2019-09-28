@@ -1,9 +1,10 @@
 <script>
-	import { afterUpdate, createEventDispatcher } from 'svelte';
+	import { afterUpdate, createEventDispatcher, getContext } from 'svelte';
 
-	export let activeUrl;
 	export let name;
 	export let route;
+
+	const { activeUrl } = getContext('sidebarContext');
 
 	$: active = activeUrl === route;
 

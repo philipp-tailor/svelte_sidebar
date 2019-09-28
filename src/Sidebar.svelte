@@ -1,12 +1,15 @@
 <script>
+	import { setContext } from 'svelte';
 	import SidebarGroup from './SidebarGroup.svelte';
 
 	export let activeUrl;
 	export let routes = [];
+
+	setContext('sidebarContext', { activeUrl });
 </script>
 
 <nav>
-	<SidebarGroup activeUrl={activeUrl} routes={routes} isRoot={true}/>
+	<SidebarGroup routes={routes} isRoot={true}/>
 </nav>
 
 <style>
