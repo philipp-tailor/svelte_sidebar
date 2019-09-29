@@ -28,6 +28,7 @@
 		class:open={groupOpen}
 		on:click={toggleGroup}
 		aria-expanded={groupOpen}
+		aria-controls={`${route}-group`}
 		aria-label='Toggle the visibility of child navigation links'
 		title='Toggle the visibility of child navigation links'
 	>
@@ -41,7 +42,7 @@
 	/>
 {/if}
 
-<ul hidden={!groupOpen} in:scale={{duration: 200}}>
+<ul id={`${route}-group`} hidden={!groupOpen} in:scale={{duration: 200}}>
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>
 			{#if route.childRoutes}

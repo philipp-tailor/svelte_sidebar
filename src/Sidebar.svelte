@@ -38,12 +38,13 @@
 	const toggleOpen = () => open = !open;
 </script>
 
-<nav class:open style={styleString}>
+<nav id='svelte-sidebar' class:open style={styleString}>
 	<button
 		class='sidebar-toggle'
 		class:open
 		on:click={toggleOpen}
 		aria-expanded={open}
+		aria-controls='svelte-sidebar'
 		title='Toggle the navigation sidebar'
 		aria-label='Toggle the navigation sidebar'
 	>
