@@ -31,7 +31,14 @@
 	};
 </script>
 
-<a on:click={onClick} href={route} {active} class:activeGroup bind:this={link}>
+<a
+	on:click={onClick}
+	href={route}
+	{active}
+	class:activeGroup
+	bind:this={link}
+	tabindex='0'
+>
 	{name}
 </a>
 
@@ -45,13 +52,14 @@
 		line-height: 1.3;
 		text-indent: calc(var(--fontSize) * -1);
 		margin-left: var(--fontSize);
+		outline: none;
 	}
 
-	a.activeGroup, a:hover, a[active='true'], a:active {
+	a.activeGroup, a:hover, a[active='true'], a:active, a:focus {
 		opacity: 1;
 	}
 
-	a:hover {
+	a:hover, a:focus {
 		text-decoration: underline;
 		color: var(--color_linkHover);
 	}
