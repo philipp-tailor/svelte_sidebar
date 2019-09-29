@@ -36,28 +36,26 @@
 	<SidebarLink name={name} route={route} activeGroup={activeSubRoute} />
 {/if}
 
-{#if groupOpen}
-	<ul in:scale='{{duration: 200}}'>
-		{#each routes as route (route.route)}
-			<li class:group={route.childRoutes}>
-				{#if route.childRoutes}
-					<svelte:self
-						routes={route.childRoutes}
-						name={route.name}
-						route={route.route}
-						on:active={handleActiveMessage}
-					/>
-				{:else}
-					<SidebarLink
-						{...route}
-						on:active={handleActiveMessage}
-						activeGroup={activeSubRoute === route.route}
-					/>
-				{/if}
-			</li>
-		{/each}
-	</ul>
-{/if}
+<ul hidden={!groupOpen} in:scale={{duration: 200}}>
+	{#each routes as route (route.route)}
+		<li class:group={route.childRoutes}>
+			{#if route.childRoutes}
+				<svelte:self
+					routes={route.childRoutes}
+					name={route.name}
+					route={route.route}
+					on:active={handleActiveMessage}
+				/>
+			{:else}
+				<SidebarLink
+					{...route}
+					activeGroup={activeSubRoute === route.route}
+					on:active={handleActiveMessage}
+				/>
+			{/if}
+		</li>
+	{/each}
+</ul>
 
 <style>
 	.group-toggle {
