@@ -35,7 +35,7 @@
 	nav {
 		height: 100vh;
 		min-width: 320px;
-		width: max(320px, 20vw);
+		max-width: 20vw;
 		box-sizing: border-box;
 		overflow-y: auto;
 		z-index: 2;
