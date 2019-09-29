@@ -1,5 +1,6 @@
 <script>
-	import { afterUpdate, createEventDispatcher, getContext } from 'svelte';
+	import { afterUpdate, createEventDispatcher } from 'svelte';
+	import { activeUrl, onLinkClick } from './SidebarStore';
 
 	export let name;
 	export let route;
@@ -7,32 +8,28 @@
 	export let activeGroup = false;
 
 	let link;
-
-	const { activeUrl, onLinkClick } = getContext('sidebarContext');
-
-	$: active = activeUrl === route;
+	$: active = $activeUrl === route;
 
 	const dispatch = createEventDispatcher();
 
-	afterUpdate(() => {
-		if (active) {
-			dispatch('active', { activeSubRoute: route })
-			setTimeout(
-				() => link.scrollIntoView({block: 'end', behavior: 'smooth'}),
-				250
-			)
-		}
-	});
+	const scrollIntoView = () => link.scrollIntoView({block: 'end', behavior: 'smooth'});
 
 	const onClick = (event) => {
 		if (disabled) {
 			event.preventDefault();
 		}
-		else if (onLinkClick) {
+		else if ($onLinkClick) {
 			event.preventDefault();
-			onLinkClick(event);
+			$onLinkClick(event);
 		}
 	};
+
+	afterUpdate(() => {
+		if (active) {
+			dispatch('active', { activeSubRoute: route });
+			setTimeout(scrollIntoView, 250);
+		}
+	});
 </script>
 
 <a

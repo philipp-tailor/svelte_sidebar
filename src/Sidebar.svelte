@@ -1,5 +1,6 @@
 <script>
-	import { setContext } from 'svelte';
+	import { beforeUpdate } from 'svelte';
+	import { activeUrl as storeActiveUrl, onLinkClick as storeOnLinkClick } from './SidebarStore';
 	import SidebarGroup from './SidebarGroup.svelte';
 
 	const defaultTheme = {
@@ -18,7 +19,10 @@
 	export let theme = {};
 	export let open = true;
 
-	setContext('sidebarContext', { activeUrl, onLinkClick });
+	beforeUpdate(() => {
+		storeActiveUrl.set(activeUrl);
+		storeOnLinkClick.set(onLinkClick);
+	});
 
 	$: combinedTheme = { ...defaultTheme, ...theme };
 	$: styleString = [
