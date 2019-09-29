@@ -8,6 +8,8 @@
 		color_linkHover: '#FCA311',
 		backgroundColor_nav: '#555B6E',
 		fontSize: '1.2rem',
+		minWidth_nav: '320px',
+		maxWidth_nav: '20vh',
 	};
 
 	export let activeUrl;
@@ -25,6 +27,8 @@
 			`--color_linkHover: ${combinedTheme.color_linkHover}`,
 			`--backgroundColor_nav: ${combinedTheme.backgroundColor_nav}`,
 			`--fontSize: ${combinedTheme.fontSize}`,
+			`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
+			`--maxWidth_nav: ${combinedTheme.maxWidth_nav}`,
 		].join('; ');
 
 	const toggleOpen = () => open = !open;
@@ -67,8 +71,8 @@
 	}
 
 	nav.open {
-		min-width: 320px;
-		max-width: 20vw;
+		min-width: var(--minWidth_nav);
+		max-width: var(--maxWidth_nav);
 	}
 
 	.sidebar-toggle {
