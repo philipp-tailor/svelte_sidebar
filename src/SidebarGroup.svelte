@@ -24,11 +24,12 @@
 
 {#if name && route}
 	<button
-		class='group-indicator'
+		class='group-toggle'
 		class:open={groupOpen}
 		on:click={toggleGroup}
 		aria-expanded={groupOpen}
-		aria-label="Toggle visibility of navigation link group"
+		aria-label='Toggle the visibility of child navigation links'
+		title='Toggle the visibility of child navigation links'
 	>
 		>
 	</button>
@@ -59,7 +60,7 @@
 {/if}
 
 <style>
-	.group-indicator {
+	.group-toggle {
 		display: inline-block;
 		width: calc(var(--fontSize) + 5px);
 		height: calc(var(--fontSize) + 5px);
@@ -67,14 +68,15 @@
 		background-color: transparent;
 		color: var(--color_link);
 		border: none;
+		outline: none;
 		cursor: pointer;
-	 }
+	}
 
-	.group-indicator.open {
+	.group-toggle.open {
 		transform: rotate(90deg);
 	}
 
-	.group-indicator:hover {
+	.group-toggle:hover, .group-toggle:focus {
 		font-weight: bold;
 		color: var(--color_linkHover);
 	}
