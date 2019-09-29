@@ -33,7 +33,12 @@
 	>
 		>
 	</button>
-	<SidebarLink name={name} route={route} activeGroup={activeSubRoute} />
+	<SidebarLink
+		name={name}
+		route={route}
+		activeGroup={activeSubRoute}
+		on:active={handleActiveMessage}
+	/>
 {/if}
 
 <ul hidden={!groupOpen} in:scale={{duration: 200}}>
