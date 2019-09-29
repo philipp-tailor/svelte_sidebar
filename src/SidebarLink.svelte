@@ -3,6 +3,7 @@
 
 	export let name;
 	export let route;
+	export let disabled = false;
 	export let activeGroup = false;
 
 	let link;
@@ -24,7 +25,10 @@
 	});
 
 	const onClick = (event) => {
-		if (onLinkClick) {
+		if (disabled) {
+			event.preventDefault();
+		}
+		else if (onLinkClick) {
 			event.preventDefault();
 			onLinkClick(event);
 		}
@@ -35,6 +39,7 @@
 	on:click={onClick}
 	href={route}
 	{active}
+	{disabled}
 	class:activeGroup
 	bind:this={link}
 	tabindex='0'
@@ -67,5 +72,10 @@
 	a[active='true'], a:active {
 		font-weight: bold;
 		color: var(--color_linkActive);
+	}
+
+	a[disabled='true'] {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 </style>
