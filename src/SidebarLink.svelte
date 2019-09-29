@@ -14,8 +14,13 @@
 	const dispatch = createEventDispatcher();
 
 	afterUpdate(() => {
-		active && dispatch('active', { activeSubRoute: route })
-		active && link.scrollIntoView({block: 'end', behavior: 'smooth'});
+		if (active) {
+			dispatch('active', { activeSubRoute: route })
+			setTimeout(
+				() => link.scrollIntoView({block: 'end', behavior: 'smooth'}),
+				250
+			)
+		}
 	});
 
 	const onClick = (event) => {
