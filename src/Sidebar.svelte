@@ -14,6 +14,7 @@
 	export let routes = [];
 	export let onLinkClick = null;
 	export let theme = {};
+	export let open = true;
 
 	setContext('sidebarContext', { activeUrl, onLinkClick });
 
@@ -25,17 +26,30 @@
 			`--backgroundColor_nav: ${combinedTheme.backgroundColor_nav}`,
 			`--fontSize: ${combinedTheme.fontSize}`,
 		].join('; ');
+
+	const toggleOpen = () => open = !open;
 </script>
 
-<nav style={styleString}>
-	<SidebarGroup routes={routes} isRoot={true}/>
+<nav class:open style={styleString}>
+	<button
+		class='sidebar-toggle'
+		class:open
+		on:click={toggleOpen}
+		aria-expanded={open}
+		title='Toggle the navigation sidebar'
+		aria-label='Toggle the navigation sidebar'
+	>
+		>
+	</button>
+	{#if open}
+		<SidebarGroup routes={routes}/>
+	{/if}
 </nav>
 
 <style>
 	nav {
 		height: 100vh;
-		min-width: 320px;
-		max-width: 20vw;
+		position: relative;
 		box-sizing: border-box;
 		overflow-y: auto;
 		z-index: 2;
@@ -50,5 +64,34 @@
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
+	}
+
+	nav.open {
+		min-width: 320px;
+		max-width: 20vw;
+	}
+
+	.sidebar-toggle {
+		position: absolute;
+		top: calc(var(--fontSize) + 5px);
+		right: calc(var(--fontSize) + 5px);
+		display: inline-block;
+		width: calc(var(--fontSize) + 5px);
+		height: calc(var(--fontSize) + 5px);
+		font-size: inherit;
+		background-color: transparent;
+		color: var(--color_link);
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.sidebar-toggle.open {
+		transform: rotate(180deg);
+	}
+
+	.sidebar-toggle:hover, .sidebar-toggle:focus {
+		font-weight: bold;
+		color: var(--color_linkHover);
 	}
 </style>

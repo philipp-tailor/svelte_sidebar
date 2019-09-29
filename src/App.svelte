@@ -6,8 +6,13 @@
 	const onLinkClick = (event) => alert(`'${event.target.href}' clicked`);
 </script>
 
-<Sidebar activeUrl={activeUrl} routes={routes} onLinkClick={onLinkClick} />
-<main class="route-content">
+<Sidebar
+	activeUrl={activeUrl}
+	routes={routes}
+	onLinkClick={onLinkClick}
+	open={window.innerWidth > 720}
+/>
+<main class='route-content'>
 	<!-- ToDo: add dropdown to select an URL to see the influence on the menu -->
 </main>
 
