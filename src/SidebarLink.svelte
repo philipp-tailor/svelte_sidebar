@@ -37,10 +37,14 @@
 
 <style>
 	a {
+		display: inline-block;
 		text-decoration: none;
 		color: var(--color_link);
 		opacity: 0.7;
 		word-wrap: break-word;
+		line-height: 1.3;
+		text-indent: calc(var(--fontSize) * -1);
+		margin-left: var(--fontSize);
 	}
 
 	a.activeGroup, a:hover, a[active='true'], a:active {
