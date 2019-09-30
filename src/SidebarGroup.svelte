@@ -1,6 +1,7 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onDestroy } from 'svelte';
 	import { scale } from 'svelte/transition';
+	import { activeUrl } from './SidebarStore';
 	import SidebarLink from './SidebarLink.svelte';
 
 	export let routes = [];
@@ -20,6 +21,12 @@
 		activeSubRoute = event.detail.activeSubRoute;
 		dispatch(event.type, { activeSubRoute: route });
 	};
+
+	const unsubscribe = activeUrl.subscribe(value => {
+		activeSubRoute = null;
+	});
+
+	onDestroy(unsubscribe);
 </script>
 
 {#if name && route}
