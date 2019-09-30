@@ -1,5 +1,5 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store'
 
-export const activeUrl = writable(null);
+export const activeUrl = writable(null)
 
-export const onLinkClick = writable(null);
+export const onLinkClick = writable(null)

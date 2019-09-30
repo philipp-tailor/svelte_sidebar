@@ -1,7 +1,7 @@
 <script>
-	import { beforeUpdate } from 'svelte';
-	import { activeUrl as storeActiveUrl, onLinkClick as storeOnLinkClick } from './SidebarStore';
-	import SidebarGroup from './SidebarGroup.svelte';
+	import { beforeUpdate } from 'svelte'
+	import { activeUrl as storeActiveUrl, onLinkClick as storeOnLinkClick } from './SidebarStore'
+	import SidebarGroup from './SidebarGroup.svelte'
 
 	const defaultTheme = {
 		backgroundColor_linkActive: '#F4442E',
@@ -12,52 +12,35 @@
 		maxWidth_nav: '20vh',
 		minWidth_nav: '320px',
 		opacity_linkDisabled: '0.5',
-		opacity_linkInactive: '0.75',
-	};
+		opacity_linkInactive: '0.75'
+	}
 
-	export let activeUrl;
-	export let routes = [];
-	export let onLinkClick = null;
-	export let theme = {};
-	export let open = true;
+	export let activeUrl
+	export let routes = []
+	export let onLinkClick = null
+	export let theme = {}
+	export let open = true
 
 	beforeUpdate(() => {
-		storeActiveUrl.set(activeUrl);
-		storeOnLinkClick.set(onLinkClick);
-	});
+		storeActiveUrl.set(activeUrl)
+		storeOnLinkClick.set(onLinkClick)
+	})
 
-	$: combinedTheme = { ...defaultTheme, ...theme };
+	$: combinedTheme = { ...defaultTheme, ...theme }
 	$: styleString = [
-			`--backgroundColor_linkActive: ${combinedTheme.backgroundColor_linkActive}`,
-			`--backgroundColor_nav: ${combinedTheme.backgroundColor_nav}`,
-			`--color_link: ${combinedTheme.color_link}`,
-			`--color_linkHover: ${combinedTheme.color_linkHover}`,
-			`--fontSize: ${combinedTheme.fontSize}`,
-			`--maxWidth_nav: ${combinedTheme.maxWidth_nav}`,
-			`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
-			`--opacity_linkDisabled: ${combinedTheme.opacity_linkDisabled}`,
-			`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`,
-		].join('; ');
+		`--backgroundColor_linkActive: ${combinedTheme.backgroundColor_linkActive}`,
+		`--backgroundColor_nav: ${combinedTheme.backgroundColor_nav}`,
+		`--color_link: ${combinedTheme.color_link}`,
+		`--color_linkHover: ${combinedTheme.color_linkHover}`,
+		`--fontSize: ${combinedTheme.fontSize}`,
+		`--maxWidth_nav: ${combinedTheme.maxWidth_nav}`,
+		`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
+		`--opacity_linkDisabled: ${combinedTheme.opacity_linkDisabled}`,
+		`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`
+	].join('; ')
 
-	const toggleOpen = () => open = !open;
+	const toggleOpen = () => (open = !open)
 </script>
-
-<nav id='svelte-sidebar' class:open style={styleString}>
-	<button
-		class='sidebar-toggle'
-		class:open
-		on:click={toggleOpen}
-		aria-expanded={open}
-		aria-controls='svelte-sidebar'
-		title='Toggle the navigation sidebar'
-		aria-label='Toggle the navigation sidebar'
-	>
-		>
-	</button>
-	{#if open}
-		<SidebarGroup routes={routes}/>
-	{/if}
-</nav>
 
 <style>
 	nav {
@@ -103,8 +86,25 @@
 		transform: rotate(180deg);
 	}
 
-	.sidebar-toggle:hover, .sidebar-toggle:focus {
+	.sidebar-toggle:hover,
+	.sidebar-toggle:focus {
 		font-weight: bold;
 		color: var(--backgroundColor_linkActive);
 	}
 </style>
+
+<nav id="svelte-sidebar" class:open style={styleString}>
+	<button
+		class="sidebar-toggle"
+		class:open
+		on:click={toggleOpen}
+		aria-expanded={open}
+		aria-controls="svelte-sidebar"
+		title="Toggle the navigation sidebar"
+		aria-label="Toggle the navigation sidebar">
+		>
+	</button>
+	{#if open}
+		<SidebarGroup {routes} />
+	{/if}
+</nav>

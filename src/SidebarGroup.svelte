@@ -1,82 +1,33 @@
 <script>
-	import { createEventDispatcher, onDestroy } from 'svelte';
-	import { scale } from 'svelte/transition';
-	import { activeUrl } from './SidebarStore';
-	import SidebarLink from './SidebarLink.svelte';
+	import { createEventDispatcher, onDestroy } from 'svelte'
+	import { scale } from 'svelte/transition'
+	import { activeUrl } from './SidebarStore'
+	import SidebarLink from './SidebarLink.svelte'
 
-	export let routes = [];
-	export let name = null;
-	export let route = null;
-	export let disabled = false;
+	export let routes = []
+	export let name = null
+	export let route = null
+	export let disabled = false
 
-	let groupOpen = true;
-	let activeSubRoute = null;
+	let groupOpen = true
+	let activeSubRoute = null
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher()
 
-	const toggleGroup = () => groupOpen = !groupOpen;
+	const toggleGroup = () => (groupOpen = !groupOpen)
 
-	const handleActiveChange = (event) => {
-		groupOpen = true;
-		activeSubRoute = event.detail.activeSubRoute;
-		dispatch(event.type, { activeSubRoute: route });
-	};
+	const handleActiveChange = event => {
+		groupOpen = true
+		activeSubRoute = event.detail.activeSubRoute
+		dispatch(event.type, { activeSubRoute: route })
+	}
 
 	const unsubscribe = activeUrl.subscribe(value => {
-		activeSubRoute = null;
-	});
+		activeSubRoute = null
+	})
 
-	onDestroy(unsubscribe);
+	onDestroy(unsubscribe)
 </script>
-
-{#if name && route}
-	{#if (!disabled)}
-		<button
-			class='group-toggle'
-			class:open={groupOpen}
-			on:click={toggleGroup}
-			aria-expanded={groupOpen}
-			aria-controls={`${route}-group`}
-			aria-label='Toggle the visibility of child navigation links'
-			title='Toggle the visibility of child navigation links'
-		>
-			>
-		</button>
-	{/if}
-	<SidebarLink
-		name={name}
-		route={route}
-		disabled={disabled}
-		activeGroup={activeSubRoute}
-		on:active={handleActiveChange}
-	/>
-{/if}
-
-<ul
-	id={`${route ? route : 'root'}-group`}
-	hidden={!groupOpen || disabled}
-	in:scale={{duration: 250}}
->
-	{#each routes as route (route.route)}
-		<li class:group={route.childRoutes}>
-			{#if route.childRoutes}
-				<svelte:self
-					routes={route.childRoutes}
-					name={route.name}
-					route={route.route}
-					disabled={route.disabled}
-					on:active={handleActiveChange}
-				/>
-			{:else}
-				<SidebarLink
-					{...route}
-					activeGroup={activeSubRoute === route.route}
-					on:active={handleActiveChange}
-				/>
-			{/if}
-		</li>
-	{/each}
-</ul>
 
 <style>
 	.group-toggle {
@@ -95,7 +46,8 @@
 		transform: rotate(90deg);
 	}
 
-	.group-toggle:hover, .group-toggle:focus {
+	.group-toggle:hover,
+	.group-toggle:focus {
 		font-weight: bold;
 		color: var(--backgroundColor_linkActive);
 	}
@@ -112,3 +64,36 @@
 		padding-bottom: var(--fontSize);
 	}
 </style>
+
+{#if name && route}
+	{#if !disabled}
+		<button
+			class="group-toggle"
+			class:open={groupOpen}
+			on:click={toggleGroup}
+			aria-expanded={groupOpen}
+			aria-controls={`${route}-group`}
+			aria-label="Toggle the visibility of child navigation links"
+			title="Toggle the visibility of child navigation links">
+			>
+		</button>
+	{/if}
+	<SidebarLink {name} {route} {disabled} activeGroup={activeSubRoute} on:active={handleActiveChange} />
+{/if}
+
+<ul id={`${route ? route : 'root'}-group`} hidden={!groupOpen || disabled} in:scale={{ duration: 250 }}>
+	{#each routes as route (route.route)}
+		<li class:group={route.childRoutes}>
+			{#if route.childRoutes}
+				<svelte:self
+					routes={route.childRoutes}
+					name={route.name}
+					route={route.route}
+					disabled={route.disabled}
+					on:active={handleActiveChange} />
+			{:else}
+				<SidebarLink {...route} activeGroup={activeSubRoute === route.route} on:active={handleActiveChange} />
+			{/if}
+		</li>
+	{/each}
+</ul>

@@ -1,79 +1,79 @@
 export const unAuthenticatedRoutes = [
 	{
-		name: "Login",
-		route: "/login"
+		name: 'Login',
+		route: '/login'
 	},
 	{
-		name: "Signup",
-		route: "/signup"
+		name: 'Signup',
+		route: '/signup'
 	},
 	{
-		name: "Password Reset",
-		route: "/password-reset"
+		name: 'Password Reset',
+		route: '/password-reset'
 	},
 	{
-		name: "Terms Of Service",
-		route: "/terms-of-service"
+		name: 'Terms Of Service',
+		route: '/terms-of-service'
 	}
-];
+]
 
 export const authenticatedRoutes = [
 	{
-		name: "Home",
-		route: "/"
+		name: 'Home',
+		route: '/'
 	},
 	{
-		name: "Settings",
-		route: "/settings",
+		name: 'Settings',
+		route: '/settings',
 		childRoutes: [
 			{
-				name: "User Settings",
-				route: "/settings/user"
+				name: 'User Settings',
+				route: '/settings/user'
 			},
 			{
-				name: "Organisation Settings (Team Management & Billing)",
-				route: "/settings/org"
+				name: 'Organisation Settings (Team Management & Billing)',
+				route: '/settings/org'
 			}
 		]
 	},
 	{
-		name: "Products",
-		route: "/products",
+		name: 'Products',
+		route: '/products',
 		disabled: true,
 		childRoutes: [
 			{
-				name: "Comparison",
-				route: "/products/compare"
+				name: 'Comparison',
+				route: '/products/compare'
 			},
 			{
-				name: "Wishlist",
-				route: "/products/whislist"
+				name: 'Wishlist',
+				route: '/products/whislist'
 			}
 		]
 	},
 	{
-		name: "Checkout",
-		route: "/checkout",
+		name: 'Checkout',
+		route: '/checkout',
 		childRoutes: [
 			{
-				name: "Cart",
-				route: "/checkout/cart"
+				name: 'Cart',
+				route: '/checkout/cart'
 			},
 			{
-				name: "Payment Details",
-				route: "/checkout/payment"
+				name: 'Payment Details',
+				route: '/checkout/payment'
 			},
 			{
-				name: "Confirm",
-				route: "/checkout/confirmation",
+				name: 'Confirm',
+				route: '/checkout/confirmation',
 				childRoutes: [
 					{
-						name: "Order Success",
-						route: "/checkout/confirmation/success"
+						name: 'Order Success',
+						route: '/checkout/confirmation/success'
 					},
 					{
-						name: "Order Failure",
-						route: "/checkout/confirmation/error",
+						name: 'Order Failure',
+						route: '/checkout/confirmation/error',
 						disabled: true
 					}
 				]
@@ -81,12 +81,12 @@ export const authenticatedRoutes = [
 		]
 	},
 	{
-		name: "Admin",
-		route: "/admin",
+		name: 'Admin',
+		route: '/admin',
 		disabled: true
 	}
-];
+]
 
-const routes = [...unAuthenticatedRoutes, ...authenticatedRoutes];
+const routes = [...unAuthenticatedRoutes, ...authenticatedRoutes]
 
-export default routes;
+export default routes
