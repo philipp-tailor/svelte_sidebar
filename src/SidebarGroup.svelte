@@ -49,7 +49,11 @@
 	/>
 {/if}
 
-<ul id={`${route}-group`} hidden={!groupOpen} in:scale={{duration: 200}}>
+<ul
+	id={`${route ? route : 'root'}-group`}
+	hidden={!groupOpen}
+	in:scale={{duration: 200}}
+>
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>
 			{#if route.childRoutes}
