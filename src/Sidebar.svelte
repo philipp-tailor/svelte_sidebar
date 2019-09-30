@@ -7,6 +7,8 @@
 		color_link: '#F7F7F2',
 		color_linkActive: '#F4442E',
 		color_linkHover: '#FCA311',
+		opacity_linkInactive: '0.75',
+		opacity_linkDisabled: '0.5',
 		backgroundColor_nav: '#555B6E',
 		fontSize: '1.2rem',
 		minWidth_nav: '320px',
@@ -33,6 +35,8 @@
 			`--fontSize: ${combinedTheme.fontSize}`,
 			`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
 			`--maxWidth_nav: ${combinedTheme.maxWidth_nav}`,
+			`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`,
+			`--opacity_linkDisabled: ${combinedTheme.opacity_linkDisabled}`,
 		].join('; ');
 
 	const toggleOpen = () => open = !open;
