@@ -5,7 +5,6 @@
 	import SidebarLink from './SidebarLink.svelte';
 
 	export let routes = [];
-	export let isRoot = false;
 	export let name = null;
 	export let route = null;
 
