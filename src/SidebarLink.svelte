@@ -72,7 +72,7 @@
 		border-radius: calc(var(--fontSize) / 4);
 	}
 
-	a[active='true']:hover, a:active:hover {
+	a[active='true']:hover, a:active:hover, a[active='true']:focus, a:active:focus {
 		background-color: transparent;
 	}
 
