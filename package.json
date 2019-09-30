@@ -4,6 +4,11 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "husky": ">=1",
+    "lint-staged": ">=8",
+    "prettier": "^1.18.2",
+    "prettier-plugin-packagejson": "^2.0.1",
+    "prettier-plugin-svelte": "^0.7.0",
     "rollup": "^1.21.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-livereload": "^1.0.1",
@@ -18,5 +23,16 @@
     "autobuild": "rollup -c -w",
     "dev": "yarn start:dev & yarn autobuild",
     "start:dev": "serve"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
