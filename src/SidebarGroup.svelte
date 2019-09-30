@@ -51,7 +51,7 @@
 <ul
 	id={`${route ? route : 'root'}-group`}
 	hidden={!groupOpen}
-	in:scale={{duration: 200}}
+	in:scale={{duration: 250}}
 >
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>
