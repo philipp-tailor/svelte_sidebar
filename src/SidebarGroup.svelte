@@ -92,7 +92,7 @@
 
 	.group-toggle:hover, .group-toggle:focus {
 		font-weight: bold;
-		color: var(--color_linkHover);
+		color: var(--backgroundColor_linkActive);
 	}
 
 	ul {

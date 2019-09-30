@@ -105,6 +105,6 @@
 
 	.sidebar-toggle:hover, .sidebar-toggle:focus {
 		font-weight: bold;
-		color: var(--color_linkHover);
+		color: var(--backgroundColor_linkActive);
 	}
 </style>
