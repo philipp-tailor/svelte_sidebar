@@ -4,15 +4,15 @@
 	import SidebarGroup from './SidebarGroup.svelte';
 
 	const defaultTheme = {
-		color_link: '#F7F7F2',
-		color_linkActive: '#F4442E',
-		color_linkHover: '#FCA311',
-		opacity_linkInactive: '0.75',
-		opacity_linkDisabled: '0.5',
+		backgroundColor_linkActive: '#F4442E',
 		backgroundColor_nav: '#555B6E',
+		color_link: '#F7F7F2',
+		color_linkHover: '#FCA311',
 		fontSize: '1.2rem',
-		minWidth_nav: '320px',
 		maxWidth_nav: '20vh',
+		minWidth_nav: '320px',
+		opacity_linkDisabled: '0.5',
+		opacity_linkInactive: '0.75',
 	};
 
 	export let activeUrl;
@@ -28,15 +28,15 @@
 
 	$: combinedTheme = { ...defaultTheme, ...theme };
 	$: styleString = [
-			`--color_link: ${combinedTheme.color_link}`,
-			`--color_linkActive: ${combinedTheme.color_linkActive}`,
-			`--color_linkHover: ${combinedTheme.color_linkHover}`,
+			`--backgroundColor_linkActive: ${combinedTheme.backgroundColor_linkActive}`,
 			`--backgroundColor_nav: ${combinedTheme.backgroundColor_nav}`,
+			`--color_link: ${combinedTheme.color_link}`,
+			`--color_linkHover: ${combinedTheme.color_linkHover}`,
 			`--fontSize: ${combinedTheme.fontSize}`,
-			`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
 			`--maxWidth_nav: ${combinedTheme.maxWidth_nav}`,
-			`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`,
+			`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
 			`--opacity_linkDisabled: ${combinedTheme.opacity_linkDisabled}`,
+			`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`,
 		].join('; ');
 
 	const toggleOpen = () => open = !open;

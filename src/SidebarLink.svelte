@@ -52,8 +52,6 @@
 		opacity: var(--opacity_linkInactive);
 		word-wrap: break-word;
 		line-height: 1.3;
-		text-indent: calc(var(--fontSize) * -1);
-		margin-left: var(--fontSize);
 		outline: none;
 	}
 
@@ -67,8 +65,15 @@
 	}
 
 	a[active='true'], a:active {
-		font-weight: bold;
-		color: var(--color_linkActive);
+		background-color: var(--backgroundColor_linkActive);
+		margin-left: calc(var(--fontSize) * -0.5);
+		padding-right: calc(var(--fontSize) / 2);
+		padding-left: calc(var(--fontSize) / 2);
+		border-radius: calc(var(--fontSize) / 4);
+	}
+
+	a[active='true']:hover, a:active:hover {
+		background-color: transparent;
 	}
 
 	a[disabled='true'] {
