@@ -1,7 +1,7 @@
 <script>
 	import { beforeUpdate } from 'svelte'
 	import { activeUrl as storeActiveUrl, onLinkClick as storeOnLinkClick } from './SidebarStore'
-	import SidebarGroup from './SidebarGroup.svelte'
+	import NavigationLinkGroup from './NavigationLinkGroup.svelte'
 
 	const defaultTheme = {
 		backgroundColor_linkActive: '#F4442E',
@@ -105,6 +105,6 @@
 		>
 	</button>
 	{#if open}
-		<SidebarGroup {routes} />
+		<NavigationLinkGroup {routes} />
 	{/if}
 </nav>

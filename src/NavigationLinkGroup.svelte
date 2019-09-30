@@ -2,7 +2,7 @@
 	import { createEventDispatcher, onDestroy } from 'svelte'
 	import { scale } from 'svelte/transition'
 	import { activeUrl } from './SidebarStore'
-	import SidebarLink from './SidebarLink.svelte'
+	import NavigationLink from './NavigationLink.svelte'
 
 	export let routes = []
 	export let name = null
@@ -78,7 +78,7 @@
 			>
 		</button>
 	{/if}
-	<SidebarLink {name} {route} {disabled} activeGroup={activeSubRoute} on:active={handleActiveChange} />
+	<NavigationLink {name} {route} {disabled} activeGroup={activeSubRoute} on:active={handleActiveChange} />
 {/if}
 
 <ul id={`${route ? route : 'root'}-group`} hidden={!groupOpen || disabled} in:scale={{ duration: 250 }}>
@@ -92,7 +92,10 @@
 					disabled={route.disabled}
 					on:active={handleActiveChange} />
 			{:else}
-				<SidebarLink {...route} activeGroup={activeSubRoute === route.route} on:active={handleActiveChange} />
+				<NavigationLink
+					{...route}
+					activeGroup={activeSubRoute === route.route}
+					on:active={handleActiveChange} />
 			{/if}
 		</li>
 	{/each}
