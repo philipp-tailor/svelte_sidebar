@@ -7,6 +7,7 @@
 	export let routes = [];
 	export let name = null;
 	export let route = null;
+	export let disabled = false;
 
 	let groupOpen = true;
 	let activeSubRoute = null;
@@ -29,20 +30,23 @@
 </script>
 
 {#if name && route}
-	<button
-		class='group-toggle'
-		class:open={groupOpen}
-		on:click={toggleGroup}
-		aria-expanded={groupOpen}
-		aria-controls={`${route}-group`}
-		aria-label='Toggle the visibility of child navigation links'
-		title='Toggle the visibility of child navigation links'
-	>
+	{#if (!disabled)}
+		<button
+			class='group-toggle'
+			class:open={groupOpen}
+			on:click={toggleGroup}
+			aria-expanded={groupOpen}
+			aria-controls={`${route}-group`}
+			aria-label='Toggle the visibility of child navigation links'
+			title='Toggle the visibility of child navigation links'
 		>
-	</button>
+			>
+		</button>
+	{/if}
 	<SidebarLink
 		name={name}
 		route={route}
+		disabled={disabled}
 		activeGroup={activeSubRoute}
 		on:active={handleActiveChange}
 	/>
@@ -50,7 +54,7 @@
 
 <ul
 	id={`${route ? route : 'root'}-group`}
-	hidden={!groupOpen}
+	hidden={!groupOpen || disabled}
 	in:scale={{duration: 250}}
 >
 	{#each routes as route (route.route)}
@@ -60,6 +64,7 @@
 					routes={route.childRoutes}
 					name={route.name}
 					route={route.route}
+					disabled={route.disabled}
 					on:active={handleActiveChange}
 				/>
 			{:else}
