@@ -37,6 +37,21 @@ export const authenticatedRoutes = [
 		]
 	},
 	{
+		name: "Products",
+		route: "/products",
+		disabled: true,
+		childRoutes: [
+			{
+				name: "Comparison",
+				route: "/products/compare"
+			},
+			{
+				name: "Wishlist",
+				route: "/products/whislist"
+			}
+		]
+	},
+	{
 		name: "Checkout",
 		route: "/checkout",
 		childRoutes: [
@@ -64,6 +79,11 @@ export const authenticatedRoutes = [
 				]
 			}
 		]
+	},
+	{
+		name: "Admin",
+		route: "/admin",
+		disabled: true
 	}
 ];
 
