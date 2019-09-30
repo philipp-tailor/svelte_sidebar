@@ -16,7 +16,7 @@
 
 	const toggleGroup = () => groupOpen = !groupOpen;
 
-	const handleActiveMessage = (event) => {
+	const handleActiveChange = (event) => {
 		groupOpen = true;
 		activeSubRoute = event.detail.activeSubRoute;
 		dispatch(event.type, { activeSubRoute: route });
@@ -45,7 +45,7 @@
 		name={name}
 		route={route}
 		activeGroup={activeSubRoute}
-		on:active={handleActiveMessage}
+		on:active={handleActiveChange}
 	/>
 {/if}
 
@@ -57,13 +57,13 @@
 					routes={route.childRoutes}
 					name={route.name}
 					route={route.route}
-					on:active={handleActiveMessage}
+					on:active={handleActiveChange}
 				/>
 			{:else}
 				<SidebarLink
 					{...route}
 					activeGroup={activeSubRoute === route.route}
-					on:active={handleActiveMessage}
+					on:active={handleActiveChange}
 				/>
 			{/if}
 		</li>
