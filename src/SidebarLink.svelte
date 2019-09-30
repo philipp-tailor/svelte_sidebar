@@ -53,6 +53,8 @@
 		word-wrap: break-word;
 		line-height: 1.3;
 		outline: none;
+		padding-top: calc(var(--fontSize) / 4);
+		padding-bottom: calc(var(--fontSize) / 4);
 	}
 
 	a.activeGroup, a:hover, a[active='true'], a:active, a:focus {
