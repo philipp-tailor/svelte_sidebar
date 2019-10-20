@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte'
-	import { authenticatedRoutes as routes } from './routes'
+	import { authenticatedRoutes } from './routes'
 
 	let Sidebar
 
@@ -13,16 +13,24 @@
 		;({ default: Sidebar } = await import(sidebarPath))
 	}
 
-	let activeUrl = '/checkout/confirmation/success'
+	const initialSidebarConfig = {
+		activeUrl: '/checkout/confirmation/success',
+		routes: authenticatedRoutes,
+		open: window.innerWidth > 720,
+		onLinkClick: event => alert(`'${event.target.href}' clicked`)
+	}
 
-	const onLinkClick = event => alert(`'${event.target.href}' clicked`)
+	let sidebarConfig = { ...initialSidebarConfig }
 
 	const getAllRoutes = routes =>
 		routes.reduce((allRoutes, route) => {
 			return [...allRoutes, route, ...getAllRoutes(route.childRoutes || [])]
 		}, [])
 
-	const selectableRoutes = getAllRoutes(routes)
+	let selectableRoutes
+	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
+
+	const resetSidebarConfig = () => (sidebarConfig = { ...initialSidebarConfig })
 </script>
 
 <style>
@@ -38,11 +46,17 @@
 	}
 </style>
 
-<svelte:component this={Sidebar} {activeUrl} {routes} {onLinkClick} open={window.innerWidth > 720} />
+<svelte:component this={Sidebar} {...sidebarConfig} />
 <main class="route-content">
-	<select bind:value={activeUrl}>
+	<select bind:value={sidebarConfig.activeUrl}>
 		{#each selectableRoutes as { name, route }}
 			<option value={route}>{name}</option>
 		{/each}
 	</select>
+
+	<textarea
+		on:input={e => (sidebarConfig.routes = JSON.parse(e.target.value))}
+		value={JSON.stringify(sidebarConfig.routes)} />
+
+	<button on:click={resetSidebarConfig}>reset</button>
 </main>
