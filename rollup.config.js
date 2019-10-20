@@ -8,12 +8,12 @@ import visualizer from 'rollup-plugin-visualizer'
 const production = !process.env.ROLLUP_WATCH
 
 export default {
-	input: 'src/main.js',
+	input: ['src/main.js', `src/Sidebar.svelte`],
 	output: {
 		sourcemap: true,
-		format: 'iife',
+		format: 'esm',
 		name: 'app',
-		file: 'public/bundle.js'
+		dir: 'public/'
 	},
 	plugins: [
 		svelte({

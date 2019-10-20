@@ -1,6 +1,17 @@
 <script>
+	import { onMount } from 'svelte'
 	import { authenticatedRoutes as routes } from './routes'
-	import Sidebar from './Sidebar.svelte'
+
+	let Sidebar
+
+	onMount(() => {
+		loadSidebar()
+	})
+
+	async function loadSidebar() {
+		const sidebarPath = './Sidebar.js'
+		;({ default: Sidebar } = await import(sidebarPath))
+	}
 
 	let activeUrl = '/checkout/confirmation/success'
 
@@ -27,7 +38,7 @@
 	}
 </style>
 
-<Sidebar {activeUrl} {routes} {onLinkClick} open={window.innerWidth > 720} />
+<svelte:component this={Sidebar} {activeUrl} {routes} {onLinkClick} open={window.innerWidth > 720} />
 <main class="route-content">
 	<select bind:value={activeUrl}>
 		{#each selectableRoutes as { name, route }}
