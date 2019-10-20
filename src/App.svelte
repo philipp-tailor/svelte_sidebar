@@ -13,14 +13,16 @@
 		;({ default: Sidebar } = await import(sidebarPath))
 	}
 
-	const initialSidebarConfig = {
+	const initialSidebarConfig = Object.freeze({
 		activeUrl: '/checkout/confirmation/success',
 		routes: authenticatedRoutes,
 		open: window.innerWidth > 720,
 		onLinkClick: event => alert(`'${event.target.href}' clicked`)
-	}
+	})
 
-	let sidebarConfig = { ...initialSidebarConfig }
+	const getDeepObjectCopy = value => JSON.parse(JSON.stringify(value))
+
+	let sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) }
 
 	const getAllRoutes = routes =>
 		routes.reduce((allRoutes, route) => {
@@ -30,7 +32,7 @@
 	let selectableRoutes
 	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
 
-	const resetSidebarConfig = () => (sidebarConfig = { ...initialSidebarConfig })
+	const resetSidebarConfig = () => (sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) })
 </script>
 
 <style>
