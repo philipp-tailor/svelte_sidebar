@@ -9,7 +9,7 @@
 		color_link: '#F7F7F2',
 		color_linkHover: '#FCA311',
 		fontSize: '1.2rem',
-		maxWidth_nav: '20vh',
+		maxWidth_nav: '20vw',
 		minWidth_nav: '320px',
 		opacity_linkDisabled: '0.5',
 		opacity_linkInactive: '0.75'
