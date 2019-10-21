@@ -12,7 +12,7 @@
 
 	const dispatch = createEventDispatcher()
 
-	const scrollIntoView = () => link.scrollIntoView({ block: 'end', behavior: 'smooth' })
+	const scrollIntoView = () => link && link.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
 	const onClick = event => {
 		if (disabled) {
