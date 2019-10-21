@@ -17,7 +17,6 @@
 		activeUrl: '/checkout/confirmation/success',
 		routes: authenticatedRoutes,
 		open: window.innerWidth > 720,
-		onLinkClick: event => alert(`'${event.target.href}' clicked`)
 	})
 
 	const getDeepObjectCopy = value => JSON.parse(JSON.stringify(value))
@@ -31,6 +30,8 @@
 
 	let selectableRoutes
 	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
+
+	const onLinkClick = event => alert(`'${event.target.href}' clicked`)
 
 	const resetSidebarConfig = () => (sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) })
 </script>
@@ -48,7 +49,7 @@
 	}
 </style>
 
-<svelte:component this={Sidebar} {...sidebarConfig} />
+<svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 <main class="route-content">
 	<select bind:value={sidebarConfig.activeUrl}>
 		{#each selectableRoutes as { name, route }}
