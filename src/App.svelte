@@ -13,13 +13,15 @@
 		;({ default: Sidebar } = await import(sidebarPath))
 	}
 
+	const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+
 	const initialSidebarConfig = Object.freeze({
 		activeUrl: '/checkout/confirmation/success',
 		routes: authenticatedRoutes,
 		open: window.innerWidth > 720,
 		theme: {
 			backgroundColor_linkActive: '#F4442E',
-			backgroundColor_nav: '#555B6E',
+			backgroundColor_nav: isDarkMode ? '#000000' : '#003649',
 			color_link: '#F7F7F2',
 			color_linkHover: '#FCA311',
 			fontSize: '1.2rem',
@@ -48,6 +50,11 @@
 </script>
 
 <style>
+	:root {
+		supported-color-scheme: light dark;
+		color-scheme: light dark;
+	}
+
 	.route-content {
 		background-color: #f7f7f2;
 		display: grid;
@@ -57,6 +64,12 @@
 
 	select {
 		font-size: 1.2rem;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.route-content {
+			background-color: #555b6e;
+		}
 	}
 </style>
 
