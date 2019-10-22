@@ -98,6 +98,7 @@
 			bind:value={sidebarConfig.theme.backgroundColor_nav}
 			id="backgroundColor_nav"
 			tabindex="0" />
+		{sidebarConfig.theme.backgroundColor_nav}
 		<br />
 
 		<label for="backgroundColor_linkActive">Background Color of Active Links:</label>
@@ -105,14 +106,17 @@
 			type="color"
 			bind:value={sidebarConfig.theme.backgroundColor_linkActive}
 			id="backgroundColor_linkActive" />
+		{sidebarConfig.theme.backgroundColor_linkActive}
 		<br />
 
 		<label for="color_link">Color of Link Text:</label>
 		<input type="color" bind:value={sidebarConfig.theme.color_link} id="color_link" />
+		{sidebarConfig.theme.color_link}
 		<br />
 
 		<label for="color_linkHover">Hover Color of Link Text:</label>
 		<input type="color" bind:value={sidebarConfig.theme.color_linkHover} id="color_linkHover" />
+		{sidebarConfig.theme.color_linkHover}
 	</fieldset>
 
 	<fieldset>
@@ -126,6 +130,7 @@
 			max="1"
 			step="0.1"
 			id="opacity_linkDisabled" />
+		{sidebarConfig.theme.opacity_linkDisabled}
 		<br />
 
 		<label for="opacity_linkInactive">Opacity of Links Which Are Not Part of the Active Route:</label>
@@ -136,6 +141,7 @@
 			max="1"
 			step="0.1"
 			id="opacity_linkInactive" />
+		{sidebarConfig.theme.opacity_linkInactive}
 	</fieldset>
 
 	<fieldset>
@@ -150,6 +156,7 @@
 			max="3"
 			step="0.1"
 			id="fontSize" />
+		{sidebarConfig.theme.fontSize}
 		<br />
 
 		<label for="maxWidth_nav">Sidebar Max Width:</label>
@@ -160,6 +167,7 @@
 			min="5"
 			max="100"
 			id="maxWidth_nav" />
+		{sidebarConfig.theme.maxWidth_nav}
 		<br />
 
 		<label for="minWidth_nav">Sidebar Min Width:</label>
@@ -173,6 +181,7 @@
 			min="5"
 			max="1920"
 			id="minWidth_nav" />
+		{sidebarConfig.theme.minWidth_nav}
 		<br />
 	</fieldset>
 
