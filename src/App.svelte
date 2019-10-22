@@ -76,52 +76,105 @@
 
 <svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 <main class="route-content">
-	<select bind:value={sidebarConfig.activeUrl}>
+	<label for="activeUrl">Active URL</label>
+	<select bind:value={sidebarConfig.activeUrl} id="activeUrl">
 		{#each selectableRoutes as { name, route }}
 			<option value={route}>{name}</option>
 		{/each}
 	</select>
 
+	<label for="routes">Navigation Content</label>
 	<textarea
 		on:input={e => (sidebarConfig.routes = JSON.parse(e.target.value))}
-		value={JSON.stringify(sidebarConfig.routes)} />
+		value={JSON.stringify(sidebarConfig.routes)}
+		id="routes" />
 
-	<input type="color" bind:value={sidebarConfig.theme.backgroundColor_linkActive} />
+	<fieldset>
+		<legend>Colors</legend>
 
-	<input type="color" bind:value={sidebarConfig.theme.backgroundColor_nav} />
+		<label for="backgroundColor_nav">Background Color of Sidebar:</label>
+		<input
+			type="color"
+			bind:value={sidebarConfig.theme.backgroundColor_nav}
+			id="backgroundColor_nav"
+			tabindex="0" />
+		<br />
 
-	<input type="color" bind:value={sidebarConfig.theme.color_link} />
+		<label for="backgroundColor_linkActive">Background Color of Active Links:</label>
+		<input
+			type="color"
+			bind:value={sidebarConfig.theme.backgroundColor_linkActive}
+			id="backgroundColor_linkActive" />
+		<br />
 
-	<input type="color" bind:value={sidebarConfig.theme.color_linkHover} />
+		<label for="color_link">Color of Link Text:</label>
+		<input type="color" bind:value={sidebarConfig.theme.color_link} id="color_link" />
+		<br />
 
-	<input
-		type="range"
-		on:input={e => (sidebarConfig.theme.fontSize = `${e.target.value}rem`)}
-		value={Number.parseFloat(sidebarConfig.theme.fontSize)}
-		min="0.1"
-		max="3"
-		step="0.1" />
+		<label for="color_linkHover">Hover Color of Link Text:</label>
+		<input type="color" bind:value={sidebarConfig.theme.color_linkHover} id="color_linkHover" />
+	</fieldset>
 
-	<input
-		type="range"
-		on:input={e => (sidebarConfig.theme.maxWidth_nav = `${e.target.value}vw`)}
-		value={Number.parseFloat(sidebarConfig.theme.maxWidth_nav)}
-		min="5"
-		max="100" />
+	<fieldset>
+		<legend>Opacity</legend>
 
-	<input
-		type="range"
-		on:input={e => {
-			sidebarConfig.theme.minWidth_nav = `${e.target.value}px`
-			sidebarConfig.open = window.innerWidth > 720 && window.innerWidth / 2 > e.target.value
-		}}
-		value={Number.parseFloat(sidebarConfig.theme.minWidth_nav)}
-		min="5"
-		max="1920" />
+		<label for="opacity_linkDisabled">Opacity of Disabled Links:</label>
+		<input
+			type="range"
+			bind:value={sidebarConfig.theme.opacity_linkDisabled}
+			min="0.1"
+			max="1"
+			step="0.1"
+			id="opacity_linkDisabled" />
+		<br />
 
-	<input type="range" bind:value={sidebarConfig.theme.opacity_linkDisabled} min="0.1" max="1" step="0.1" />
+		<label for="opacity_linkInactive">Opacity of Links Which Are Not Part of the Active Route:</label>
+		<input
+			type="range"
+			bind:value={sidebarConfig.theme.opacity_linkInactive}
+			min="0.1"
+			max="1"
+			step="0.1"
+			id="opacity_linkInactive" />
+	</fieldset>
 
-	<input type="range" bind:value={sidebarConfig.theme.opacity_linkInactive} min="0.1" max="1" step="0.1" />
+	<fieldset>
+		<legend>Sizes</legend>
+
+		<label for="fontSize">Font Size:</label>
+		<input
+			type="range"
+			on:input={e => (sidebarConfig.theme.fontSize = `${e.target.value}rem`)}
+			value={Number.parseFloat(sidebarConfig.theme.fontSize)}
+			min="0.1"
+			max="3"
+			step="0.1"
+			id="fontSize" />
+		<br />
+
+		<label for="maxWidth_nav">Sidebar Max Width:</label>
+		<input
+			type="range"
+			on:input={e => (sidebarConfig.theme.maxWidth_nav = `${e.target.value}vw`)}
+			value={Number.parseFloat(sidebarConfig.theme.maxWidth_nav)}
+			min="5"
+			max="100"
+			id="maxWidth_nav" />
+		<br />
+
+		<label for="minWidth_nav">Sidebar Min Width:</label>
+		<input
+			type="range"
+			on:input={e => {
+				sidebarConfig.theme.minWidth_nav = `${e.target.value}px`
+				sidebarConfig.open = window.innerWidth > 720 && window.innerWidth / 2 > e.target.value
+			}}
+			value={Number.parseFloat(sidebarConfig.theme.minWidth_nav)}
+			min="5"
+			max="1920"
+			id="minWidth_nav" />
+		<br />
+	</fieldset>
 
 	<button on:click={resetSidebarConfig}>reset</button>
 </main>
