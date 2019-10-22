@@ -60,6 +60,7 @@
 		display: grid;
 		align-items: center;
 		justify-content: center;
+		overflow-y: auto;
 	}
 
 	select {
