@@ -13,6 +13,8 @@
 		;({ default: Sidebar } = await import(sidebarPath))
 	}
 
+	const getDeepObjectCopy = value => JSON.parse(JSON.stringify(value))
+
 	const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 	const initialSidebarConfig = Object.freeze({
@@ -31,8 +33,6 @@
 			opacity_linkInactive: '0.75'
 		}
 	})
-
-	const getDeepObjectCopy = value => JSON.parse(JSON.stringify(value))
 
 	let sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) }
 
