@@ -59,6 +59,9 @@
 		padding: 0 1rem;
 		display: flex;
 		flex-wrap: wrap;
+		flex-basis: 10rem;
+		flex-grow: 1;
+		flex-shrink: 2;
 	}
 
 	.heading {

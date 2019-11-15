@@ -18,11 +18,16 @@
 }
 
 body {
-	margin: 0;
-	display: grid;
-	grid-template-columns: fit-content(20vw) auto;
-	font-family: sans-serif;
+	display: flex;
 	height: 100vh;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+#svelte-sidebar {
+	flex-grow: 5;
+	flex-shrink: 1;
+	flex-basis: 320px;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -66,6 +66,10 @@
 		max-width: var(--maxWidth_nav);
 	}
 
+	nav:not(.open) {
+		max-width: 3rem;
+	}
+
 	.sidebar-toggle {
 		position: absolute;
 		top: calc(var(--fontSize) + 5px);
