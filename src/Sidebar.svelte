@@ -81,6 +81,10 @@
 		cursor: pointer;
 	}
 
+	.sidebar-toggle::-moz-focus-inner {
+		border: 0;
+	}
+
 	.sidebar-toggle.open {
 		transform: rotate(180deg);
 	}

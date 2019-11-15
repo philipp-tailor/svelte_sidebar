@@ -42,6 +42,10 @@
 		cursor: pointer;
 	}
 
+	.group-toggle::-moz-focus-inner {
+		border: 0;
+	}
+
 	.group-toggle.open {
 		transform: rotate(90deg);
 	}
