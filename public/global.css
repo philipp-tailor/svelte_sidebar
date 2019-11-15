@@ -1,9 +1,34 @@
+:root {
+	supported-color-scheme: light dark;
+	color-scheme: light dark;
+
+	/* the minimum ever available width for content (iPhone SE) */
+	--min-available-width: 240px;
+
+	--dark-primary: #1e1e1e;
+	--dark-secondary: #555b6e;
+	--light-primary: #eaeef1;
+	--light-secondary: #f7f7f2;
+	--bg-white: white;
+	--bg-blue-primary: #003649;
+	--accent-red: #f4442e;
+	--accent-orange: #fca311;
+
+	color: var(--dark-primary);
+}
+
 body {
 	margin: 0;
 	display: grid;
 	grid-template-columns: fit-content(20vw) auto;
 	font-family: sans-serif;
 	height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color: var(--light-secondary);
+	}
 }
 
 @media only screen and (max-width: 380px) {
