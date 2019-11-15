@@ -54,7 +54,6 @@
 		padding-bottom: calc(var(--fontSize) + 10px);
 		padding-left: calc(var(--fontSize));
 		background-color: var(--backgroundColor_nav);
-		box-shadow: calc(var(--fontSize) / 10) 0 var(--fontSize) 0 var(--backgroundColor_nav);
 		font-size: var(--fontSize);
 		user-select: none;
 		-webkit-user-select: none;
