@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte'
 	import { authenticatedRoutes } from './routes'
 	import Select from './Select.svelte'
+	import Textarea from './Textarea.svelte'
 
 	let Sidebar
 
@@ -50,8 +51,13 @@
 	let selectableRoutes
 	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
 
-	let editableRoutes
-	$: editableRoutes = JSON.stringify(sidebarConfig.routes, null, 4)
+	let editableRoutes = JSON.stringify(sidebarConfig.routes, null, 4)
+	$: {
+		try {
+			const parsedRoutes = JSON.parse(editableRoutes)
+			sidebarConfig.routes = parsedRoutes
+		} catch (e) {}
+	}
 
 	const onLinkClick = event => alert(`'${event.target.href}' clicked`)
 
@@ -216,30 +222,6 @@
 		margin-bottom: 2rem;
 	}
 
-	.content-fieldset label {
-		display: block;
-		margin-bottom: 1rem;
-	}
-
-	textarea {
-		padding: 2rem;
-		width: calc(100% - 4rem - 4px);
-		border-radius: 0.5rem;
-		font-size: 1rem;
-		line-height: 1rem;
-		outline: none;
-		border: 2px solid var(--light-primary);
-		background-color: var(--light-primary);
-	}
-
-	textarea:active,
-	textarea:focus,
-	textarea:hover {
-		color: var(--light-primary);
-		background-color: var(--bg-blue-primary);
-		border: 2px solid var(--bg-blue-primary);
-	}
-
 	aside {
 		color: var(--light-secondary);
 		background-color: var(--bg-blue-primary);
@@ -310,21 +292,6 @@
 		input[type='number']:hover {
 			color: var(--dark-primary);
 			background-color: var(--accent-orange);
-			border: 2px solid var(--accent-orange);
-		}
-
-		textarea {
-			color: var(--light-secondary);
-			background-color: var(--dark-primary);
-			outline: none;
-			border: 2px solid var(--light-secondary);
-		}
-
-		textarea:focus,
-		textarea:active,
-		textarea:hover {
-			color: var(--accent-orange);
-			background-color: var(--dark-primary);
 			border: 2px solid var(--accent-orange);
 		}
 
@@ -473,14 +440,9 @@
 		<fieldset class="content-fieldset">
 			<legend>Content</legend>
 
-			<label for="routes">Navigation Content</label>
-			<textarea
-				on:input={e => (sidebarConfig.routes = JSON.parse(e.target.value))}
-				value={editableRoutes}
-				rows={editableRoutes.split('\n').length + 3}
-				required
-				id="routes" />
 			<Select label="Active URL" options={selectableRoutes} bind:value={sidebarConfig.activeUrl} />
+
+			<Textarea label="Navigation Content" bind:value={editableRoutes} required />
 		</fieldset>
 	</div>
 
