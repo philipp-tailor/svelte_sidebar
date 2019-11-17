@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import { authenticatedRoutes } from './routes'
+	import NumericInput from './NumericInput.svelte'
 	import Select from './Select.svelte'
 	import Textarea from './Textarea.svelte'
 
@@ -50,9 +51,26 @@
 
 	let selectableRoutes
 	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
+	let playgroundConfig;
+	
+	$: playgroundConfig = {
+		fontSize: parseFloat(initialSidebarConfig.theme.fontSize),
+		maxWidth: (parseFloat(initialSidebarConfig.theme.maxWidth_nav) / 100) * window.innerWidth,
+		minWidth: parseFloat(initialSidebarConfig.theme.minWidth_nav),
+	};
 
 	let editableRoutes = JSON.stringify(sidebarConfig.routes, null, 4)
+	// reactively translate the playground input to the format
+	// required by the respective `Sidebar` prop
 	$: {
+		// close sidebar when the viewport is too small
+		sidebarConfig.open = window.innerWidth > 720 && window.innerWidth / 2 > playgroundConfig.minWidth
+
+		// translate numeric inputs to numeric values with unit
+		sidebarConfig.theme.fontSize = `${playgroundConfig.fontSize}rem`
+		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth / window.innerWidth) * 100}vw`
+		sidebarConfig.theme.minWidth_nav = `${playgroundConfig.minWidth}px`
+
 		try {
 			const parsedRoutes = JSON.parse(editableRoutes)
 			sidebarConfig.routes = parsedRoutes
@@ -193,30 +211,6 @@
 		border-radius: 50%;
 	}
 
-	input[type='number'] {
-		margin-left: 1rem;
-		flex-shrink: 0;
-		height: 4.5rem;
-		width: 4.5rem;
-		padding: 0.5rem;
-		border-radius: 50%;
-		text-align: center;
-		background-color: var(--light-primary);
-		font-size: inherit;
-		box-shadow: none;
-		outline: none;
-		color: inherit;
-		border: 2px solid var(--light-primary);
-		box-sizing: border-box;
-	}
-
-	input[type='number']:focus,
-	input[type='number']:active,
-	input[type='number']:hover {
-		color: var(--light-primary);
-		background-color: var(--bg-blue-primary);
-	}
-
 	.content-fieldset {
 		padding: 2rem;
 		margin-bottom: 2rem;
@@ -280,19 +274,6 @@
 
 		fieldset {
 			background-color: var(--dark-primary);
-		}
-
-		input[type='number'] {
-			color: var(--dark-primary);
-			background-color: var(--light-secondary);
-		}
-
-		input[type='number']:focus,
-		input[type='number']:active,
-		input[type='number']:hover {
-			color: var(--dark-primary);
-			background-color: var(--accent-orange);
-			border: 2px solid var(--accent-orange);
 		}
 
 		aside {
@@ -376,71 +357,42 @@
 			<legend>Opacity</legend>
 
 			<div class="fieldset-container">
-				<label for="opacity_linkDisabled">
-					Opacity of Disabled Links:
-					<input
-						type="number"
-						bind:value={sidebarConfig.theme.opacity_linkDisabled}
-						min="0.1"
-						max="1"
-						step="0.1"
-						id="opacity_linkDisabled" />
-				</label>
+				<NumericInput
+					label="Opacity of Disabled Links:"
+					bind:value={sidebarConfig.theme.opacity_linkDisabled}
+				/>
 
-				<label for="opacity_linkInactive">
-					Opacity of Links Which Are Not Part of the Active Route:
-					<input
-						type="number"
-						bind:value={sidebarConfig.theme.opacity_linkInactive}
-						min="0.1"
-						max="1"
-						step="0.1"
-						id="opacity_linkInactive" />
-				</label>
+				<NumericInput
+					label="Opacity of Links Which Are Not Part of the Active Route:"
+					bind:value={sidebarConfig.theme.opacity_linkInactive}
+				/>
 			</div>
 		</fieldset>
 
 		<fieldset>
 			<legend>Sizing</legend>
 			<div class="fieldset-container">
-				<label for="fontSize">
-					Font Size in rem:
-					<input
-						type="number"
-						on:input={e => (sidebarConfig.theme.fontSize = `${e.target.value}rem`)}
-						value={Number.parseFloat(sidebarConfig.theme.fontSize)}
-						min="0.1"
-						max="3"
-						step="0.1"
-						id="fontSize" />
-				</label>
+				<NumericInput
+					label="Font Size in rem:"
+					bind:value={playgroundConfig.fontSize}
+					max=3
+				/>
 
-				<label for="maxWidth_nav">
-					Sidebar Maximum Width in px:
-					<input
-						type="number"
-						on:input={e => (sidebarConfig.theme.maxWidth_nav = `${(e.target.value / window.innerWidth) * 100}vw`)}
-						value={(Number.parseFloat(sidebarConfig.theme.maxWidth_nav) / 100) * window.innerWidth}
-						min="10"
-						step="50"
-						max={window.innerWidth}
-						id="maxWidth_nav" />
-				</label>
+				<NumericInput
+					label="Sidebar Maximum Width in px:"
+					bind:value={playgroundConfig.maxWidth}
+					min=10
+					step=50
+					max={window.innerWidth}
+				/>
 
-				<label for="minWidth_nav">
-					Sidebar Minimum Width in px:
-					<input
-						type="number"
-						on:input={e => {
-							sidebarConfig.theme.minWidth_nav = `${e.target.value}px`
-							sidebarConfig.open = window.innerWidth > 720 && window.innerWidth / 2 > e.target.value
-						}}
-						value={Number.parseFloat(sidebarConfig.theme.minWidth_nav)}
-						min="0"
-						step="50"
-						max={window.innerWidth}
-						id="minWidth_nav" />
-				</label>
+				<NumericInput
+					label="Sidebar Minimum Width in px:"
+					bind:value={playgroundConfig.minWidth}
+					min=0
+					step=50
+					max={window.innerWidth}
+				/>
 			</div>
 		</fieldset>
 
