@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import { authenticatedRoutes } from './routes'
+	import Select from './Select.svelte'
 
 	let Sidebar
 
@@ -37,9 +38,14 @@
 	let sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) }
 
 	const getAllRoutes = routes =>
-		routes.reduce((allRoutes, route) => {
-			return [...allRoutes, route, ...getAllRoutes(route.childRoutes || [])]
-		}, [])
+		routes.reduce(
+			(allRoutes, route) => [
+				...allRoutes,
+				{ name: route.name, value: route.route },
+				...getAllRoutes(route.childRoutes || [])
+			],
+			[]
+		)
 
 	let selectableRoutes
 	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
@@ -215,37 +221,6 @@
 		margin-bottom: 1rem;
 	}
 
-	select {
-		font-size: 1rem;
-		height: fit-content;
-		margin-bottom: 2rem;
-		width: 100%;
-		border-radius: 0.5rem;
-		appearance: none;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		padding: 1rem 1.5rem;
-		border: 2px solid var(--light-primary);
-		background-color: var(--light-primary);
-		color: var(--dark-primary);
-		outline: none;
-		cursor: pointer;
-	}
-
-	select:-moz-focusring,
-	select::-moz-focus-inner {
-		color: transparent;
-		text-shadow: 0 0 0 var(--dark-primary);
-	}
-
-	select:active,
-	select:focus,
-	select:hover {
-		color: var(--light-primary);
-		background-color: var(--bg-blue-primary);
-		border: 2px solid var(--bg-blue-primary);
-	}
-
 	textarea {
 		padding: 2rem;
 		width: calc(100% - 4rem - 4px);
@@ -336,27 +311,6 @@
 			color: var(--dark-primary);
 			background-color: var(--accent-orange);
 			border: 2px solid var(--accent-orange);
-		}
-
-		select {
-			color: var(--light-secondary);
-			border: 2px solid var(--light-secondary);
-			background-color: var(--dark-primary);
-			outline: none;
-		}
-
-		select:focus,
-		select:active,
-		select:hover {
-			color: var(--accent-orange);
-			background-color: var(--dark-primary);
-			border: 2px solid var(--accent-orange);
-		}
-
-		select:-moz-focusring,
-		select::-moz-focus-inner {
-			color: transparent;
-			text-shadow: 0 0 0 var(--dark-primary);
 		}
 
 		textarea {
@@ -519,13 +473,6 @@
 		<fieldset class="content-fieldset">
 			<legend>Content</legend>
 
-			<label for="activeUrl">Active URL</label>
-			<select bind:value={sidebarConfig.activeUrl} id="activeUrl">
-				{#each selectableRoutes as { name, route }}
-					<option value={route}>{name}</option>
-				{/each}
-			</select>
-
 			<label for="routes">Navigation Content</label>
 			<textarea
 				on:input={e => (sidebarConfig.routes = JSON.parse(e.target.value))}
@@ -533,6 +480,7 @@
 				rows={editableRoutes.split('\n').length + 3}
 				required
 				id="routes" />
+			<Select label="Active URL" options={selectableRoutes} bind:value={sidebarConfig.activeUrl} />
 		</fieldset>
 	</div>
 
