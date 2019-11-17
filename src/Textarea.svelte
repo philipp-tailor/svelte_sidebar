@@ -30,19 +30,21 @@
 		border: 2px solid var(--bg-blue-primary);
 	}
 
-	textarea {
-		color: var(--light-secondary);
-		background-color: var(--dark-primary);
-		outline: none;
-		border: 2px solid var(--light-secondary);
-	}
+	@media (prefers-color-scheme: dark) {
+		textarea {
+			color: var(--light-secondary);
+			background-color: var(--dark-primary);
+			outline: none;
+			border: 2px solid var(--light-secondary);
+		}
 
-	textarea:focus,
-	textarea:active,
-	textarea:hover {
-		color: var(--accent-orange);
-		background-color: var(--dark-primary);
-		border: 2px solid var(--accent-orange);
+		textarea:focus,
+		textarea:active,
+		textarea:hover {
+			color: var(--accent-orange);
+			background-color: var(--dark-primary);
+			border: 2px solid var(--accent-orange);
+		}
 	}
 </style>
 
