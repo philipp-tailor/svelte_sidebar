@@ -322,7 +322,9 @@
 
 <main class="route-content">
 	<h2 class="heading">
+		<!-- prettier-ignore-start -->
 		Play<wbr />ground
+		<!-- prettier-ignore-end -->
 	</h2>
 	<div class="playground">
 		<div class="form-explainer">
@@ -341,12 +343,16 @@
 			<legend>Color</legend>
 			<div class="fieldset-container">
 				<label for="backgroundColor_nav" class="color-input">
+					<!-- prettier-ignore-start -->
 					Back<wbr />ground Color of Sidebar:
+					<!-- prettier-ignore-stop -->
 					<input type="color" bind:value={sidebarConfig.theme.backgroundColor_nav} id="backgroundColor_nav" />
 				</label>
 
 				<label for="backgroundColor_linkActive" class="color-input">
+					<!-- prettier-ignore-start -->
 					Back<wbr />ground Color of Active Links:
+					<!-- prettier-ignore-stop -->
 					<input
 						type="color"
 						bind:value={sidebarConfig.theme.backgroundColor_linkActive}
