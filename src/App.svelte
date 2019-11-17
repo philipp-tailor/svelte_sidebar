@@ -49,17 +49,16 @@
 			[]
 		)
 
-	let selectableRoutes
-	$: selectableRoutes = getAllRoutes(sidebarConfig.routes)
 	let playgroundConfig;
 	
 	$: playgroundConfig = {
 		fontSize: parseFloat(initialSidebarConfig.theme.fontSize),
 		maxWidth: (parseFloat(initialSidebarConfig.theme.maxWidth_nav) / 100) * window.innerWidth,
 		minWidth: parseFloat(initialSidebarConfig.theme.minWidth_nav),
+		routeList: getAllRoutes(initialSidebarConfig.routes),
+		routesFormatted: JSON.stringify(initialSidebarConfig.routes, null, 4),
 	};
 
-	let editableRoutes = JSON.stringify(sidebarConfig.routes, null, 4)
 	// reactively translate the playground input to the format
 	// required by the respective `Sidebar` prop
 	$: {
@@ -71,8 +70,9 @@
 		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth / window.innerWidth) * 100}vw`
 		sidebarConfig.theme.minWidth_nav = `${playgroundConfig.minWidth}px`
 
+		// parse input from textarea back to JSON (and skip on failure)
 		try {
-			const parsedRoutes = JSON.parse(editableRoutes)
+			const parsedRoutes = JSON.parse(playgroundConfig.routeStringFormatted)
 			sidebarConfig.routes = parsedRoutes
 		} catch (e) {}
 	}
@@ -399,9 +399,9 @@
 		<fieldset class="content-fieldset">
 			<legend>Content</legend>
 
-			<Select label="Active URL" options={selectableRoutes} bind:value={sidebarConfig.activeUrl} />
+			<Select label="Active URL" options={playgroundConfig.routeList} bind:value={sidebarConfig.activeUrl} />
 
-			<Textarea label="Navigation Content" bind:value={editableRoutes} required />
+			<Textarea label="Navigation Content" bind:value={playgroundConfig.routesFormatted} required />
 		</fieldset>
 	</div>
 
