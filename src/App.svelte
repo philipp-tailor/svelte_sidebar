@@ -175,14 +175,6 @@
 		grid-gap: 2rem;
 	}
 
-	.fieldset-container * {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-right: 1rem;
-		margin-left: 1rem;
-	}
-
 	.content-fieldset {
 		padding: 2rem;
 		margin-bottom: 2rem;

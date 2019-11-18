@@ -6,10 +6,11 @@
 
 <style>
 	label {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
+		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		box-sizing: border-box;
+		margin-right: 1rem;
+		margin-left: 1rem;
 	}
 
 	input[type='color'] {
