@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import { authenticatedRoutes } from './routes'
+	import Button from './Button.svelte'
 	import ColorInput from './ColorInput.svelte'
 	import NumericInput from './NumericInput.svelte'
 	import Select from './Select.svelte'
@@ -50,37 +51,46 @@
 			[]
 		)
 
-	let playgroundConfig;
-	
+	let playgroundConfig
+
 	$: playgroundConfig = {
 		fontSize: parseFloat(initialSidebarConfig.theme.fontSize),
-		maxWidth: (parseFloat(initialSidebarConfig.theme.maxWidth_nav) / 100) * window.innerWidth,
+		maxWidth:
+			(parseFloat(initialSidebarConfig.theme.maxWidth_nav) / 100) *
+			window.innerWidth,
 		minWidth: parseFloat(initialSidebarConfig.theme.minWidth_nav),
 		routeList: getAllRoutes(initialSidebarConfig.routes),
-		routesFormatted: JSON.stringify(initialSidebarConfig.routes, null, 4),
-	};
+		routesFormatted: JSON.stringify(initialSidebarConfig.routes, null, 4)
+	}
 
 	// reactively translate the playground input to the format
 	// required by the respective `Sidebar` prop
 	$: {
 		// close sidebar when the viewport is too small
-		sidebarConfig.open = window.innerWidth > 720 && window.innerWidth / 2 > playgroundConfig.minWidth
+		sidebarConfig.open =
+			window.innerWidth > 720 &&
+			window.innerWidth / 2 > playgroundConfig.minWidth
 
 		// translate numeric inputs to numeric values with unit
 		sidebarConfig.theme.fontSize = `${playgroundConfig.fontSize}rem`
-		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth / window.innerWidth) * 100}vw`
+		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth /
+			window.innerWidth) *
+			100}vw`
 		sidebarConfig.theme.minWidth_nav = `${playgroundConfig.minWidth}px`
 
 		// parse input from textarea back to JSON (and skip on failure)
 		try {
-			const parsedRoutes = JSON.parse(playgroundConfig.routeStringFormatted)
+			const parsedRoutes = JSON.parse(
+				playgroundConfig.routeStringFormatted
+			)
 			sidebarConfig.routes = parsedRoutes
 		} catch (e) {}
 	}
 
 	const onLinkClick = event => alert(`'${event.target.href}' clicked`)
 
-	const resetSidebarConfig = () => (sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) })
+	const resetSidebarConfig = () =>
+		(sidebarConfig = { ...getDeepObjectCopy(initialSidebarConfig) })
 </script>
 
 <style>
@@ -121,38 +131,6 @@
 		align-items: start;
 		grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
 		grid-gap: 2rem;
-	}
-
-	button {
-		min-height: 2rem;
-		border-radius: 0.5rem;
-		color: var(--light-secondary);
-		background-color: var(--accent-red);
-		border: none;
-		box-sizing: border-box;
-		cursor: pointer;
-		font-size: inherit;
-		outline: none;
-		padding: 1rem 2rem;
-		max-width: 26rem;
-		margin-left: auto;
-		width: -webkit-fill-available;
-		width: -moz-available;
-	}
-
-	button::-moz-focus-inner {
-		border: 0;
-	}
-
-	button:not([disabled]):hover,
-	button:not([disabled]):focus {
-		color: var(--dark-primary);
-		background-color: var(--accent-orange);
-	}
-
-	button[disabled] {
-		opacity: 0.5;
-		cursor: not-allowed;
 	}
 
 	fieldset {
@@ -267,22 +245,24 @@
 <svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 
 <main class="route-content">
+	<!-- prettier-ignore-attribute -->
 	<h2 class="heading">
-		<!-- prettier-ignore-start -->
-		Play<wbr />ground
-		<!-- prettier-ignore-end -->
+		Play
+		<wbr />
+		ground
 	</h2>
 	<div class="playground">
 		<div class="form-explainer">
 			<div>
-				Customise the sidebar on the left with the form below. The props passed to the component can be seen on
-				the right. Changes are displayed live.
+				Customise the sidebar on the left with the form below. The props
+				passed to the component can be seen on the right. Changes are
+				displayed live.
 			</div>
-			<button
-				on:click={resetSidebarConfig}
+			<Button
+				onClick={resetSidebarConfig}
 				disabled={JSON.stringify(sidebarConfig) === JSON.stringify(initialSidebarConfig)}>
 				reset form
-			</button>
+			</Button>
 		</div>
 
 		<fieldset>
@@ -291,23 +271,19 @@
 			<div class="fieldset-container">
 				<ColorInput
 					label="Background Color of Sidebar:"
-					bind:value={sidebarConfig.theme.backgroundColor_nav}
-				/>
+					bind:value={sidebarConfig.theme.backgroundColor_nav} />
 
 				<ColorInput
 					label="Background Color of Active Links:"
-					bind:value={sidebarConfig.theme.backgroundColor_linkActive}
-				/>
+					bind:value={sidebarConfig.theme.backgroundColor_linkActive} />
 
 				<ColorInput
 					label="Color of Link Text:"
-					bind:value={sidebarConfig.theme.color_link}
-				/>
+					bind:value={sidebarConfig.theme.color_link} />
 
 				<ColorInput
 					label="Hover Color of Link Text:"
-					bind:value={sidebarConfig.theme.color_linkHover}
-				/>
+					bind:value={sidebarConfig.theme.color_linkHover} />
 			</div>
 		</fieldset>
 
@@ -317,13 +293,12 @@
 			<div class="fieldset-container">
 				<NumericInput
 					label="Opacity of Disabled Links:"
-					bind:value={sidebarConfig.theme.opacity_linkDisabled}
-				/>
+					bind:value={sidebarConfig.theme.opacity_linkDisabled} />
 
 				<NumericInput
-					label="Opacity of Links Which Are Not Part of the Active Route:"
-					bind:value={sidebarConfig.theme.opacity_linkInactive}
-				/>
+					label="Opacity of Links Which Are Not Part of the Active
+					Route:"
+					bind:value={sidebarConfig.theme.opacity_linkInactive} />
 			</div>
 		</fieldset>
 
@@ -333,33 +308,36 @@
 				<NumericInput
 					label="Font Size in rem:"
 					bind:value={playgroundConfig.fontSize}
-					max=3
-				/>
+					max="3" />
 
 				<NumericInput
 					label="Sidebar Maximum Width in px:"
 					bind:value={playgroundConfig.maxWidth}
-					min=10
-					step=50
-					max={window.innerWidth}
-				/>
+					min="10"
+					step="50"
+					max={window.innerWidth} />
 
 				<NumericInput
 					label="Sidebar Minimum Width in px:"
 					bind:value={playgroundConfig.minWidth}
-					min=0
-					step=50
-					max={window.innerWidth}
-				/>
+					min="0"
+					step="50"
+					max={window.innerWidth} />
 			</div>
 		</fieldset>
 
 		<fieldset class="content-fieldset">
 			<legend>Content</legend>
 
-			<Select label="Active URL" options={playgroundConfig.routeList} bind:value={sidebarConfig.activeUrl} />
+			<Select
+				label="Active URL"
+				options={playgroundConfig.routeList}
+				bind:value={sidebarConfig.activeUrl} />
 
-			<Textarea label="Navigation Content" bind:value={playgroundConfig.routesFormatted} required />
+			<Textarea
+				label="Navigation Content"
+				bind:value={playgroundConfig.routesFormatted}
+				required />
 		</fieldset>
 	</div>
 
