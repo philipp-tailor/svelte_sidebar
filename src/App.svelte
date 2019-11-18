@@ -262,7 +262,10 @@
 
 		<fieldset>
 			<legend>Color</legend>
-
+			<!-- nesting a div inside a fieldset is only required,
+				 because Chrome hasn't added support for flexbox, grid
+				 to this element for years no, see
+				 https://bugs.chromium.org/p/chromium/issues/detail?id=375693 -->
 			<div class="fieldset-container">
 				<ColorInput
 					label="Background Color of Sidebar:"
@@ -284,7 +287,6 @@
 
 		<fieldset>
 			<legend>Opacity</legend>
-
 			<div class="fieldset-container">
 				<NumericInput
 					label="Opacity of Disabled Links:"
