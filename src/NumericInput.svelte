@@ -1,5 +1,5 @@
 <script>
-	export let id = `number-input-${Math.random() * 100}`; // to allow label to reference a unique select
+	export let id = `number-input-${Math.random() * 100}`; // to allow label to reference a unique number input
 	export let label = null;
 	export let value;
 	export let min = 0.1;
