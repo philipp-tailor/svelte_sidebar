@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import { authenticatedRoutes } from './routes'
+	import ColorInput from './ColorInput.svelte'
 	import NumericInput from './NumericInput.svelte'
 	import Select from './Select.svelte'
 	import Textarea from './Textarea.svelte'
@@ -174,41 +175,12 @@
 		grid-gap: 2rem;
 	}
 
-	.fieldset-container label {
+	.fieldset-container * {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-right: 1rem;
 		margin-left: 1rem;
-	}
-
-	.color-input {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-		align-items: center;
-		box-sizing: border-box;
-	}
-
-	input[type='color'] {
-		border: none;
-		padding: 0;
-		margin-left: 1rem;
-		height: 4.5rem;
-		width: 4.5rem;
-		-webkit-appearance: none;
-		background-color: transparent;
-		justify-self: center;
-		cursor: pointer;
-		flex-shrink: 0;
-	}
-
-	input[type='color']::-webkit-color-swatch-wrapper {
-		padding: 0;
-	}
-
-	input[type='color']::-webkit-color-swatch {
-		border: none;
-		border-radius: 50%;
 	}
 
 	.content-fieldset {
@@ -323,33 +295,27 @@
 
 		<fieldset>
 			<legend>Color</legend>
+
 			<div class="fieldset-container">
-				<label for="backgroundColor_nav" class="color-input">
-					<!-- prettier-ignore-start -->
-					Back<wbr />ground Color of Sidebar:
-					<!-- prettier-ignore-stop -->
-					<input type="color" bind:value={sidebarConfig.theme.backgroundColor_nav} id="backgroundColor_nav" />
-				</label>
+				<ColorInput
+					label="Background Color of Sidebar:"
+					bind:value={sidebarConfig.theme.backgroundColor_nav}
+				/>
 
-				<label for="backgroundColor_linkActive" class="color-input">
-					<!-- prettier-ignore-start -->
-					Back<wbr />ground Color of Active Links:
-					<!-- prettier-ignore-stop -->
-					<input
-						type="color"
-						bind:value={sidebarConfig.theme.backgroundColor_linkActive}
-						id="backgroundColor_linkActive" />
-				</label>
+				<ColorInput
+					label="Background Color of Active Links:"
+					bind:value={sidebarConfig.theme.backgroundColor_linkActive}
+				/>
 
-				<label for="color_link" class="color-input">
-					Color of Link Text:
-					<input type="color" bind:value={sidebarConfig.theme.color_link} id="color_link" />
-				</label>
+				<ColorInput
+					label="Color of Link Text:"
+					bind:value={sidebarConfig.theme.color_link}
+				/>
 
-				<label for="color_linkHover" class="color-input">
-					Hover Color of Link Text:
-					<input type="color" bind:value={sidebarConfig.theme.color_linkHover} id="color_linkHover" />
-				</label>
+				<ColorInput
+					label="Hover Color of Link Text:"
+					bind:value={sidebarConfig.theme.color_linkHover}
+				/>
 			</div>
 		</fieldset>
 
