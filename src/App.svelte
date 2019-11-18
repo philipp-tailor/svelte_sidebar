@@ -245,12 +245,7 @@
 <svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 
 <main class="route-content">
-	<!-- prettier-ignore-attribute -->
-	<h2 class="heading">
-		Play
-		<wbr />
-		ground
-	</h2>
+	<h2 class="heading">Playground</h2>
 	<div class="playground">
 		<div class="form-explainer">
 			<div>
