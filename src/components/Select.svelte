@@ -1,8 +1,8 @@
 <script>
-	export let id = `select-${Math.random() * 100}`; // to allow label to reference a unique select
-	export let label = null;
-	export let value;
-	export let options; // in the format `[{name, value}]`
+	export let id = `select-${Math.random() * 100}` // to allow label to reference a unique select
+	export let label = null
+	export let value
+	export let options // in the format `[{name, value}]`
 </script>
 
 <style>
@@ -69,8 +69,8 @@
 {#if label}
 	<label for={id}>{label}</label>
 {/if}
-<select bind:value={value} id={id}>
+<select bind:value {id}>
 	{#each options as { name, value }}
-		<option value={value}>{name}</option>
+		<option {value}>{name}</option>
 	{/each}
 </select>

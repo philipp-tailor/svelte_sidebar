@@ -1,10 +1,10 @@
 <script>
-	export let id = `number-input-${Math.random() * 100}`; // to allow label to reference a unique number input
-	export let label = null;
-	export let value;
-	export let min = 0.1;
-	export let max = 1;
-	export let step = 0.1;
+	export let id = `number-input-${Math.random() * 100}` // to allow label to reference a unique number input
+	export let label = null
+	export let value
+	export let min = 0.1
+	export let max = 1
+	export let step = 0.1
 </script>
 
 <style>
@@ -57,15 +57,6 @@
 </style>
 
 <label for={id}>
-	{#if label}
-		{label}
-	{/if}
-	<input
-		{id}
-		type="number"
-		bind:value={value}
-		min={min}
-		max={max}
-		step={step}
-	/>
+	{#if label}{label}{/if}
+	<input {id} type="number" bind:value {min} {max} {step} />
 </label>

@@ -1,6 +1,6 @@
 <script>
 	export let id = `textarea-${Math.random() * 100}` // to allow label to reference a unique textarea
-	export let label = null;
+	export let label = null
 	export let value
 	export let required = true
 </script>

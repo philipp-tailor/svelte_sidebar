@@ -1,5 +1,5 @@
 <script>
-	export let id = `color-input-${Math.random() * 100}`; // to allow label to reference a unique color input
+	export let id = `color-input-${Math.random() * 100}` // to allow label to reference a unique color input
 	export let label = null
 	export let value
 </script>
@@ -37,8 +37,6 @@
 </style>
 
 <label for={id}>
-	{#if label}
-		{label}
-	{/if}
-	<input type="color" id={id} bind:value={value} />
+	{#if label}{label}{/if}
+	<input type="color" {id} bind:value />
 </label>

@@ -1,12 +1,12 @@
 <script>
 	import { onMount } from 'svelte'
 	import { authenticatedRoutes } from './routes'
-	import Button from './Button.svelte'
-	import ColorInput from './ColorInput.svelte'
-	import NumericInput from './NumericInput.svelte'
-	import Select from './Select.svelte'
+	import Button from './components/Button.svelte'
+	import ColorInput from './components/ColorInput.svelte'
+	import NumericInput from './components/NumericInput.svelte'
+	import Select from './components/Select.svelte'
 	import SidebarCodePreview from './SidebarCodePreview.svelte'
-	import Textarea from './Textarea.svelte'
+	import Textarea from './components/Textarea.svelte'
 
 	let Sidebar
 
