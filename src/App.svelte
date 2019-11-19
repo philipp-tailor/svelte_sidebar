@@ -5,6 +5,7 @@
 	import ColorInput from './ColorInput.svelte'
 	import NumericInput from './NumericInput.svelte'
 	import Select from './Select.svelte'
+	import SidebarCodePreview from './SidebarCodePreview.svelte'
 	import Textarea from './Textarea.svelte'
 
 	let Sidebar
@@ -158,53 +159,6 @@
 		margin-bottom: 2rem;
 	}
 
-	aside {
-		color: var(--light-secondary);
-		background-color: var(--bg-blue-primary);
-		padding: 2rem;
-		margin: 1rem;
-		border-radius: 0.5rem;
-		word-break: break-word;
-		height: fit-content;
-		height: -moz-fit-content;
-		flex-basis: 30%;
-		flex-shrink: 1;
-		flex-grow: 1;
-		box-sizing: border-box;
-	}
-
-	aside legend {
-		color: var(--dark-primary);
-		margin-top: -4rem;
-		margin-bottom: 2.1rem;
-	}
-
-	.html-tag {
-		color: var(--bg-white);
-		margin-left: 1rem;
-	}
-
-	.control-character {
-		color: var(--light-primary);
-		margin-right: -1rem;
-	}
-
-	.component-prop {
-		color: var(--accent-red);
-		margin-left: 1rem;
-		margin-top: 0;
-		margin-bottom: 0;
-		opacity: 0.95;
-	}
-
-	.component-prop-value {
-		display: inline-block;
-		color: var(--accent-orange);
-		padding-left: 2rem;
-		text-indent: -1rem;
-		opacity: 0.95;
-	}
-
 	@media (prefers-color-scheme: dark) {
 		.route-content {
 			background-color: var(--dark-secondary);
@@ -217,26 +171,11 @@
 		fieldset {
 			background-color: var(--dark-primary);
 		}
-
-		aside {
-			background-color: var(--dark-primary);
-		}
-
-		aside legend {
-			margin-top: -2.9rem;
-			margin-bottom: 1.1rem;
-			color: var(--light-secondary);
-		}
 	}
 
 	@media (max-width: 440px) {
 		.playground {
 			padding-bottom: 0;
-		}
-
-		aside {
-			position: unset;
-			margin-top: 2rem;
 		}
 	}
 </style>
@@ -262,6 +201,7 @@
 
 		<fieldset>
 			<legend>Color</legend>
+
 			<!-- nesting a div inside a fieldset is only required,
 				 because Chrome hasn't added support for flexbox, grid
 				 to this element for years no, see
@@ -287,6 +227,7 @@
 
 		<fieldset>
 			<legend>Opacity</legend>
+
 			<div class="fieldset-container">
 				<NumericInput
 					label="Opacity of Disabled Links:"
@@ -301,6 +242,7 @@
 
 		<fieldset>
 			<legend>Sizing</legend>
+
 			<div class="fieldset-container">
 				<NumericInput
 					label="Font Size in rem:"
@@ -338,23 +280,5 @@
 		</fieldset>
 	</div>
 
-	<aside>
-		<legend>Result</legend>
-		<span class="control-character">&lt;</span>
-		<span class="html-tag">Sidebar</span>
-		{#each Object.entries(sidebarConfig) as prop (prop[0])}
-			<p class="component-prop">
-				<span>{prop[0]}</span>
-				<span class="control-character">="</span>
-				<span class="component-prop-value">
-					{#if JSON.stringify(prop[1]).split('\n').length > 1}
-						<br />
-					{/if}
-					{JSON.stringify(prop[1], null, 4).replace(/^"|"$/gi, '')}
-				</span>
-				<span class="control-character">"</span>
-			</p>
-		{/each}
-		<span class="control-character">/&gt;</span>
-	</aside>
+	<SidebarCodePreview {sidebarConfig} />
 </main>
