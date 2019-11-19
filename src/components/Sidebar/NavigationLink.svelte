@@ -12,7 +12,8 @@
 
 	const dispatch = createEventDispatcher()
 
-	const scrollIntoView = () => link && link.scrollIntoView({ block: 'end', behavior: 'smooth' })
+	const scrollIntoView = () =>
+		link && link.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
 	const onClick = event => {
 		if (disabled) {
@@ -80,4 +81,13 @@
 	}
 </style>
 
-<a on:click={onClick} href={route} {active} {disabled} class:activeGroup bind:this={link} tabindex="0">{name}</a>
+<a
+	on:click={onClick}
+	href={route}
+	{active}
+	{disabled}
+	class:activeGroup
+	bind:this={link}
+	tabindex="0">
+	{name}
+</a>

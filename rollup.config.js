@@ -8,7 +8,7 @@ import visualizer from 'rollup-plugin-visualizer'
 const production = !process.env.ROLLUP_WATCH
 
 export default {
-	input: ['src/main.js', `src/Sidebar.svelte`],
+	input: ['src/main.js', `src/components/Sidebar/Sidebar.svelte`],
 	output: {
 		sourcemap: true,
 		format: 'esm',
@@ -33,7 +33,8 @@ export default {
 		// https://github.com/rollup/rollup-plugin-commonjs
 		resolve({
 			browser: true,
-			dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/')
+			dedupe: importee =>
+				importee === 'svelte' || importee.startsWith('svelte/')
 		}),
 		commonjs(),
 

@@ -82,10 +82,18 @@
 			>
 		</button>
 	{/if}
-	<NavigationLink {name} {route} {disabled} activeGroup={activeSubRoute} on:active={handleActiveChange} />
+	<NavigationLink
+		{name}
+		{route}
+		{disabled}
+		activeGroup={activeSubRoute}
+		on:active={handleActiveChange} />
 {/if}
 
-<ul id={`${route ? route : 'root'}-group`} hidden={!groupOpen || disabled} in:scale={{ duration: 250 }}>
+<ul
+	id={`${route ? route : 'root'}-group`}
+	hidden={!groupOpen || disabled}
+	in:scale={{ duration: 250 }}>
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>
 			{#if route.childRoutes}
