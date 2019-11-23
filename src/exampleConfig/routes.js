@@ -1,23 +1,4 @@
-export const unAuthenticatedRoutes = [
-	{
-		name: 'Login',
-		route: '/login'
-	},
-	{
-		name: 'Signup',
-		route: '/signup'
-	},
-	{
-		name: 'Password Reset',
-		route: '/password-reset'
-	},
-	{
-		name: 'Terms Of Service',
-		route: '/terms-of-service'
-	}
-]
-
-export const authenticatedRoutes = [
+export const exampleRoutes = [
 	{
 		name: 'Home',
 		route: '/'
@@ -47,7 +28,7 @@ export const authenticatedRoutes = [
 			},
 			{
 				name: 'Wishlist',
-				route: '/products/whislist'
+				route: '/products/wishlist'
 			}
 		]
 	},
@@ -87,6 +68,6 @@ export const authenticatedRoutes = [
 	}
 ]
 
-const routes = [...unAuthenticatedRoutes, ...authenticatedRoutes]
+const routes = [...exampleRoutes]
 
 export default routes

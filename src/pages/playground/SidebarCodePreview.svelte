@@ -18,7 +18,10 @@
 		box-sizing: border-box;
 	}
 
-	aside legend {
+	legend {
+		font-size: 1.5rem;
+		font-weight: bold;
+		text-transform: uppercase;
 		color: var(--dark-primary);
 		margin-top: -4rem;
 		margin-bottom: 2.1rem;
@@ -55,7 +58,7 @@
 			background-color: var(--dark-primary);
 		}
 
-		aside legend {
+		legend {
 			margin-top: -2.9rem;
 			margin-bottom: 1.1rem;
 			color: var(--light-secondary);
