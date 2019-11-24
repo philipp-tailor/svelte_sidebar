@@ -4,7 +4,7 @@ import { isDarkMode } from '../utils/detectDarkMode'
 export const exampleSidebarProps = Object.freeze({
 	activeUrl: '/checkout/confirmation/success',
 	routes: exampleRoutes,
-	open: window.innerWidth > 720,
+	open: window.innerWidth > 950,
 	theme: {
 		backgroundColor_linkActive: '#F4442E',
 		backgroundColor_nav: isDarkMode ? '#1E1E1E' : '#003649',

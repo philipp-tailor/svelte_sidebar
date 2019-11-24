@@ -12,6 +12,8 @@
 
 	export let sidebarConfig
 
+	let width
+
 	// button to trigger `resetSidebarConfig` is disabled when there's nothing to reset
 	let isConfigUnchanged = false
 	$: isConfigUnchanged = areObjectsEqual(sidebarConfig, initialSidebarProps)
@@ -34,13 +36,12 @@
 	$: {
 		// close sidebar when the viewport is too small
 		sidebarConfig.open =
-			window.innerWidth > 720 &&
-			window.innerWidth / 2 > playgroundConfig.minWidth
+			width > 950 && width / 3 > playgroundConfig.minWidth
 
 		// translate numeric inputs to numeric values with unit
 		sidebarConfig.theme.fontSize = `${playgroundConfig.fontSize}rem`
 		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth /
-			window.innerWidth) *
+			width) *
 			100}vw`
 		sidebarConfig.theme.minWidth_nav = `${playgroundConfig.minWidth}px`
 
@@ -137,6 +138,8 @@
 	}
 </style>
 
+<svelte:window bind:innerWidth={width} />
+
 <h2 class="heading">Playground</h2>
 <div class="playground">
 	<div class="form-explainer">
@@ -204,14 +207,14 @@
 				bind:value={playgroundConfig.maxWidth}
 				min="10"
 				step="50"
-				max={window.innerWidth} />
+				max={width} />
 
 			<NumericInput
 				label="Sidebar Minimum Width in px:"
 				bind:value={playgroundConfig.minWidth}
 				min="0"
 				step="50"
-				max={window.innerWidth} />
+				max={width} />
 		</div>
 	</fieldset>
 
