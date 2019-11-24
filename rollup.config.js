@@ -10,6 +10,7 @@ const production = !process.env.ROLLUP_WATCH
 export default {
 	input: ['src/main.js', `src/components/Sidebar/Sidebar.svelte`],
 	output: {
+		chunkFileNames: '[name].js',
 		sourcemap: true,
 		format: 'esm',
 		name: 'app',
