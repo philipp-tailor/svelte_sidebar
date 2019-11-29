@@ -24,6 +24,7 @@
 	export let theme = {}
 	export let open = true
 
+	// Initialise the shared store with the values passed to `Sidebar` as props.
 	beforeUpdate(() => {
 		storeActiveUrl.set(activeUrl)
 		storeOnLinkClick.set(onLinkClick)

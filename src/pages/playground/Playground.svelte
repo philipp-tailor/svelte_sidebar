@@ -14,12 +14,15 @@
 
 	let width
 
-	// button to trigger `resetSidebarConfig` is disabled when there's nothing to reset
+	// Button to trigger `resetSidebarConfig` is disabled when there's nothing to reset.
 	let isConfigUnchanged = false
 	$: isConfigUnchanged = areObjectsEqual(sidebarConfig, initialSidebarProps)
 
-	// contains the mutable configuration rendered on the playground below
-	// counter intuitive: it's not possible to declare the let directly from `initialSidebarProps`
+	/*
+	 * Contains the mutable configuration rendered on the playground below.
+	 * Counterintuitive: it's not possible to declare the let directly
+	 * from `initialSidebarProps`.
+	 */
 	let playgroundConfig
 	$: playgroundConfig = {
 		fontSize: parseFloat(initialSidebarProps.theme.fontSize),
@@ -31,28 +34,30 @@
 		routesFormatted: prettyPrintJson(initialSidebarProps.routes)
 	}
 
-	// reactively translate the playground input
-	// to the format required by the respective `Sidebar` prop
+	/*
+	 * Reactively translate the playground input to the format required by the
+	 * respective `Sidebar` property.
+	 */
 	$: {
-		// close sidebar when the viewport is too small
+		// Close sidebar when the viewport is too small.
 		sidebarConfig.open =
 			width > 950 && width / 3 > playgroundConfig.minWidth
 
-		// translate numeric inputs to numeric values with unit
+		// Translate numeric inputs to numeric values with unit.
 		sidebarConfig.theme.fontSize = `${playgroundConfig.fontSize}rem`
 		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth /
 			width) *
 			100}vw`
 		sidebarConfig.theme.minWidth_nav = `${playgroundConfig.minWidth}px`
 
-		// parse input from textarea back to JSON (and skip on failure)
+		// Parse input from textarea back to JSON (and skip on failure).
 		try {
 			const parsedRoutes = JSON.parse(playgroundConfig.routesFormatted)
 			sidebarConfig.routes = parsedRoutes
 		} catch (e) {}
 	}
 
-	// flatten route structure for the "Active URL" select
+	// Flatten route structure for the "Active URL" select.
 	const getAllRoutes = routes =>
 		routes.reduce(
 			(allRoutes, route) => [
@@ -156,10 +161,11 @@
 	<fieldset>
 		<legend>Color</legend>
 
-		<!-- nesting a div inside a fieldset is only required,
-				because Chrome hasn't added support for flexbox, grid
-				to this element for years no, see
-				https://bugs.chromium.org/p/chromium/issues/detail?id=375693 -->
+		<!--
+			Nesting a div inside a fieldset is only required because Chrome
+			hasn't added support for flexbox & grid to this element for years,
+			see: https://bugs.chromium.org/p/chromium/issues/detail?id=375693
+		-->
 		<div class="fieldset-container">
 			<ColorInput
 				label="Background Color of Sidebar:"

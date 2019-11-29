@@ -5,15 +5,14 @@
 	export let name
 	export let route
 	export let disabled = false
-	export let activeGroup = false
+	export let activeGroup = false // Whether the link is part of an active `NavigationLinkGroup`.
 
 	let link
+	/*
+	 * Whether the link is active is computed comparing the route
+	 * with `activeRoute` from `SidebarStore`.
+	 */
 	$: active = $activeUrl === route
-
-	const dispatch = createEventDispatcher()
-
-	const scrollIntoView = () =>
-		link && link.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
 	const onClick = event => {
 		if (disabled) {
@@ -24,9 +23,27 @@
 		}
 	}
 
+	const scrollIntoView = () =>
+		link && link.scrollIntoView({ block: 'end', behavior: 'smooth' })
+
+	const dispatch = createEventDispatcher()
+
 	afterUpdate(() => {
 		if (active) {
+			/*
+			 * `NavigationLink` informs the parent "bottom up", that it became
+			 * active. That way, `Sidebar` can have an O(n) performance:
+			 * When n `NavigationLink`s render, no additional iteration
+			 * over the nested route-structure is required to determine,
+			 * which `NavigationLink` is active.
+			 */
 			dispatch('active', { activeSubRoute: route })
+			/*
+			 * Scroll component into view when it becomes active.
+			 * The delay is to wait for the rendering to be finished.
+			 * Without it, there is cases where the scrolling
+			 * is triggered before the DOM is ready.
+			 */
 			setTimeout(scrollIntoView, 250)
 		}
 	})

@@ -1,5 +1,5 @@
 <script>
-	export let id = `color-input-${Math.random() * 100}` // to allow label to reference a unique color input
+	export let id = `color-input-${Math.random() * 100}` // To allow label to reference a unique color input.
 	export let label = null
 	export let value
 </script>

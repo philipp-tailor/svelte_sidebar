@@ -10,8 +10,7 @@
 		loadSidebar()
 	})
 
-	// load `Sidebar` asynchronously to showcase
-	// that it is a standalone module
+	// Load `Sidebar` asynchronously to showcase  that it is a standalone module.
 	async function loadSidebar() {
 		const sidebarPath = './Sidebar.js'
 		;({ default: Sidebar } = await import(sidebarPath))
@@ -27,7 +26,7 @@
 		supported-color-scheme: light dark;
 		color-scheme: light dark;
 
-		/* the minimum ever available width for content (iPhone SE) */
+		/* The minimum available width for content (iPhone SE). */
 		--min-available-width: 240px;
 
 		--dark-primary: #1e1e1e;
@@ -89,7 +88,10 @@
 	}
 </style>
 
-<!-- using svelte:component is required because `Sidebar` is imported lazily to demonstrate uncoupling from the rest of the app -->
+<!--
+	Use svelte:component because `Sidebar` is lazy loaded to demonstrate
+	that it is truly decoupled from the rest of the app.
+-->
 <svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 
 <main class="route-content">

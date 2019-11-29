@@ -1,8 +1,8 @@
 <script>
-	export let id = `select-${Math.random() * 100}` // to allow label to reference a unique select
+	export let id = `select-${Math.random() * 100}` // To allow label to reference a unique select.
 	export let label = null
 	export let value
-	export let options // in the format `[{name, value}]`
+	export let options // In the format `[{name, value}]`.
 </script>
 
 <style>
