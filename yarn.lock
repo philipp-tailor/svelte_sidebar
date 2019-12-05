@@ -2127,12 +2127,12 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-prettier-plugin-packagejson@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-packagejson/-/prettier-plugin-packagejson-2.0.2.tgz#eab7ac86f01935123807f5aea9e86bc8a6eb8c13"
-  integrity sha512-Qyz2WfY3gJGLcnapSTBQ2dnmqRCHDTBUIg+7diJSVODcvocbF8Di+be0suxCxxaVlq/7PtJm1Xl0MNnojIbLKQ==
+prettier-plugin-packagejson@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-packagejson/-/prettier-plugin-packagejson-2.0.5.tgz#50fa0a7acf23df1f0ae0920b3280391b6e1d64be"
+  integrity sha512-72EnT60Vn7Sw1nYoWtXcNmu5/FVMNCwzbTdAuXDbhZ/QlL2e0WiJC4DyelLEZcx4xZIAIVwkiwejAgZTe4FtDw==
   dependencies:
-    sort-package-json "1.23.1"
+    sort-package-json "1.30.0"
 
 prettier-plugin-svelte@^0.7.0:
   version "0.7.0"
@@ -2584,10 +2584,10 @@ sort-object-keys@^1.1.2:
   resolved "https://registry.yarnpkg.com/sort-object-keys/-/sort-object-keys-1.1.2.tgz#d3a6c48dc2ac97e6bc94367696e03f6d09d37952"
   integrity sha1-06bEjcKsl+a8lDZ2luA/bQnTeVI=
 
-sort-package-json@1.23.1:
-  version "1.23.1"
-  resolved "https://registry.yarnpkg.com/sort-package-json/-/sort-package-json-1.23.1.tgz#7882349ad885ee6d82ff57af4184f9d6e9159e1d"
-  integrity sha512-dg6XChDHL+V1gPBLW4fDWsip5T94wpDVlowm8gxXsxQMxX2271zw8JM1RRbJSIrN80/UlwlRdBVkk2SuiuZ2cw==
+sort-package-json@1.30.0:
+  version "1.30.0"
+  resolved "https://registry.yarnpkg.com/sort-package-json/-/sort-package-json-1.30.0.tgz#bd7df0261ff10d3708f587defd9fcf81ff0569ec"
+  integrity sha512-1QMmOyfurS1X6PfIGqZTYcGjuCKxki4uMwzw87oAwPQiQeaDdgI7eE5bZN5CSFU5P3Hc2UgV5o4e+wIuhueoOg==
   dependencies:
     detect-indent "^6.0.0"
     glob "^7.1.6"
