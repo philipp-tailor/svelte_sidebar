@@ -2398,10 +2398,10 @@ rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.27.7:
-  version "1.27.7"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.27.7.tgz#ee49603c33edb6968b6582e1c3a6a0731b9e3944"
-  integrity sha512-4BEpoLwMpiCHxRobDzi6rM1/DbTsflfPw2g6l1ctWYnUvdyCTEEWfSgpykwNzZ5nHRr4pyET+aPwKVhbJBAPAg==
+rollup@^1.27.11:
+  version "1.27.11"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.27.11.tgz#95d190432e3edbcf757d921857df01ad1596ef97"
+  integrity sha512-ENXdvXk8tjtkNTvIvjRzOEu+vv54va7PiDR7VwP8TD+In6J87gKzzFmQMawQixEL2y9rsPEgomUS7ZVkq47Tww==
   dependencies:
     "@types/estree" "*"
     "@types/node" "*"
