@@ -2785,10 +2785,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@^3.16.0:
-  version "3.16.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.16.0.tgz#7ead284547240fcbcb985c73473dce811315fd15"
-  integrity sha512-k7nCQTd9/rGOi25iv/sBeJe2W89hK2lcaUsmUQqikH0Tye7Gh/tvvF9LuNTSF+dQY/isNX+g8K9fJf+5jMLfxw==
+svelte@^3.16.7:
+  version "3.16.7"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.16.7.tgz#9ade80a4bbbac95595c676dd817222f632fa2c07"
+  integrity sha512-egrva1UklB1n7KAv179IhDpQzMGAvubJUlOQ9PitmmZmAfrCUEgrQnx2vPxn2s+mGV3aYegXvJ/yQ35N2SfnYQ==
 
 symbol-observable@^1.1.0:
   version "1.2.0"
