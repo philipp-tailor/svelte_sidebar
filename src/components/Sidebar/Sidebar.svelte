@@ -18,7 +18,7 @@
 		opacity_linkInactive: '0.75'
 	}
 
-	export let activeUrl
+	export let activeUrl = null
 	export let routes = []
 	export let onLinkClick = null
 	export let theme = {}
