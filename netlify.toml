@@ -1,0 +1,19 @@
+[build]
+	publish = "public"
+	command = "yarn build"
+
+[build.processing]
+	skip_processing = true
+
+[[redirects]]
+	from = "https://loving-wozniak-ee95ef.netlify.com/*"
+	to = "https://sidebar.schneiders.space/"
+	status = 302
+	force = true
+
+[[headers]]
+	for = "/*"
+	[headers.values]
+		X-Content-Type-Options = "nosniff"
+		X-Frame-Options = "DENY"
+		X-XSS-Protection = "1; mode=block"
