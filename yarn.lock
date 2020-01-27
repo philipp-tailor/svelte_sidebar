@@ -2654,10 +2654,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-svelte@^3.17.3:
-  version "3.17.3"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.17.3.tgz#d5480066eb789a420eb1209a196e19aabbf9791b"
-  integrity sha512-JbYcHAhTLqEOld8EDPKxw+AyRHK4j2Djpe8WURbDjxRhYKghsRYhSz4ZDVhHEWdVwfi7k7ACS5H9ikDlQ2g6xA==
+svelte@^3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.18.0.tgz#39dc8314e3b0f660b945fe0e23abf65bba20a0ef"
+  integrity sha512-p3V6wcxkkKbWhCwty1tZ8nh9zXNKg/fUWwdzzh38ERUDnhCodiLzIFcp8LVSBPXy1JS4qfAZfjjujobHGt6AWQ==
 
 symbol-observable@^1.1.0:
   version "1.2.0"
