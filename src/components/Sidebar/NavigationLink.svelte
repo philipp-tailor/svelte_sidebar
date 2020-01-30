@@ -89,7 +89,7 @@
 	a:active:hover,
 	a[active='true']:focus,
 	a:active:focus {
-		background-color: transparent;
+		color: var(--color_link);
 	}
 
 	a[disabled='true'] {
