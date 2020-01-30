@@ -9,7 +9,7 @@ export const exampleSidebarProps = Object.freeze({
 		backgroundColor_nav: isDarkMode ? '#1E1E1E' : '#003649',
 		color_link: '#F7F7F2',
 		color_linkHover: '#FCA311',
-		fontSize: '1.2rem',
+		fontSize: '1rem',
 		maxWidth_nav: '20vw',
 		minWidth_nav: '320px',
 		opacity_linkDisabled: '0.5',

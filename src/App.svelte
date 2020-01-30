@@ -59,7 +59,10 @@
 		display: flex;
 		height: 100vh;
 		margin: 0;
-		font-family: sans-serif;
+		margin: 0;
+		font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+			Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+		line-height: 1.55;
 	}
 
 	:global(#svelte-sidebar) {
@@ -89,15 +92,15 @@
 		}
 	}
 
-	@media only screen and (max-width: 380px) {
+	@media only screen and (max-width: 370px) {
 		:global(html) {
-			font-size: 13px;
+			font-size: 16px;
 		}
 	}
 
-	@media only screen and (min-width: 380px) {
+	@media only screen and (min-width: 370px) {
 		:global(html) {
-			font-size: 16px;
+			font-size: 19px;
 		}
 	}
 </style>
