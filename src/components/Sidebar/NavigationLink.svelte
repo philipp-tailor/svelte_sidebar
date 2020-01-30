@@ -79,9 +79,9 @@
 	a[active='true'],
 	a:active {
 		background-color: var(--backgroundColor_linkActive);
-		margin-left: calc(var(--fontSize) * -0.5);
-		padding-right: calc(var(--fontSize) / 2);
-		padding-left: calc(var(--fontSize) / 2);
+		margin-left: calc(var(--fontSize) * -0.25);
+		padding-right: calc(var(--fontSize) / 4);
+		padding-left: calc(var(--fontSize) / 4);
 		border-radius: calc(var(--fontSize) / 4);
 	}
 
