@@ -1,70 +1,73 @@
 export const exampleRoutes = [
 	{
-		name: 'Home',
+		name: 'Playground',
 		route: '/'
 	},
 	{
-		name: 'Settings',
-		route: '/settings',
+		name: 'Readme',
+		route: '/readme',
 		childRoutes: [
 			{
-				name: 'User Settings',
-				route: '/settings/user'
+				name: 'What it is',
+				route: '/readme#what-it-is'
 			},
 			{
-				name: 'Organisation Settings (Team Management & Billing)',
-				route: '/settings/org'
+				name: 'Features',
+				route: '/readme#features'
+			},
+			{
+				name: 'Component props',
+				route: '/readme#component-properties',
+				childRoutes: [
+					{
+						name: 'The routes array',
+						route: '/readme#the-routes-array'
+					},
+					{
+						name: 'The theme property',
+						route: '/readme#the-theme-property'
+					}
+				]
+			},
+			{
+				name: 'License',
+				route: '/readme#license'
+			},
+			{
+				name: 'Contribution',
+				route: '/readme#contribution'
 			}
 		]
 	},
 	{
-		name: 'Products',
-		route: '/products',
+		name: 'Example group',
+		route: '/another-link-group',
+		childRoutes: [
+			{
+				name: 'A not disabled link',
+				route: '/another-link-group/enabled'
+			},
+			{
+				name: 'A disabled link',
+				route: '/another-link-group/disabled',
+				disabled: true
+			}
+		]
+	},
+	{
+		name: 'Disabled example group',
+		route: '/disabled',
 		disabled: true,
 		childRoutes: [
 			{
-				name: 'Comparison',
-				route: '/products/compare'
+				name: 'Sub-link 1',
+				route: '/disabled/sub-link-1'
 			},
 			{
-				name: 'Wishlist',
-				route: '/products/wishlist'
+				name: 'Sub-link 2',
+				route: '/disabled/sub-link-2'
 			}
 		]
-	},
-	{
-		name: 'Checkout',
-		route: '/checkout',
-		childRoutes: [
-			{
-				name: 'Cart',
-				route: '/checkout/cart'
-			},
-			{
-				name: 'Payment Details',
-				route: '/checkout/payment'
-			},
-			{
-				name: 'Confirm',
-				route: '/checkout/confirmation',
-				childRoutes: [
-					{
-						name: 'Order Success',
-						route: '/checkout/confirmation/success'
-					},
-					{
-						name: 'Order Failure',
-						route: '/checkout/confirmation/error',
-						disabled: true
-					}
-				]
-			}
-		]
-	},
-	{
-		name: 'Admin',
-		route: '/admin',
-		disabled: true
 	}
 ]
 

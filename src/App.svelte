@@ -2,9 +2,12 @@
 	import { onMount } from 'svelte'
 	import initialSidebarProps from './exampleConfig/sidebarProps'
 	import Playground from './pages/playground/Playground.svelte'
+	import Readme from './pages/documentation/Readme.svelte'
 	import { copyObjectDeep } from './utils/copyObjectDeep'
 
 	let Sidebar
+
+	let pathname = `${window.location.pathname}${window.location.hash}`
 
 	onMount(() => {
 		loadSidebar()
@@ -16,9 +19,20 @@
 		;({ default: Sidebar } = await import(sidebarPath))
 	}
 
-	let sidebarConfig = { ...copyObjectDeep(initialSidebarProps) }
+	let sidebarConfig = {
+		...copyObjectDeep(initialSidebarProps),
+		activeUrl: pathname
+	}
 
-	const onLinkClick = event => alert(`'${event.target.href}' clicked`)
+	const onLinkClick = event => {
+		const { text: pageName, href } = event.target
+		const url = href.replace(window.location.origin, '')
+
+		event.preventDefault()
+		history.pushState(null, `Svelte Sidebar - ${pageName}`, url)
+		pathname = url
+		sidebarConfig.activeUrl = url
+	}
 </script>
 
 <style>
@@ -95,5 +109,9 @@
 <svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 
 <main class="route-content">
-	<Playground bind:sidebarConfig />
+	{#if pathname && pathname.includes('/readme')}
+		<Readme {pathname} />
+	{:else}
+		<Playground bind:sidebarConfig />
+	{/if}
 </main>

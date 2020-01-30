@@ -2,7 +2,6 @@ import { exampleRoutes } from './routes'
 import { isDarkMode } from '../utils/detectDarkMode'
 
 export const exampleSidebarProps = Object.freeze({
-	activeUrl: '/checkout/confirmation/success',
 	routes: exampleRoutes,
 	open: window.innerWidth > 950,
 	theme: {
