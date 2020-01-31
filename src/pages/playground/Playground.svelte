@@ -3,7 +3,6 @@
 	import Button from '../../components/Button.svelte'
 	import ColorInput from '../../components/ColorInput.svelte'
 	import NumericInput from '../../components/NumericInput.svelte'
-	import Select from '../../components/Select.svelte'
 	import Textarea from '../../components/Textarea.svelte'
 	import initialSidebarProps from '../../exampleConfig/sidebarProps'
 	import { areObjectsEqual } from '../../utils/compareObjects'
@@ -30,7 +29,6 @@
 			(parseFloat(initialSidebarProps.theme.maxWidth_nav) / 100) *
 			window.innerWidth,
 		minWidth: parseFloat(initialSidebarProps.theme.minWidth_nav),
-		routeList: getAllRoutes(initialSidebarProps.routes),
 		routesFormatted: prettyPrintJson(initialSidebarProps.routes)
 	}
 
@@ -56,17 +54,6 @@
 			sidebarConfig.routes = parsedRoutes
 		} catch (e) {}
 	}
-
-	// Flatten route structure for the "Active URL" select.
-	const getAllRoutes = routes =>
-		routes.reduce(
-			(allRoutes, route) => [
-				...allRoutes,
-				{ name: route.name, value: route.route },
-				...getAllRoutes(route.childRoutes || [])
-			],
-			[]
-		)
 
 	const resetSidebarConfig = () =>
 		(sidebarConfig = { ...copyObjectDeep(initialSidebarProps) })
@@ -225,15 +212,10 @@
 	</fieldset>
 
 	<fieldset class="content-fieldset">
-		<legend>Content</legend>
-
-		<Select
-			label="Active URL"
-			options={playgroundConfig.routeList}
-			bind:value={sidebarConfig.activeUrl} />
+		<legend>Routes</legend>
 
 		<Textarea
-			label="Navigation Content"
+			label="Navigation Structure"
 			bind:value={playgroundConfig.routesFormatted}
 			required />
 	</fieldset>
