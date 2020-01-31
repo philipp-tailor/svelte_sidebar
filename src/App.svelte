@@ -105,6 +105,9 @@
 	}
 </style>
 
+<!-- Update the routing state when browser navigation occurs. -->
+<svelte:window on:popstate={() => (pathname = window.location.pathname)} />
+
 <!--
 	Use svelte:component because `Sidebar` is lazy loaded to demonstrate
 	that it is truly decoupled from the rest of the app.
