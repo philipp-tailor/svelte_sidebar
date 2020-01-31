@@ -85,6 +85,12 @@
 		max-width: 120ch;
 	}
 
+	.github {
+		position: relative;
+		float: right;
+		top: 1rem;
+	}
+
 	:global(article a) {
 		color: inherit;
 		border: none;
@@ -249,5 +255,11 @@
 <svelte:window on:hashchange={scrollToHeading} />
 
 <article>
+	<a
+		class="github"
+		href="https://github.com/philipp-tailor/svelte_sidebar"
+		target="_blank">
+		GitHub
+	</a>
 	{@html readme}
 </article>
