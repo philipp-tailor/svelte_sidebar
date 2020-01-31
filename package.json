@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"scripts": {
 		"autobuild": "rollup -c -w",
-		"build": "yarn clean && rollup -c",
+		"build": "rollup -c",
 		"clean": "find ./public -type f -name \"*.js\" | xargs rm && find ./public -type f -name \"*.map\" | xargs rm && rm ./public/bundle.css",
 		"dev": "yarn clean && yarn start:dev & yarn autobuild",
 		"start:dev": "serve"
