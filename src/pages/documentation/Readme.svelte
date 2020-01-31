@@ -1,20 +1,75 @@
 <script>
-	import { afterUpdate, onMount } from 'svelte'
+	import { afterUpdate, onDestroy, onMount } from 'svelte'
 
-	/*
-	 * prop is not used directly, but causes re-rendering
-	 * this is crucial to scroll to the focused header via `afterUpdate`
-	 */
 	export let pathname
 
 	let readme
+	let intersectionObserver
 
 	onMount(async () => {
 		;({ default: readme } = await import('../../../README.md'))
+
+		initHeadingIntersectionObserver()
 	})
 
+	// When the URL was changed through `Sidebar`, scroll to referenced heading.
 	afterUpdate(() => {
-		// scroll to focused header
+		scrollToHeading()
+	})
+
+	onDestroy(() => {
+		intersectionObserver && intersectionObserver.disconnect()
+	})
+
+	const initHeadingIntersectionObserver = () => {
+		// Await DOM completion.
+		setTimeout(() => {
+			const headers = document.querySelectorAll('h2, h3, h4')
+
+			const headerConfig = {
+				/*
+				 * Watch for intersections in the top area of the screen.
+				 * If a heading is in the top stripe, it can be assumed that the
+				 * user is reading the paragraph, warranting a route update.
+				 */
+				rootMargin: `0px 0px -${window.innerHeight - 50}px 0px`,
+				threshold: 0.5
+			}
+			intersectionObserver = new IntersectionObserver(
+				detectHeaderIntersection,
+				headerConfig
+			)
+			headers.forEach(header => intersectionObserver.observe(header))
+		}, 500)
+	}
+
+	/*
+	 * Add heading IDs to url hash when read. This has two benefits:
+	 * - The sidebar shows a correct active navigation link state.
+	 * - The user can pick up where he left on reload.
+	 */
+	const detectHeaderIntersection = entries => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				const element = entry.target
+				const headerName = element.id
+
+				const newUrl = `${window.location.pathname}#${headerName}`
+				history.replaceState(
+					{},
+					`Svelte Sidebar – ${headerName}`,
+					newUrl
+				)
+
+				// Update route state in `App` (there's a prop binding).
+				const newPathname = newUrl.replace(window.location.origin, '')
+				pathname = newPathname
+			}
+		})
+	}
+
+	// Scroll to header referenced in URL hash (if existing).
+	const scrollToHeading = () => {
 		const urlHash = window.location.hash
 		if (urlHash) {
 			const focusedHeader = document.getElementById(
@@ -22,7 +77,7 @@
 			)
 			focusedHeader && focusedHeader.scrollIntoView()
 		}
-	})
+	}
 </script>
 
 <style>
@@ -189,6 +244,9 @@
 		}
 	}
 </style>
+
+<!-- When there's a hash change in the URL, scroll to the referenced heading. -->
+<svelte:window on:hashchange={scrollToHeading} />
 
 <article>
 	{@html readme}

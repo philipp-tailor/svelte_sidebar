@@ -7,6 +7,7 @@
 
 	let Sidebar
 
+	// Local state containing the active route in the app.
 	let pathname = `${window.location.pathname}${window.location.hash}`
 
 	onMount(() => {
@@ -14,24 +15,29 @@
 	})
 
 	// Load `Sidebar` asynchronously to showcase  that it is a standalone module.
-	async function loadSidebar() {
+	const loadSidebar = async () => {
 		const sidebarPath = './Sidebar.js'
 		;({ default: Sidebar } = await import(sidebarPath))
 	}
+
+	// Recompute `Sidebar`'s active URL prop whenver there's a route change.
+	$: sidebarConfig.activeUrl = pathname
 
 	let sidebarConfig = {
 		...copyObjectDeep(initialSidebarProps),
 		activeUrl: pathname
 	}
 
+	// Triggered when link is clicked in `Sidebar`
 	const onLinkClick = event => {
 		const { text: pageName, href } = event.target
+		// Build relative URL from clicked link's event target href attribute.
 		const url = href.replace(window.location.origin, '')
-
+		// Prevent standard navigation.
 		event.preventDefault()
+		// Push new route to browser history, update local routing state.
 		history.pushState(null, `Svelte Sidebar - ${pageName}`, url)
 		pathname = url
-		sidebarConfig.activeUrl = url
 	}
 </script>
 
@@ -115,8 +121,9 @@
 <svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick} />
 
 <main class="route-content">
+	<!-- Routing: either show readme or playground as main content -->
 	{#if pathname && pathname.includes('/readme')}
-		<Readme {pathname} />
+		<Readme bind:pathname />
 	{:else}
 		<Playground bind:sidebarConfig />
 	{/if}
