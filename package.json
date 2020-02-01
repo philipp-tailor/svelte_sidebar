@@ -5,7 +5,7 @@
 	"scripts": {
 		"autobuild": "rollup -c -w",
 		"build": "rollup -c",
-		"clean": "find ./public -type f -name \"*.js\" | xargs rm && find ./public -type f -name \"*.map\" | xargs rm && rm ./public/bundle.css",
+		"clean": "find ./public -type f -name \"*.js\" -o -name \"*.map\" -o -name \"*.css\" | xargs rm",
 		"dev": "yarn clean && yarn start:dev & yarn autobuild",
 		"start:dev": "serve"
 	},
