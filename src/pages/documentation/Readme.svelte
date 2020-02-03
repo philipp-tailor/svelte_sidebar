@@ -99,8 +99,9 @@
 
 	:global(article a:hover),
 	:global(article a:focus) {
-		background-color: var(--dark-primary);
-		color: var(--accent-orange);
+		background-color: var(--accent-red);
+		color: var(--light-secondary);
+		border-radius: 0.2rem;
 	}
 
 	:global(h1) {
