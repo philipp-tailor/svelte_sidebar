@@ -261,5 +261,7 @@
 		target="_blank">
 		GitHub
 	</a>
-	{@html readme}
+	{#if readme}
+		{@html readme}
+	{/if}
 </article>
