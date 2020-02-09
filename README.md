@@ -11,7 +11,7 @@ Check it out [in the playground](https://sidebar.schneiders.space).
 
 ## What it is
 
-This sidebar navigation for web application replicates the experience of browsing the file tree in a code editor. The benefit is that the user can understand the application's information achitecture (IA) at first glance, and can quickly jump between different hierarchy levels.
+This sidebar navigation for web application replicates the experience of browsing the file tree in a code editor. The benefit is that the user can understand the application's information architecture (IA) at first glance, and can quickly jump between different hierarchy levels.
 The UI pattern goes well with complex web applications with a lot of nested routes, especially for applications where the user can create data entries (e.g. where multiple users create projects, each of which is composed of multiple screens).
 
 ## Features
@@ -22,8 +22,8 @@ The UI pattern goes well with complex web applications with a lot of nested rout
 * Automatically un-collapses the active part of the navigation hierarchy and scrolls it into the viewport. Parent navigation items of the active navigation item are also highlighted compared to inactive navigation items.
 * Every navigation link can be disabled.
 * Just enough configuration possibilities for re-usability:
-	- By default, the regular browser navigation occors when the user clicks on a link (or presses `Enter`). A function can be passed as property to interrupt the regular navigation to handle navigation on the client side.
-	- Themable: Colors (including hover styles), font sizing, and the minimum and maximum width (depending on the length of the names of navigation links).
+	- By default, the regular browser navigation occurs when the user clicks on a link (or presses `Enter`). A function can be passed as property to interrupt the regular navigation to handle navigation on the client side.
+	- Themeable: Colors (including hover styles), font sizing, and the minimum and maximum width (depending on the length of the names of navigation links).
 * h(n) performance when matching the active route in the navigation hierarchy, where `n` signifies the count of navigation links.
 
 ## Component properties
@@ -56,7 +56,7 @@ Following the description of a route object's attributes:
 | attribute name | required | description | value type |
 | -------------- | -------- | ----------- | ---------- |
 | name | yes | The name under which the navigation link will be shown in the navigation hierarchy | `string` |
-| route | yes | The navigation links's URL | `string` |
+| route | yes | The navigation links' URL | `string` |
 | disabled | no | Whether the link is selectable by the user. The default is `false`. `True` can make sense, e.g. if the user is not authorized to access a part of the application. If the route has child routes, the navigation link group can not be uncollapsed by the user. | `boolean` |
 | childRoutes | no | An array of more route objects. As every route object can have child routes, there's theoretically no limit to the depth of the navigation hierarchy. | `array` |
 
@@ -71,7 +71,7 @@ The theme property object takes the following attributes with matching CSS value
 | `color_link` | #F7F7F2 | Text color of a navigation link in default state. |
 | `color_linkHover` | #FCA311 | Text color of a navigation link when it's hovered upon or focused with the keyboard. |
 | `fontSize` | 1.2rem | Font size of navigation links. |
-| `maxWidth_nav` | 20vw | The maximum width of the navigation sidebar. Navigation links's name will wrap into multiple lines, if their width in addition to their nesting would surpass `maxWidth_nav`. |
+| `maxWidth_nav` | 20vw | The maximum width of the navigation sidebar. Navigation links' name will wrap into multiple lines, if their width in addition to their nesting would surpass `maxWidth_nav`. |
 | `minWidth_nav` | 320px | Minimum width of the navigation sidebar. `minWidth_nav` is stronger than `maxWidth_nav`. If min width is larger than max width, min width will define the applied style. |
 | `opacity_linkDisabled` | 0.5 | Text opacity of navigation links, that have been specified to be disabled. |
 | `opacity_linkInactive` | 0.75 | Text opacity of navigation links that are not part of the navigation hierarchy that contains the active link. |
