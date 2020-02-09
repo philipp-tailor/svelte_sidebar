@@ -5,7 +5,7 @@
 <style>
 	aside {
 		color: var(--light-secondary);
-		background-color: var(--bg-blue-primary);
+		background-color: var(--bg-blue);
 		padding: 2rem;
 		margin: 1rem;
 		border-radius: 0.5rem;

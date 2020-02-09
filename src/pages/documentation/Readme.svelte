@@ -162,7 +162,7 @@
 	}
 
 	:global(pre) {
-		background-color: var(--bg-blue-primary);
+		background-color: var(--bg-blue);
 		color: var(--accent-orange);
 		font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 		border-radius: 0.4rem;
@@ -188,7 +188,7 @@
 		position: relative;
 		margin-top: 1rem;
 		width: 100%;
-		background-color: var(--bg-blue-primary);
+		background-color: var(--bg-blue);
 		color: var(--light-primary);
 		border-radius: 0.5rem;
 		padding: 0.5rem;

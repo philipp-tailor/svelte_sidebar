@@ -54,7 +54,7 @@
 		--light-primary: #eaeef1;
 		--light-secondary: #f7f7f2;
 		--bg-white: white;
-		--bg-blue-primary: #003649;
+		--bg-blue: #003649;
 		--accent-red: #f4442e;
 		--accent-orange: #fca311;
 

@@ -26,8 +26,8 @@
 	textarea:focus,
 	textarea:hover {
 		color: var(--light-primary);
-		background-color: var(--bg-blue-primary);
-		border: 2px solid var(--bg-blue-primary);
+		background-color: var(--bg-blue);
+		border: 2px solid var(--bg-blue);
 	}
 
 	@media (prefers-color-scheme: dark) {

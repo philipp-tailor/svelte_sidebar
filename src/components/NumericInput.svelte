@@ -37,7 +37,7 @@
 	input[type='number']:active,
 	input[type='number']:hover {
 		color: var(--light-primary);
-		background-color: var(--bg-blue-primary);
+		background-color: var(--bg-blue);
 	}
 
 	@media (prefers-color-scheme: dark) {

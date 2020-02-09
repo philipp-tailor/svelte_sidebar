@@ -73,7 +73,7 @@
 		width: 1.2rem;
 		left: 0.2rem;
 		bottom: calc((1.5rem - 1.2rem) / 2);
-		background-color: var(--bg-blue-primary);
+		background-color: var(--bg-blue);
 		transition: 0.15s;
 		border-radius: 50%;
 	}
