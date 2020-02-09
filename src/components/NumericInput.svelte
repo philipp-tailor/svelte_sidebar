@@ -5,6 +5,7 @@
 	export let min = 0.1
 	export let max = 1
 	export let step = 0.1
+	export let dark = null
 </script>
 
 <style>
@@ -40,23 +41,21 @@
 		background-color: var(--bg-blue);
 	}
 
-	@media (prefers-color-scheme: dark) {
-		input[type='number'] {
-			color: var(--dark-primary);
-			background-color: var(--light-secondary);
-		}
+	input[type='number'].dark {
+		color: var(--dark-primary);
+		background-color: var(--light-secondary);
+	}
 
-		input[type='number']:focus,
-		input[type='number']:active,
-		input[type='number']:hover {
-			color: var(--dark-primary);
-			background-color: var(--accent-orange);
-			border: 2px solid var(--accent-orange);
-		}
+	input[type='number'].dark:focus,
+	input[type='number'].dark:active,
+	input[type='number'].dark:hover {
+		color: var(--dark-primary);
+		background-color: var(--accent-orange);
+		border: 2px solid var(--accent-orange);
 	}
 </style>
 
 <label for={id}>
 	{#if label}{label}{/if}
-	<input {id} type="number" bind:value {min} {max} {step} />
+	<input {id} type="number" bind:value {min} {max} {step} class:dark />
 </label>

@@ -2,6 +2,7 @@
 	import { afterUpdate, onDestroy, onMount } from 'svelte'
 
 	export let pathname
+	export let dark
 
 	let readme
 	let intersectionObserver
@@ -81,8 +82,20 @@
 </script>
 
 <style>
-	article {
+	.readme {
 		max-width: 120ch;
+	}
+
+	.readme:not(.dark) {
+		height: intrinsic;
+		margin: 1rem 1rem 2rem;
+		padding: 0.5rem 1rem 2rem;
+		background-color: var(--bg-white);
+		border-radius: 0.5rem;
+	}
+
+	.readme.dark {
+		margin: 0.5rem 1rem 2rem;
 	}
 
 	.github {
@@ -91,20 +104,20 @@
 		top: 1rem;
 	}
 
-	:global(article a) {
+	:global(a) {
 		color: inherit;
 		border: none;
 		outline: none;
 	}
 
-	:global(article a:hover),
-	:global(article a:focus) {
+	:global(.readme a:hover),
+	:global(.readme a:focus) {
 		background-color: var(--accent-red);
 		color: var(--light-secondary);
 		border-radius: 0.2rem;
 	}
 
-	:global(h1) {
+	:global(.readme h1) {
 		font-weight: bold;
 		font-size: 2rem;
 		margin: 0;
@@ -115,8 +128,8 @@
 		text-transform: uppercase;
 	}
 
-	:global(h2),
-	:global(h3) {
+	:global(.readme h2),
+	:global(.readme h3) {
 		word-break: break-word;
 		line-height: 1.2;
 		text-transform: capitalize;
@@ -125,43 +138,43 @@
 		margin-left: 0;
 	}
 
-	:global(h2) {
+	:global(.readme h2) {
 		margin-top: 2.5rem;
 		font-size: 1.75rem;
 		text-transform: uppercase;
 	}
 
-	:global(h3) {
+	:global(.readme h3) {
 		margin-top: 2rem;
 		font-size: 1.5rem;
 		font-weight: 400;
 	}
 
-	:global(p) {
+	:global(.readme p) {
 		margin: 0;
 		margin-top: 1.5rem;
 	}
 
-	:global(p:first-of-type) {
+	:global(.readme p:first-of-type) {
 		margin-top: 1rem;
 	}
 
-	:global(li) {
+	:global(.readme li) {
 		margin-top: 0.4rem;
 	}
 
-	:global(ul + p),
-	:global(ol + p) {
+	:global(.readme ul + p),
+	:global(.readme ol + p) {
 		margin-top: 0.4rem;
 	}
 
-	:global(ul),
-	:global(ol) {
+	:global(.readme ul),
+	:global(.readme ol) {
 		margin: 0;
 		padding-left: 2ch;
 	}
 
-	:global(pre) {
+	:global(.readme pre) {
 		background-color: var(--bg-blue);
 		color: var(--accent-orange);
 		font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -184,7 +197,11 @@
 		hyphens: none;
 	}
 
-	:global(table) {
+	:global(.readme.dark pre) {
+		background-color: var(--dark-primary);
+	}
+
+	:global(.readme table) {
 		position: relative;
 		margin-top: 1rem;
 		width: 100%;
@@ -194,11 +211,15 @@
 		padding: 0.5rem;
 	}
 
-	:global(tr th:first-of-type) {
+	:global(.readme.dark table) {
+		background-color: var(--dark-primary);
+	}
+
+	:global(.readme tr th:first-of-type) {
 		border-left: none;
 	}
 
-	:global(th) {
+	:global(.readme th) {
 		top: 0;
 		position: sticky;
 		background: var(--accent-red);
@@ -206,48 +227,24 @@
 		border-radius: 0.5rem;
 	}
 
-	:global(td) {
+	:global(.readme td) {
 		padding: 0.4rem 0.6rem;
 		vertical-align: top;
 		min-height: 3rem;
 	}
 
 	@media (min-width: 420px) {
-		:global(h1) {
+		:global(.readme h1) {
 			font-size: 3rem;
 			margin-bottom: 1.5rem;
 		}
 
-		:global(h2) {
+		:global(.readme h2) {
 			margin-top: 3rem;
 		}
 
-		:global(h3) {
+		:global(.readme h3) {
 			margin-top: 2.5rem;
-		}
-	}
-
-	@media (prefers-color-scheme: light) {
-		:global(article) {
-			height: intrinsic;
-			margin: 1rem 1rem 2rem;
-			padding: 0.5rem 1rem 2rem;
-			background-color: var(--bg-white);
-			border-radius: 0.5rem;
-		}
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:global(article) {
-			margin: 0.5rem 1rem 2rem;
-		}
-
-		:global(pre) {
-			background-color: var(--dark-primary);
-		}
-
-		:global(table) {
-			background-color: var(--dark-primary);
 		}
 	}
 </style>
@@ -255,14 +252,14 @@
 <!-- When there's a hash change in the URL, scroll to the referenced heading. -->
 <svelte:window on:hashchange={scrollToHeading} />
 
-<article>
-	<a
-		class="github"
-		href="https://github.com/philipp-tailor/svelte_sidebar"
-		target="_blank">
-		GitHub
-	</a>
-	{#if readme}
+{#if readme}
+	<article class="readme" class:dark>
+		<a
+			class="github"
+			href="https://github.com/philipp-tailor/svelte_sidebar"
+			target="_blank">
+			GitHub
+		</a>
 		{@html readme}
-	{/if}
-</article>
+	</article>
+{/if}

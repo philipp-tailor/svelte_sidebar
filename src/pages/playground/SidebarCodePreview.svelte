@@ -1,5 +1,6 @@
 <script>
 	export let sidebarConfig
+	export let dark = null
 </script>
 
 <style>
@@ -18,6 +19,10 @@
 		box-sizing: border-box;
 	}
 
+	aside.dark {
+		background-color: var(--dark-primary);
+	}
+
 	legend {
 		font-size: 1.5rem;
 		font-weight: bold;
@@ -25,6 +30,13 @@
 		color: var(--dark-primary);
 		margin-top: -4rem;
 		margin-bottom: 2.1rem;
+		margin-left: -1rem;
+	}
+
+	.dark legend {
+		margin-top: -2.9rem;
+		margin-bottom: 1.1rem;
+		color: var(--light-secondary);
 	}
 
 	.html-tag {
@@ -53,18 +65,6 @@
 		opacity: 0.95;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		aside {
-			background-color: var(--dark-primary);
-		}
-
-		legend {
-			margin-top: -2.9rem;
-			margin-bottom: 1.1rem;
-			color: var(--light-secondary);
-		}
-	}
-
 	@media (max-width: 440px) {
 		aside {
 			position: unset;
@@ -73,7 +73,7 @@
 	}
 </style>
 
-<aside>
+<aside class:dark>
 	<legend>Result</legend>
 	<span class="control-character">&lt;</span>
 	<span class="html-tag">Sidebar</span>

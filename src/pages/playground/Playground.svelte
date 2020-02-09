@@ -10,6 +10,7 @@
 	import { prettyPrintJson } from '../../utils/prettyPrintJson'
 
 	export let sidebarConfig
+	export let dark
 
 	let width
 
@@ -65,7 +66,6 @@
 		position: sticky;
 		top: 0;
 		margin: 1rem;
-		background-color: var(--light-primary);
 		font-size: 3rem;
 		font-weight: bold;
 		text-transform: uppercase;
@@ -96,6 +96,10 @@
 		border-radius: 0.5rem;
 	}
 
+	.dark fieldset {
+		background-color: var(--dark-primary);
+	}
+
 	legend {
 		font-size: 1.5rem;
 		font-weight: bold;
@@ -110,17 +114,7 @@
 
 	.content-fieldset {
 		padding: 2rem;
-		margin-bottom: 2rem;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		.heading {
-			background-color: var(--dark-secondary);
-		}
-
-		fieldset {
-			background-color: var(--dark-primary);
-		}
+		margin-bottom: 1rem;
 	}
 
 	@media (max-width: 440px) {
@@ -133,7 +127,7 @@
 <svelte:window bind:innerWidth={width} />
 
 <h2 class="heading">Playground</h2>
-<div class="playground">
+<div class="playground" class:dark>
 	<div class="form-explainer">
 		<div>
 			Customise the sidebar on the left with the form below. The props
@@ -178,10 +172,12 @@
 		<div class="fieldset-container">
 			<NumericInput
 				label="Opacity of Disabled Links:"
+				{dark}
 				bind:value={sidebarConfig.theme.opacity_linkDisabled} />
 
 			<NumericInput
 				label="Opacity of Links Which Are Not Part of the Active Route:"
+				{dark}
 				bind:value={sidebarConfig.theme.opacity_linkInactive} />
 		</div>
 	</fieldset>
@@ -193,6 +189,7 @@
 			<NumericInput
 				label="Font Size in rem:"
 				bind:value={playgroundConfig.fontSize}
+				{dark}
 				max="3" />
 
 			<NumericInput
@@ -200,6 +197,7 @@
 				bind:value={playgroundConfig.maxWidth}
 				min="10"
 				step="50"
+				{dark}
 				max={width} />
 
 			<NumericInput
@@ -207,6 +205,7 @@
 				bind:value={playgroundConfig.minWidth}
 				min="0"
 				step="50"
+				{dark}
 				max={width} />
 		</div>
 	</fieldset>
@@ -217,8 +216,9 @@
 		<Textarea
 			label="Navigation Structure"
 			bind:value={playgroundConfig.routesFormatted}
+			{dark}
 			required />
 	</fieldset>
 </div>
 
-<SidebarCodePreview {sidebarConfig} />
+<SidebarCodePreview {sidebarConfig} {dark} />

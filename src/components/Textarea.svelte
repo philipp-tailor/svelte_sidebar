@@ -3,6 +3,7 @@
 	export let label = null
 	export let value
 	export let required = true
+	export let dark = null
 </script>
 
 <style>
@@ -30,25 +31,28 @@
 		border: 2px solid var(--bg-blue);
 	}
 
-	@media (prefers-color-scheme: dark) {
-		textarea {
-			color: var(--light-secondary);
-			background-color: var(--dark-primary);
-			outline: none;
-			border: 2px solid var(--light-secondary);
-		}
+	textarea.dark {
+		color: var(--light-secondary);
+		background-color: var(--dark-primary);
+		outline: none;
+		border: 2px solid var(--light-secondary);
+	}
 
-		textarea:focus,
-		textarea:active,
-		textarea:hover {
-			color: var(--accent-orange);
-			background-color: var(--dark-primary);
-			border: 2px solid var(--accent-orange);
-		}
+	textarea.dark:focus,
+	textarea.dark:active,
+	textarea.dark:hover {
+		color: var(--accent-orange);
+		background-color: var(--dark-primary);
+		border: 2px solid var(--accent-orange);
 	}
 </style>
 
 {#if label}
 	<label for={id}>{label}</label>
 {/if}
-<textarea {id} bind:value {required} rows={value.split('\n').length + 3} />
+<textarea
+	{id}
+	bind:value
+	{required}
+	rows={value.split('\n').length + 3}
+	class:dark />
