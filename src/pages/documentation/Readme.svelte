@@ -89,7 +89,7 @@
 	.readme:not(.dark) {
 		height: intrinsic;
 		margin: 1rem 1rem 2rem;
-		padding: 0.5rem 1rem 2rem;
+		padding: 0.5rem 2rem 2rem;
 		background-color: var(--bg-white);
 		border-radius: 0.5rem;
 	}
