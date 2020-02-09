@@ -1,12 +1,12 @@
 <script>
 	import { onMount } from 'svelte'
+	import { isDarkMode } from '../utils/detectDarkMode'
 
 	export let useDarkTheme
 	let darkSystemTheme
 
 	onMount(() => {
-		darkSystemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-			.matches
+		darkSystemTheme = isDarkMode
 		const useDarkThemePersistedSetting =
 			localStorage && localStorage.getItem('useDarkTheme')
 		// if the user made a theme choice in the past, re-apply it; otherwise use system settings
