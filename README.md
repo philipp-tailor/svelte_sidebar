@@ -78,6 +78,10 @@ The theme property object takes the following attributes with matching CSS value
 
 The property names are CSS custom properties attached to the sidebar element.
 
+## Slots
+
+The sidebar can also be passed children that are placed in pre-defined slots in the sidebar. There's a slot names `header` that is rendered above all navigation links (e.g. for company name and logo), and one below all navigation links called `footer`. On the playground, this slot is used to render the theme switcher.
+
 ## License
 
 The code is licensed under MIT, see `LICENSE`.

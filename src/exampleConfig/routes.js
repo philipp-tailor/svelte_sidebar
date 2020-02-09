@@ -30,6 +30,10 @@ export const exampleRoutes = [
 				]
 			},
 			{
+				name: 'Slots',
+				route: '/readme#slots'
+			},
+			{
 				name: 'License',
 				route: '/readme#license'
 			},

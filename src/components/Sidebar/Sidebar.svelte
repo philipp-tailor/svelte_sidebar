@@ -105,6 +105,7 @@
 </style>
 
 <nav id="svelte-sidebar" class:open style={styleString}>
+	<slot name="header" />
 	<button
 		class="sidebar-toggle"
 		class:open
@@ -117,5 +118,6 @@
 	</button>
 	{#if open}
 		<NavigationLinkGroup {routes} />
+		<slot name="footer" />
 	{/if}
 </nav>
