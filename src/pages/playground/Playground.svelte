@@ -63,8 +63,6 @@
 <style>
 	.heading {
 		flex-basis: 100%;
-		position: sticky;
-		top: 0;
 		margin: 1rem;
 		font-size: 3rem;
 		font-weight: bold;
