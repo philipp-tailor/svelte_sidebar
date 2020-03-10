@@ -32,7 +32,7 @@
 		"rollup-plugin-md": "^0.0.7",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-svelte": "^5.1.1",
-		"rollup-plugin-terser": "^5.2.0",
+		"rollup-plugin-terser": "^5.3.0",
 		"rollup-plugin-visualizer": "^3.2.2",
 		"serve": "^11.3.0",
 		"svelte": "^3.19.2"
