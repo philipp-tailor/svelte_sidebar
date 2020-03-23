@@ -2079,12 +2079,12 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-prettier-plugin-packagejson@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-packagejson/-/prettier-plugin-packagejson-2.0.10.tgz#65bf6245ee40a4c1e1e9bd69d0b5617b188d45f6"
-  integrity sha512-NJtwxysgZPfeexeACcUlPkAE82W7wE9ZTDdrefNLxGRHFXH5R7CRNgF5rLvYy7LdycMsq8UIaHakDGZgLIkB9Q==
+prettier-plugin-packagejson@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-packagejson/-/prettier-plugin-packagejson-2.1.0.tgz#2fecba660dc6ae68f882b1d3915c052e097d520a"
+  integrity sha512-t0dTmHME5v1Ari9E/pZiJfkh1c82UdFw6DfSU5+HBexPKhHJehndiEtb7+03XcC7YB42p6kDj1yNBdI+ezL9PA==
   dependencies:
-    sort-package-json "1.39.0"
+    sort-package-json "1.39.1"
 
 prettier-plugin-svelte@^0.7.0:
   version "0.7.0"
@@ -2557,10 +2557,10 @@ sort-object-keys@^1.1.3:
   resolved "https://registry.yarnpkg.com/sort-object-keys/-/sort-object-keys-1.1.3.tgz#bff833fe85cab147b34742e45863453c1e190b45"
   integrity sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==
 
-sort-package-json@1.39.0:
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/sort-package-json/-/sort-package-json-1.39.0.tgz#bd3ab45860db99cf22aaabca88bf1a5db8fc5698"
-  integrity sha512-/S/iwkf9lcb5Eb/l/BoImDIa4EJWd7is5yJ4oJShh0+sH5Iz5XJRbHpLkNpxuo850uoR6Ygbma9GwfMoEULwEQ==
+sort-package-json@1.39.1:
+  version "1.39.1"
+  resolved "https://registry.yarnpkg.com/sort-package-json/-/sort-package-json-1.39.1.tgz#ac4d8464a1bdf980aa86cd790b876fb5708b7bf0"
+  integrity sha512-ibynHvDF6jfSpA7tok+larZUPQ4YLm4YO6nP9Iov1NuGsMyvkYm3hmKAA6LdXxwOXzqBqJjedk0rMZ2Sbyra4Q==
   dependencies:
     detect-indent "^6.0.0"
     detect-newline "3.1.0"
