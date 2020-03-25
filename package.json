@@ -24,7 +24,7 @@
 		"husky": ">=4",
 		"lint-staged": ">=10",
 		"prettier": "^1.19.1",
-		"prettier-plugin-packagejson": "^2.0.10",
+		"prettier-plugin-packagejson": "^2.1.2",
 		"prettier-plugin-svelte": "^0.7.0",
 		"rollup": "^1.32.1",
 		"rollup-plugin-commonjs": "^10.1.0",
