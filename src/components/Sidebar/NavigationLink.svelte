@@ -14,7 +14,7 @@
 	 */
 	$: active = $activeUrl === route
 
-	const onClick = event => {
+	const onClick = (event) => {
 		if (disabled) {
 			event.preventDefault()
 		} else if ($onLinkClick) {

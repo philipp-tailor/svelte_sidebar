@@ -34,13 +34,13 @@
 				 * user is reading the paragraph, warranting a route update.
 				 */
 				rootMargin: `0px 0px -${window.innerHeight - 50}px 0px`,
-				threshold: 0.5
+				threshold: 0.5,
 			}
 			intersectionObserver = new IntersectionObserver(
 				detectHeaderIntersection,
 				headerConfig
 			)
-			headers.forEach(header => intersectionObserver.observe(header))
+			headers.forEach((header) => intersectionObserver.observe(header))
 		}, 500)
 	}
 
@@ -49,8 +49,8 @@
 	 * - The sidebar shows a correct active navigation link state.
 	 * - The user can pick up where he left on reload.
 	 */
-	const detectHeaderIntersection = entries => {
-		entries.forEach(entry => {
+	const detectHeaderIntersection = (entries) => {
+		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
 				const element = entry.target
 				const headerName = element.id

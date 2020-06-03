@@ -30,7 +30,7 @@
 			(parseFloat(initialSidebarProps.theme.maxWidth_nav) / 100) *
 			window.innerWidth,
 		minWidth: parseFloat(initialSidebarProps.theme.minWidth_nav),
-		routesFormatted: prettyPrintJson(initialSidebarProps.routes)
+		routesFormatted: prettyPrintJson(initialSidebarProps.routes),
 	}
 
 	/*
@@ -44,9 +44,9 @@
 
 		// Translate numeric inputs to numeric values with unit.
 		sidebarConfig.theme.fontSize = `${playgroundConfig.fontSize}rem`
-		sidebarConfig.theme.maxWidth_nav = `${(playgroundConfig.maxWidth /
-			width) *
-			100}vw`
+		sidebarConfig.theme.maxWidth_nav = `${
+			(playgroundConfig.maxWidth / width) * 100
+		}vw`
 		sidebarConfig.theme.minWidth_nav = `${playgroundConfig.minWidth}px`
 
 		// Parse input from textarea back to JSON (and skip on failure).

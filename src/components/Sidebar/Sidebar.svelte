@@ -2,7 +2,7 @@
 	import { beforeUpdate } from 'svelte'
 	import {
 		activeUrl as storeActiveUrl,
-		onLinkClick as storeOnLinkClick
+		onLinkClick as storeOnLinkClick,
 	} from './SidebarStore'
 	import NavigationLinkGroup from './NavigationLinkGroup.svelte'
 
@@ -15,7 +15,7 @@
 		maxWidth_nav: '20vw',
 		minWidth_nav: '320px',
 		opacity_linkDisabled: '0.5',
-		opacity_linkInactive: '0.75'
+		opacity_linkInactive: '0.75',
 	}
 
 	export let activeUrl = null
@@ -40,7 +40,7 @@
 		`--maxWidth_nav: ${combinedTheme.maxWidth_nav}`,
 		`--minWidth_nav: ${combinedTheme.minWidth_nav}`,
 		`--opacity_linkDisabled: ${combinedTheme.opacity_linkDisabled}`,
-		`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`
+		`--opacity_linkInactive: ${combinedTheme.opacity_linkInactive}`,
 	].join('; ')
 
 	const toggleOpen = () => (open = !open)

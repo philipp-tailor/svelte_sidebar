@@ -3,5 +3,5 @@ module.exports = {
 	useTabs: true,
 	semi: false,
 	singleQuote: true,
-	endOfLine: 'lf'
+	endOfLine: 'lf',
 }
