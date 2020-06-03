@@ -33,11 +33,11 @@
 
 	let sidebarConfig = {
 		...copyObjectDeep(initialSidebarProps),
-		activeUrl: pathname
+		activeUrl: pathname,
 	}
 
 	// Triggered when link is clicked in `Sidebar`
-	const onLinkClick = event => {
+	const onLinkClick = (event) => {
 		const { text: pageName, href } = event.target
 		// Build relative URL from clicked link's event target href attribute.
 		const url = href.replace(window.location.origin, '')

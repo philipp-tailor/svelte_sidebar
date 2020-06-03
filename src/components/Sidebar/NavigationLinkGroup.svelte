@@ -25,7 +25,7 @@
 	 * `NavigationLinkGroup` in turn signals to its parent,
 	 * that it is part of the active tree.
 	 */
-	const handleActiveChange = event => {
+	const handleActiveChange = (event) => {
 		// Open current group, as it's part of the active tree.
 		groupOpen = true
 		/*
@@ -45,7 +45,7 @@
 	 * will change too, which is why the existing active subroute is reset.
 	 * The new active subroute is determined in `handleActiveChange`.
 	 */
-	const unsubscribe = activeUrl.subscribe(value => {
+	const unsubscribe = activeUrl.subscribe((value) => {
 		activeSubRoute = null
 	})
 
