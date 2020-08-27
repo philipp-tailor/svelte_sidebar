@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"husky": ">=4",
 		"lint-staged": ">=10",
-		"prettier": "^2.1.0",
+		"prettier": "^2.1.1",
 		"prettier-plugin-packagejson": "^2.2.5",
 		"prettier-plugin-svelte": "^1.1.1",
 		"rollup": "^2.26.5",
