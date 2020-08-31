@@ -25,7 +25,7 @@
 		"lint-staged": ">=10",
 		"prettier": "^2.1.1",
 		"prettier-plugin-packagejson": "^2.2.5",
-		"prettier-plugin-svelte": "^1.1.1",
+		"prettier-plugin-svelte": "^1.2.0",
 		"rollup": "^2.26.8",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-livereload": "^2.0.0",
