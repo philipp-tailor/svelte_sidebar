@@ -26,7 +26,7 @@
 		"prettier": "^2.2.1",
 		"prettier-plugin-packagejson": "^2.2.9",
 		"prettier-plugin-svelte": "^1.4.2",
-		"rollup": "^2.36.0",
+		"rollup": "^2.36.1",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-livereload": "^2.0.0",
 		"rollup-plugin-md": "^0.0.7",
