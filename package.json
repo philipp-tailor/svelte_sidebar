@@ -7,12 +7,10 @@
 		"build": "rollup -c",
 		"clean": "find ./public -type f -name \"*.js\" -o -name \"*.map\" -o -name \"*.css\" | xargs rm",
 		"dev": "yarn clean && yarn start:dev & yarn autobuild",
+		"postinstall": "husky install",
+		"prepublishOnly": "pinst --disable",
+		"postpublish": "pinst --enable",
 		"start:dev": "serve"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
 	},
 	"lint-staged": {
 		"*.{js,css,json,svelte}": [
@@ -23,6 +21,7 @@
 	"devDependencies": {
 		"husky": ">=5",
 		"lint-staged": ">=10",
+		"pinst": "^2.1.4",
 		"prettier": "^2.2.1",
 		"prettier-plugin-packagejson": "^2.2.9",
 		"prettier-plugin-svelte": "^2.1.4",
