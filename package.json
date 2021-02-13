@@ -1,16 +1,38 @@
 {
 	"name": "svelte_sidebar",
 	"version": "0.0.1",
+	"keywords": [
+		"svelte",
+		"sidebar"
+	],
+	"homepage": "http://sidebar.schneiders.space",
+	"bugs": {
+		"url": "https://github.com/philipp-tailor/svelte_sidebar/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/philipp-tailor/svelte_sidebar.git"
+	},
 	"license": "MIT",
+	"contributors": [
+		"Philipp Tailor (http://schneiders.space)"
+	],
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"files": [
+		"dist",
+		"src/components/Sidebar"
+	],
 	"scripts": {
-		"autobuild": "rollup -c -w",
-		"build": "rollup -c",
-		"clean": "find ./public -type f -name \"*.js\" -o -name \"*.map\" -o -name \"*.css\" | xargs rm",
-		"dev": "yarn clean && yarn start:dev & yarn autobuild",
+		"autobuild:playground": "rollup -c rollup.config.playground.js -w",
+		"build:package": "rollup -c rollup.config.package.js",
+		"build:playground": "rollup -c rollup.config.playground.js",
+		"clean:playground": "find ./public -type f -name \"*.js\" -o -name \"*.map\" -o -name \"*.css\" | xargs rm",
+		"dev:playground": "yarn clean:playground && yarn start:dev:playground & yarn autobuild:playground",
 		"postinstall": "husky install",
 		"prepublishOnly": "pinst --disable",
 		"postpublish": "pinst --enable",
-		"start:dev": "serve"
+		"start:dev:playground": "serve"
 	},
 	"lint-staged": {
 		"*.{js,css,json,svelte}": [
@@ -36,5 +58,6 @@
 		"rollup-plugin-visualizer": "^4.2.0",
 		"serve": "^11.3.2",
 		"svelte": "^3.32.3"
-	}
+	},
+	"svelte": "src/components/Sidebar/index.js"
 }

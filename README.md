@@ -1,13 +1,18 @@
 # Svelte Sidebar
-
 <!-- TODO: 1 GIF OF SIDEBAR IN ACTION -->
 <!-- TODO: BUNDLE ANALYSIS -->
+![NPM](https://img.shields.io/npm/l/svelte_sidebar)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e957276f-3f1c-413a-ad78-2b5894f82de9/deploy-status)](https://app.netlify.com/sites/admiring-kare-b5e53d/deploys)
 [![devDependencies Status](https://david-dm.org/philipp-tailor/svelte_sidebar/dev-status.svg)](https://david-dm.org/philipp-tailor/svelte_sidebar?type=dev)
 
 Sidebar navigation component written in svelte and compiled to an ES module of 8kb.
 
 Check it out [in the playground](https://sidebar.schneiders.space).
+
+## Installation
+
+`npm install --save svelte_sidebar`
+`yarn add svelte_sidebar`
 
 ## What it is
 
