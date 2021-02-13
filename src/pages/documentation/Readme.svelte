@@ -81,6 +81,22 @@
 	}
 </script>
 
+<!-- When there's a hash change in the URL, scroll to the referenced heading. -->
+<svelte:window on:hashchange={scrollToHeading} />
+
+{#if readme}
+	<article class="readme" class:dark>
+		<a
+			class="github"
+			href="https://github.com/philipp-tailor/svelte_sidebar"
+			target="_blank"
+		>
+			GitHub
+		</a>
+		{@html readme}
+	</article>
+{/if}
+
 <style>
 	.readme {
 		max-width: 120ch;
@@ -248,18 +264,3 @@
 		}
 	}
 </style>
-
-<!-- When there's a hash change in the URL, scroll to the referenced heading. -->
-<svelte:window on:hashchange={scrollToHeading} />
-
-{#if readme}
-	<article class="readme" class:dark>
-		<a
-			class="github"
-			href="https://github.com/philipp-tailor/svelte_sidebar"
-			target="_blank">
-			GitHub
-		</a>
-		{@html readme}
-	</article>
-{/if}

@@ -3,6 +3,10 @@
 	export let disabled = false
 </script>
 
+<button on:click={onClick} {disabled}>
+	<slot />
+</button>
+
 <style>
 	button {
 		min-height: 2rem;
@@ -36,7 +40,3 @@
 		cursor: not-allowed;
 	}
 </style>
-
-<button on:click={onClick} {disabled}>
-	<slot />
-</button>

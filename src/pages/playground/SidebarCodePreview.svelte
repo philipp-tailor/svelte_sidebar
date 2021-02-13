@@ -3,6 +3,26 @@
 	export let dark = null
 </script>
 
+<aside class:dark>
+	<legend>Result</legend>
+	<span class="control-character">&lt;</span>
+	<span class="html-tag">Sidebar</span>
+	{#each Object.entries(sidebarConfig) as prop (prop[0])}
+		<p class="component-prop">
+			<span>{prop[0]}</span>
+			<span class="control-character">="</span>
+			<span class="component-prop-value">
+				{#if JSON.stringify(prop[1]).split('\n').length > 1}
+					<br />
+				{/if}
+				{JSON.stringify(prop[1], null, 4).replace(/^"|"$/gi, '')}
+			</span>
+			<span class="control-character">"</span>
+		</p>
+	{/each}
+	<span class="control-character">/&gt;</span>
+</aside>
+
 <style>
 	aside {
 		color: var(--light-secondary);
@@ -72,23 +92,3 @@
 		}
 	}
 </style>
-
-<aside class:dark>
-	<legend>Result</legend>
-	<span class="control-character">&lt;</span>
-	<span class="html-tag">Sidebar</span>
-	{#each Object.entries(sidebarConfig) as prop (prop[0])}
-		<p class="component-prop">
-			<span>{prop[0]}</span>
-			<span class="control-character">="</span>
-			<span class="component-prop-value">
-				{#if JSON.stringify(prop[1]).split('\n').length > 1}
-					<br />
-				{/if}
-				{JSON.stringify(prop[1], null, 4).replace(/^"|"$/gi, '')}
-			</span>
-			<span class="control-character">"</span>
-		</p>
-	{/each}
-	<span class="control-character">/&gt;</span>
-</aside>

@@ -23,6 +23,21 @@
 	}
 </script>
 
+<div class="theme-switcher" class:dark={useDarkTheme}>
+	{#if darkSystemTheme === null}
+		Switch theme
+	{:else if darkSystemTheme === true}Light theme{:else}Dark theme{/if}
+	<label class="switch" for="theme-switcher">
+		<input
+			id="theme-switcher"
+			type="checkbox"
+			checked={darkSystemTheme !== useDarkTheme}
+			on:click={toggleTheme}
+		/>
+		<span class="slider" />
+	</label>
+</div>
+
 <style>
 	.theme-switcher {
 		user-select: none;
@@ -90,17 +105,3 @@
 		transform: translateX(calc(2.75rem - 1.2rem - (0.2rem * 2)));
 	}
 </style>
-
-<div class="theme-switcher" class:dark={useDarkTheme}>
-	{#if darkSystemTheme === null}
-		Switch theme
-	{:else if darkSystemTheme === true}Light theme{:else}Dark theme{/if}
-	<label class="switch" for="theme-switcher">
-		<input
-			id="theme-switcher"
-			type="checkbox"
-			checked={darkSystemTheme !== useDarkTheme}
-			on:click={toggleTheme} />
-		<span class="slider" />
-	</label>
-</div>

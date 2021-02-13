@@ -46,6 +46,25 @@
 	const toggleOpen = () => (open = !open)
 </script>
 
+<nav id="svelte-sidebar" class:open style={styleString}>
+	<slot name="header" />
+	<button
+		class="sidebar-toggle"
+		class:open
+		on:click={toggleOpen}
+		aria-expanded={open}
+		aria-controls="svelte-sidebar"
+		title="Toggle the navigation sidebar"
+		aria-label="Toggle the navigation sidebar"
+	>
+		>
+	</button>
+	{#if open}
+		<NavigationLinkGroup {routes} />
+		<slot name="footer" />
+	{/if}
+</nav>
+
 <style>
 	nav {
 		height: 100vh;
@@ -103,21 +122,3 @@
 		color: var(--backgroundColor_linkActive);
 	}
 </style>
-
-<nav id="svelte-sidebar" class:open style={styleString}>
-	<slot name="header" />
-	<button
-		class="sidebar-toggle"
-		class:open
-		on:click={toggleOpen}
-		aria-expanded={open}
-		aria-controls="svelte-sidebar"
-		title="Toggle the navigation sidebar"
-		aria-label="Toggle the navigation sidebar">
-		>
-	</button>
-	{#if open}
-		<NavigationLinkGroup {routes} />
-		<slot name="footer" />
-	{/if}
-</nav>

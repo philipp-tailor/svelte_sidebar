@@ -8,6 +8,11 @@
 	export let dark = null
 </script>
 
+<label for={id}>
+	{#if label}{label}{/if}
+	<input {id} type="number" bind:value {min} {max} {step} class:dark />
+</label>
+
 <style>
 	label {
 		display: flex;
@@ -54,8 +59,3 @@
 		border: 2px solid var(--accent-orange);
 	}
 </style>
-
-<label for={id}>
-	{#if label}{label}{/if}
-	<input {id} type="number" bind:value {min} {max} {step} class:dark />
-</label>

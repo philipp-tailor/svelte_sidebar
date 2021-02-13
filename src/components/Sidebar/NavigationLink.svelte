@@ -49,6 +49,18 @@
 	})
 </script>
 
+<a
+	on:click={onClick}
+	href={route}
+	{active}
+	{disabled}
+	class:activeGroup
+	bind:this={link}
+	tabindex="0"
+>
+	{name}
+</a>
+
 <style>
 	a {
 		display: inline-block;
@@ -97,14 +109,3 @@
 		cursor: not-allowed;
 	}
 </style>
-
-<a
-	on:click={onClick}
-	href={route}
-	{active}
-	{disabled}
-	class:activeGroup
-	bind:this={link}
-	tabindex="0">
-	{name}
-</a>

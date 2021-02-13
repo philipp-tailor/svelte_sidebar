@@ -6,6 +6,17 @@
 	export let dark = null
 </script>
 
+{#if label}
+	<label for={id}>{label}</label>
+{/if}
+<textarea
+	{id}
+	bind:value
+	{required}
+	rows={value.split('\n').length + 3}
+	class:dark
+/>
+
 <style>
 	label {
 		display: block;
@@ -46,13 +57,3 @@
 		border: 2px solid var(--accent-orange);
 	}
 </style>
-
-{#if label}
-	<label for={id}>{label}</label>
-{/if}
-<textarea
-	{id}
-	bind:value
-	{required}
-	rows={value.split('\n').length + 3}
-	class:dark />

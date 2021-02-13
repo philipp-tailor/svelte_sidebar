@@ -60,6 +60,115 @@
 		(sidebarConfig = { ...copyObjectDeep(initialSidebarProps) })
 </script>
 
+<svelte:window bind:innerWidth={width} />
+
+<h2 class="heading">Playground</h2>
+<div class="playground" class:dark>
+	<div class="form-explainer">
+		<div>
+			Customise the sidebar on the left with the form below. The props
+			passed to the component can be seen on the right. Changes are
+			displayed live.
+		</div>
+		<Button onClick={resetSidebarConfig} disabled={!isConfigUnchanged}>
+			reset form
+		</Button>
+	</div>
+
+	<fieldset>
+		<legend>Color</legend>
+
+		<!--
+			Nesting a div inside a fieldset is only required because Chrome
+			hasn't added support for flexbox & grid to this element for years,
+			see: https://bugs.chromium.org/p/chromium/issues/detail?id=375693
+		-->
+		<div class="fieldset-container">
+			<ColorInput
+				label="Background Color of Sidebar:"
+				bind:value={sidebarConfig.theme.backgroundColor_nav}
+			/>
+
+			<ColorInput
+				label="Background Color of Active Links:"
+				bind:value={sidebarConfig.theme.backgroundColor_linkActive}
+			/>
+
+			<ColorInput
+				label="Color of Link Text:"
+				bind:value={sidebarConfig.theme.color_link}
+			/>
+
+			<ColorInput
+				label="Hover Color of Link Text:"
+				bind:value={sidebarConfig.theme.color_linkHover}
+			/>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<legend>Opacity</legend>
+
+		<div class="fieldset-container">
+			<NumericInput
+				label="Opacity of Disabled Links:"
+				{dark}
+				bind:value={sidebarConfig.theme.opacity_linkDisabled}
+			/>
+
+			<NumericInput
+				label="Opacity of Links Which Are Not Part of the Active Route:"
+				{dark}
+				bind:value={sidebarConfig.theme.opacity_linkInactive}
+			/>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<legend>Sizing</legend>
+
+		<div class="fieldset-container">
+			<NumericInput
+				label="Font Size in rem:"
+				bind:value={playgroundConfig.fontSize}
+				{dark}
+				max="3"
+			/>
+
+			<NumericInput
+				label="Sidebar Maximum Width in px:"
+				bind:value={playgroundConfig.maxWidth}
+				min="10"
+				step="50"
+				{dark}
+				max={width}
+			/>
+
+			<NumericInput
+				label="Sidebar Minimum Width in px:"
+				bind:value={playgroundConfig.minWidth}
+				min="0"
+				step="50"
+				{dark}
+				max={width}
+			/>
+		</div>
+	</fieldset>
+
+	<fieldset class="content-fieldset">
+		<legend>Routes</legend>
+
+		<Textarea
+			label="Navigation Structure"
+			bind:value={playgroundConfig.routesFormatted}
+			{dark}
+			required
+		/>
+	</fieldset>
+</div>
+
+<SidebarCodePreview {sidebarConfig} {dark} />
+
 <style>
 	.heading {
 		flex-basis: 100%;
@@ -121,102 +230,3 @@
 		}
 	}
 </style>
-
-<svelte:window bind:innerWidth={width} />
-
-<h2 class="heading">Playground</h2>
-<div class="playground" class:dark>
-	<div class="form-explainer">
-		<div>
-			Customise the sidebar on the left with the form below. The props
-			passed to the component can be seen on the right. Changes are
-			displayed live.
-		</div>
-		<Button onClick={resetSidebarConfig} disabled={!isConfigUnchanged}>
-			reset form
-		</Button>
-	</div>
-
-	<fieldset>
-		<legend>Color</legend>
-
-		<!--
-			Nesting a div inside a fieldset is only required because Chrome
-			hasn't added support for flexbox & grid to this element for years,
-			see: https://bugs.chromium.org/p/chromium/issues/detail?id=375693
-		-->
-		<div class="fieldset-container">
-			<ColorInput
-				label="Background Color of Sidebar:"
-				bind:value={sidebarConfig.theme.backgroundColor_nav} />
-
-			<ColorInput
-				label="Background Color of Active Links:"
-				bind:value={sidebarConfig.theme.backgroundColor_linkActive} />
-
-			<ColorInput
-				label="Color of Link Text:"
-				bind:value={sidebarConfig.theme.color_link} />
-
-			<ColorInput
-				label="Hover Color of Link Text:"
-				bind:value={sidebarConfig.theme.color_linkHover} />
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<legend>Opacity</legend>
-
-		<div class="fieldset-container">
-			<NumericInput
-				label="Opacity of Disabled Links:"
-				{dark}
-				bind:value={sidebarConfig.theme.opacity_linkDisabled} />
-
-			<NumericInput
-				label="Opacity of Links Which Are Not Part of the Active Route:"
-				{dark}
-				bind:value={sidebarConfig.theme.opacity_linkInactive} />
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<legend>Sizing</legend>
-
-		<div class="fieldset-container">
-			<NumericInput
-				label="Font Size in rem:"
-				bind:value={playgroundConfig.fontSize}
-				{dark}
-				max="3" />
-
-			<NumericInput
-				label="Sidebar Maximum Width in px:"
-				bind:value={playgroundConfig.maxWidth}
-				min="10"
-				step="50"
-				{dark}
-				max={width} />
-
-			<NumericInput
-				label="Sidebar Minimum Width in px:"
-				bind:value={playgroundConfig.minWidth}
-				min="0"
-				step="50"
-				{dark}
-				max={width} />
-		</div>
-	</fieldset>
-
-	<fieldset class="content-fieldset">
-		<legend>Routes</legend>
-
-		<Textarea
-			label="Navigation Structure"
-			bind:value={playgroundConfig.routesFormatted}
-			{dark}
-			required />
-	</fieldset>
-</div>
-
-<SidebarCodePreview {sidebarConfig} {dark} />

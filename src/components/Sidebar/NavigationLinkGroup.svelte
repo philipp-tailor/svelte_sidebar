@@ -53,6 +53,71 @@
 	onDestroy(unsubscribe)
 </script>
 
+<!-- A groups heading is differentiated by having a name and a route -->
+{#if name && route}
+	<!--
+		Don't allow disabled groups to be opened:
+		Child routes are considered disabled when their parent is.
+	-->
+	{#if !disabled}
+		<button
+			class="group-toggle"
+			class:open={groupOpen}
+			on:click={toggleGroup}
+			aria-expanded={groupOpen}
+			aria-controls={`${route}-group`}
+			aria-label="Toggle the visibility of child navigation links"
+			title="Toggle the visibility of child navigation links"
+		>
+			>
+		</button>
+	{/if}
+	<!--
+		If a group's root route is part of the active tree,
+		the root link considers itself to be "active".
+	-->
+	<NavigationLink
+		{name}
+		{route}
+		{disabled}
+		activeGroup={Boolean(activeSubRoute)}
+		on:active={handleActiveChange}
+	/>
+{/if}
+
+<!-- Child routes of the group -->
+<ul
+	id={`${route ? route : 'root'}-group`}
+	hidden={!groupOpen || disabled}
+	in:scale={{ duration: 250 }}
+>
+	{#each routes as route (route.route)}
+		<li class:group={route.childRoutes}>
+			{#if route.childRoutes}
+				<!--
+					If the child route has children in return,
+					render a nested `NavigationLinkGroup`.
+					It's crucial that `NavigationLinkGroup`s
+					pass on the active change event to their parent.
+				-->
+				<svelte:self
+					routes={route.childRoutes}
+					name={route.name}
+					route={route.route}
+					disabled={route.disabled}
+					on:active={handleActiveChange}
+				/>
+			{:else}
+				<NavigationLink
+					{...route}
+					activeGroup={activeSubRoute === route.route}
+					on:active={handleActiveChange}
+				/>
+			{/if}
+		</li>
+	{/each}
+</ul>
+
 <style>
 	.group-toggle {
 		display: inline-block;
@@ -92,63 +157,3 @@
 		padding-bottom: var(--fontSize);
 	}
 </style>
-
-<!-- A groups heading is differentiated by having a name and a route -->
-{#if name && route}
-	<!--
-		Don't allow disabled groups to be opened:
-		Child routes are considered disabled when their parent is.
-	-->
-	{#if !disabled}
-		<button
-			class="group-toggle"
-			class:open={groupOpen}
-			on:click={toggleGroup}
-			aria-expanded={groupOpen}
-			aria-controls={`${route}-group`}
-			aria-label="Toggle the visibility of child navigation links"
-			title="Toggle the visibility of child navigation links">
-			>
-		</button>
-	{/if}
-	<!--
-		If a group's root route is part of the active tree,
-		the root link considers itself to be "active".
-	-->
-	<NavigationLink
-		{name}
-		{route}
-		{disabled}
-		activeGroup={Boolean(activeSubRoute)}
-		on:active={handleActiveChange} />
-{/if}
-
-<!-- Child routes of the group -->
-<ul
-	id={`${route ? route : 'root'}-group`}
-	hidden={!groupOpen || disabled}
-	in:scale={{ duration: 250 }}>
-	{#each routes as route (route.route)}
-		<li class:group={route.childRoutes}>
-			{#if route.childRoutes}
-				<!--
-					If the child route has children in return,
-					render a nested `NavigationLinkGroup`.
-					It's crucial that `NavigationLinkGroup`s
-					pass on the active change event to their parent.
-				-->
-				<svelte:self
-					routes={route.childRoutes}
-					name={route.name}
-					route={route.route}
-					disabled={route.disabled}
-					on:active={handleActiveChange} />
-			{:else}
-				<NavigationLink
-					{...route}
-					activeGroup={activeSubRoute === route.route}
-					on:active={handleActiveChange} />
-			{/if}
-		</li>
-	{/each}
-</ul>

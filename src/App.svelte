@@ -49,6 +49,28 @@
 	}
 </script>
 
+<!-- Update the routing state when browser navigation occurs. -->
+<svelte:window on:popstate={() => (pathname = window.location.pathname)} />
+
+<!--
+	Use svelte:component because `Sidebar` is lazy loaded to demonstrate
+	that it is truly decoupled from the rest of the app.
+-->
+<svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick}>
+	<div class="theme-switcher" slot="footer">
+		<ThemeSwitcher bind:useDarkTheme />
+	</div>
+</svelte:component>
+
+<main class="route-content" class:dark={useDarkTheme}>
+	<!-- Routing: either show readme or playground as main content -->
+	{#if pathname && pathname.includes('/readme')}
+		<Readme bind:pathname dark={useDarkTheme} />
+	{:else}
+		<Playground bind:sidebarConfig dark={useDarkTheme} />
+	{/if}
+</main>
+
 <style>
 	:global(:root) {
 		/* The minimum available width for content (iPhone SE). */
@@ -115,25 +137,3 @@
 		}
 	}
 </style>
-
-<!-- Update the routing state when browser navigation occurs. -->
-<svelte:window on:popstate={() => (pathname = window.location.pathname)} />
-
-<!--
-	Use svelte:component because `Sidebar` is lazy loaded to demonstrate
-	that it is truly decoupled from the rest of the app.
--->
-<svelte:component this={Sidebar} {...sidebarConfig} {onLinkClick}>
-	<div class="theme-switcher" slot="footer">
-		<ThemeSwitcher bind:useDarkTheme />
-	</div>
-</svelte:component>
-
-<main class="route-content" class:dark={useDarkTheme}>
-	<!-- Routing: either show readme or playground as main content -->
-	{#if pathname && pathname.includes('/readme')}
-		<Readme bind:pathname dark={useDarkTheme} />
-	{:else}
-		<Playground bind:sidebarConfig dark={useDarkTheme} />
-	{/if}
-</main>

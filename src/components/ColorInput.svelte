@@ -4,6 +4,11 @@
 	export let value
 </script>
 
+<label for={id}>
+	{#if label}{label}{/if}
+	<input type="color" {id} bind:value />
+</label>
+
 <style>
 	label {
 		display: flex;
@@ -35,8 +40,3 @@
 		border-radius: 50%;
 	}
 </style>
-
-<label for={id}>
-	{#if label}{label}{/if}
-	<input type="color" {id} bind:value />
-</label>
