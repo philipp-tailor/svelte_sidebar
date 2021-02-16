@@ -10,11 +10,6 @@ Sidebar navigation component written in svelte and compiled to an ES module of 8
 
 Check it out [in the playground](https://sidebar.schneiders.space).
 
-## Installation
-
-`npm install --save svelte_sidebar`
-`yarn add svelte_sidebar`
-
 ## What it is
 
 This sidebar navigation for web application replicates the experience of browsing the file tree in a code editor. The benefit is that the user can understand the application's information architecture (IA) at first glance, and can quickly jump between different hierarchy levels.
@@ -31,6 +26,54 @@ The UI pattern goes well with complex web applications with a lot of nested rout
 	- By default, the regular browser navigation occurs when the user clicks on a link (or presses `Enter`). A function can be passed as property to interrupt the regular navigation to handle navigation on the client side.
 	- Themeable: Colors (including hover styles), font sizing, and the minimum and maximum width (depending on the length of the names of navigation links).
 * h(n) performance when matching the active route in the navigation hierarchy, where `n` signifies the count of navigation links.
+
+## Installation
+
+* Without installation from [skypack](https://www.skypack.dev/view/svelte_sidebar):
+
+	```js
+	import Sidebar from 'https://cdn.skypack.dev/svelte_sidebar'
+	```
+
+* Yarn package manager: `yarn add svelte_sidebar`
+* NPM package manager: `npm install --save svelte_sidebar`
+
+## Usage
+
+### On any web site / app as ES module
+
+```html
+<!-- index.html -->
+<div id="app"></div>
+
+<script type="module">
+import Sidebar from 'https://cdn.skypack.dev/svelte_sidebar'
+
+  const props = {
+    routes: [
+		{ "name": "Playground", "route": "/" },
+		{ "name": "Readme", "route": "/readme", "childRoutes": [
+			{ "name": "What it is", "route": "/readme#what-it-is" }
+			]
+		}
+	],
+    activeUrl: '/'
+  }
+
+  new Sidebar({target: document.querySelector('#app'), props})
+</script>
+```
+
+### In a svelte web app
+
+```js
+// App.svelte
+import Sidebar from 'svelte_sidebar' // or from skypack
+
+const props = {...}
+
+<Sidebar {...props} />
+```
 
 ## Component properties
 
