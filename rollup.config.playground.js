@@ -1,6 +1,6 @@
 import svelte from 'rollup-plugin-svelte'
 import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import md from 'rollup-plugin-md'
 import css from 'rollup-plugin-css-only'
 import livereload from 'rollup-plugin-livereload'

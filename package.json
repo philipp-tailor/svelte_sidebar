@@ -41,6 +41,7 @@
 		]
 	},
 	"devDependencies": {
+		"@rollup/plugin-commonjs": "^17.1.0",
 		"husky": ">=5",
 		"lint-staged": ">=10",
 		"pinst": "^2.1.4",
@@ -48,7 +49,6 @@
 		"prettier-plugin-packagejson": "^2.2.9",
 		"prettier-plugin-svelte": "^2.1.5",
 		"rollup": "^2.38.5",
-		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-css-only": "^3.1.0",
 		"rollup-plugin-livereload": "^2.0.0",
 		"rollup-plugin-md": "^1.0.1",
