@@ -17,6 +17,10 @@
 	"contributors": [
 		"Philipp Tailor (http://schneiders.space)"
 	],
+	"exports": {
+		"import": "./index.js",
+		"default": "./index.js"
+	},
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"files": [
