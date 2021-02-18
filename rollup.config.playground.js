@@ -1,6 +1,6 @@
-import svelte from 'rollup-plugin-svelte'
-import resolve from 'rollup-plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import svelte from 'rollup-plugin-svelte'
 import md from 'rollup-plugin-md'
 import css from 'rollup-plugin-css-only'
 import livereload from 'rollup-plugin-livereload'
@@ -36,8 +36,7 @@ export default {
 		// https://github.com/rollup/rollup-plugin-commonjs
 		resolve({
 			browser: true,
-			dedupe: (importee) =>
-				importee === 'svelte' || importee.startsWith('svelte/'),
+			dedupe: ['svelte'],
 		}),
 		commonjs(),
 
