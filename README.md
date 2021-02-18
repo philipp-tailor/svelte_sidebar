@@ -3,8 +3,9 @@
 <!-- TODO: BUNDLE ANALYSIS -->
 ![npm](https://img.shields.io/npm/v/svelte_sidebar)
 ![NPM](https://img.shields.io/npm/l/svelte_sidebar)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e957276f-3f1c-413a-ad78-2b5894f82de9/deploy-status)](https://app.netlify.com/sites/admiring-kare-b5e53d/deploys)
 [![devDependencies Status](https://david-dm.org/philipp-tailor/svelte_sidebar/dev-status.svg)](https://david-dm.org/philipp-tailor/svelte_sidebar?type=dev)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e957276f-3f1c-413a-ad78-2b5894f82de9/deploy-status)](https://app.netlify.com/sites/admiring-kare-b5e53d/deploys)
+[![Deploy playground to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/philipp-tailor/svelte_sidebar)
 
 Sidebar navigation component written in svelte and compiled to an ES module of 8kb.
 
