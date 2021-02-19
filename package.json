@@ -3,7 +3,13 @@
 	"version": "0.0.1",
 	"keywords": [
 		"svelte",
-		"sidebar"
+		"sidebar",
+		"sidebar-component",
+		"sidebar-navigation",
+		"collapsible-tree",
+		"navigation-links",
+		"navigation-hierarchy",
+		"navigation-routes"
 	],
 	"homepage": "http://sidebar.schneiders.space",
 	"bugs": {
