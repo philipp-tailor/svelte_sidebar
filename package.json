@@ -55,7 +55,7 @@
 		"@rollup/plugin-node-resolve": "^11.2.0",
 		"husky": ">=5",
 		"lint-staged": ">=10",
-		"pinst": "^2.1.4",
+		"pinst": "^2.1.6",
 		"prettier": "^2.2.1",
 		"prettier-plugin-packagejson": "^2.2.10",
 		"prettier-plugin-svelte": "^2.1.6",
