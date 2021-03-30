@@ -67,7 +67,7 @@
 		"rollup-plugin-terser": "^7.0.2",
 		"rollup-plugin-visualizer": "^4.2.0",
 		"serve": "^11.3.2",
-		"svelte": "^3.35.0"
+		"svelte": "^3.36.0"
 	},
 	"svelte": "src/components/Sidebar/index.js"
 }
