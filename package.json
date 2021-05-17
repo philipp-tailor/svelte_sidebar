@@ -59,7 +59,7 @@
 		"prettier": "^2.3.0",
 		"prettier-plugin-packagejson": "^2.2.11",
 		"prettier-plugin-svelte": "^2.3.0",
-		"rollup": "^2.47.0",
+		"rollup": "^2.48.0",
 		"rollup-plugin-css-only": "^3.1.0",
 		"rollup-plugin-livereload": "^2.0.0",
 		"rollup-plugin-md": "^1.0.1",
