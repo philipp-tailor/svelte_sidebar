@@ -52,7 +52,7 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^21.0.1",
-		"@rollup/plugin-node-resolve": "^13.1.1",
+		"@rollup/plugin-node-resolve": "^13.1.2",
 		"husky": ">=5",
 		"lint-staged": ">=11",
 		"pinst": "^2.1.6",
