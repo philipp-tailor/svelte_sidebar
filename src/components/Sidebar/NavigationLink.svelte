@@ -53,6 +53,7 @@
 	on:click={onClick}
 	href={route}
 	{active}
+	aria-current={active}
 	{disabled}
 	class:activeGroup
 	bind:this={link}
