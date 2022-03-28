@@ -67,5 +67,8 @@
 		"serve": "^13.0.2",
 		"svelte": "^3.46.4"
 	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
 	"svelte": "src/components/Sidebar/index.js"
 }
