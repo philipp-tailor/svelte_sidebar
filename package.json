@@ -55,7 +55,7 @@
 		"lint-staged": "^12.3.7",
 		"pinst": "^3.0.0",
 		"prettier": "^2.6.0",
-		"prettier-plugin-packagejson": "^2.2.15",
+		"prettier-plugin-packagejson": "^2.2.17",
 		"prettier-plugin-svelte": "^2.7.0",
 		"rollup": "^2.70.1",
 		"rollup-plugin-css-only": "^3.1.0",
