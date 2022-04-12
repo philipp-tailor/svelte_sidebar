@@ -8,8 +8,11 @@
 	export let name = null
 	export let route = null
 	export let disabled = false
+	export let collapseTree = false
 
-	let groupOpen = true
+	$: isGroupOpenByDefault = collapseTree !== true
+	$: groupOpen = isGroupOpenByDefault
+
 	let activeSubRoute = null
 
 	const dispatch = createEventDispatcher()
@@ -106,6 +109,7 @@
 					route={route.route}
 					disabled={route.disabled}
 					on:active={handleActiveChange}
+					collapseTree={route.collapseTree}
 				/>
 			{:else}
 				<NavigationLink

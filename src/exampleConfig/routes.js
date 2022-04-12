@@ -57,6 +57,7 @@ export const exampleRoutes = [
 				disabled: true,
 			},
 		],
+		collapseTree: true,
 	},
 	{
 		name: 'Disabled example group',

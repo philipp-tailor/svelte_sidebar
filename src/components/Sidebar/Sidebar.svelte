@@ -23,6 +23,7 @@
 	export let onLinkClick = null
 	export let theme = {}
 	export let open = true
+	export let collapseTree = false
 
 	// Initialise the shared store with the values passed to `Sidebar` as props.
 	beforeUpdate(() => {
@@ -60,7 +61,7 @@
 		>
 	</button>
 	{#if open}
-		<NavigationLinkGroup {routes} />
+		<NavigationLinkGroup {routes} {collapseTree} />
 		<slot name="footer" />
 	{/if}
 </nav>

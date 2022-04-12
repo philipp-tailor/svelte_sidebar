@@ -17,7 +17,7 @@ The UI pattern goes well with complex web applications with a lot of nested rout
 
 * Usable in any web-app where the navigation routes are known / computable, as the sidebar is an ES module.
 * Semantic, accessible DOM. Navigation is entirely possible with the keyboard.
-* The navigation hierarchy can be nested as deeply as required. Navigation links with sub-links are collapsible groups.
+* The navigation hierarchy can be nested as deeply as required. Navigation links with sub-links are collapsible groups. The collapsing can be controlled programatically.
 * Automatically un-collapses the active part of the navigation hierarchy and scrolls it into the viewport. Parent navigation items of the active navigation item are also highlighted compared to inactive navigation items.
 * Every navigation link can be disabled.
 * Just enough configuration possibilities for re-usability:
@@ -73,7 +73,7 @@ const props = {...}
 <Sidebar {...props} />
 ```
 
-## Component properties
+## Sidebar component properties
 
 | property name | required | default | description | value type | example value |
 | ------------- | -------- | ------- | ----------- | ---------- | ------------- |
@@ -81,7 +81,7 @@ const props = {...}
 | `routes` | no | `[]` | This property contains the navigation hierarchy rendered by the sidebar. It's made up from an array of objects mapping URLs to navigation link names and defining the nesting of sub-routes. Not passing values is possible and could e.g. be used while fetching the data required to compute the menu hierarchy. | array, as specified below | see `src/exampleConfig/`<wbr>`routes.js` |
 | `onLinkClick` | no | `null` | Function that is executed when the user selects a navigation link. Prevents the regular navigation event. Therefore useful in applications with client side routing. | function receiving the event | `(event) => alert(event.target.href)` |
 | `theme` | no | see `defaultTheme` in `src/components/`<wbr>`Sidebar/`<wbr>`Sidebar.svelte` | Allows to customize the most important styles. | object, as described below | `{ backgroundColor_nav: '###ccc' }` |
-| `open` | no | true | Allows to customize whether the navigation bar is open or collapsed. | boolean | `true`. To collapse the sidebar by default on smaller viewports, the result of an expression like `window.innerWidth < 720px` could be passed |
+| `open` | no | true | Allows to customize whether the navigation sidebar is open or horizontally minimized. | boolean | `true`. To collapse the sidebar by default on smaller viewports, the result of an expression like `window.innerWidth < 720px` could be passed. |
 
 [The playground](https://sidebar.schneiders.space) allows to play around with every property. It shows the sidebar on the left, and the component usage on the right. It's therefore the quickest way to find out how to use the component, and to see whether it covers your needs.
 
@@ -94,18 +94,20 @@ As specified above, `routes` is an array of navigation route objects. Every one 
 	name: 'Products',
 	route: '/products',
 	disabled: true, /* optional */
+	collapseTree: true, /* optional */
 	childRoutes: [] /* optional */
 }
 ```
 
 Following the description of a route object's attributes:
 
-| attribute name | required | description | value type |
-| -------------- | -------- | ----------- | ---------- |
-| name | yes | The name under which the navigation link will be shown in the navigation hierarchy | `string` |
-| route | yes | The navigation links' URL | `string` |
-| disabled | no | Whether the link is selectable by the user. The default is `false`. `True` can make sense, e.g. if the user is not authorized to access a part of the application. If the route has child routes, the navigation link group can not be uncollapsed by the user. | `boolean` |
-| childRoutes | no | An array of more route objects. As every route object can have child routes, there's theoretically no limit to the depth of the navigation hierarchy. | `array` |
+| attribute name | required | default | description | value type |
+| -------------- | -------- | -------- | ----------- | ---------- |
+| ´name´ | yes | - | The name under which the navigation link will be shown in the navigation hierarchy | `string` |
+| ´route´ | yes | - | The navigation links' URL | `string` |
+| `disabled` | no | `false` | Whether the link can be opened by the user. The default is `false`. `True` can make sense, e.g. if the user is not authorized to access a part of the application. If the route has child routes, the navigation link group can not be uncollapsed by the user. | `boolean` |
+| `collapseTree` | no | `false` | Allows to customize whether child routes are shown or vertically collapsed by default. | boolean |
+| `childRoutes` | no | `[]` | An array of more route objects. As every route object can have child routes, there's theoretically no limit to the depth of the navigation hierarchy. | `array` |
 
 ### The `theme` property
 
