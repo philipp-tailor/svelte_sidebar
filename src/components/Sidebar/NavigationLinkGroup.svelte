@@ -15,6 +15,9 @@
 
 	let activeSubRoute = null
 
+	const animate = !window.matchMedia('(prefers-reduced-motion: reduce)')
+		.matches
+
 	const dispatch = createEventDispatcher()
 
 	const toggleGroup = () => (groupOpen = !groupOpen)
@@ -92,7 +95,7 @@
 <ul
 	id={`${route ? route : 'root'}-group`}
 	hidden={!groupOpen || disabled}
-	in:scale={{ duration: 250 }}
+	in:scale={{ duration: animate ? 250 : 0 }}
 >
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>

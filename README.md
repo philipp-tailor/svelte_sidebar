@@ -16,8 +16,8 @@ The UI pattern goes well with complex web applications with a lot of nested rout
 ## Features
 
 * Usable in any web-app where the navigation routes are known / computable, as the sidebar is an ES module.
-* Semantic, accessible DOM. Navigation is entirely possible with the keyboard.
-* The navigation hierarchy can be nested as deeply as required. Navigation links with sub-links are collapsible groups. The collapsing can be controlled programatically.
+* Semantic, accessible DOM. Navigation is entirely possible with the keyboard. Animations are disabled when `prefers-reduced-motion` is set.
+* The navigation hierarchy can be nested as deeply as required. Navigation links with sub-links are collapsible groups.
 * Automatically un-collapses the active part of the navigation hierarchy and scrolls it into the viewport. Parent navigation items of the active navigation item are also highlighted compared to inactive navigation items.
 * Every navigation link can be disabled.
 * Just enough configuration possibilities for re-usability:
