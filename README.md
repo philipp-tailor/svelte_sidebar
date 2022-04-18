@@ -1,6 +1,7 @@
 # Svelte Sidebar
 ![npm](https://img.shields.io/npm/v/svelte_sidebar)
 ![NPM](https://img.shields.io/npm/l/svelte_sidebar)
+![Bundlephobia](https://badgen.net/bundlephobia/minzip/svelte_sidebar)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e957276f-3f1c-413a-ad78-2b5894f82de9/deploy-status)](https://app.netlify.com/sites/admiring-kare-b5e53d/deploys)
 [![Deploy playground to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/philipp-tailor/svelte_sidebar)
 
