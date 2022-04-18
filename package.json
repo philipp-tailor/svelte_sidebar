@@ -52,7 +52,7 @@
 		"@rollup/plugin-commonjs": "^21.0.3",
 		"@rollup/plugin-node-resolve": "^13.2.0",
 		"husky": "^7.0.4",
-		"lint-staged": "^12.3.7",
+		"lint-staged": "^12.3.8",
 		"pinst": "^3.0.0",
 		"prettier": "^2.6.0",
 		"prettier-plugin-packagejson": "^2.2.15",
