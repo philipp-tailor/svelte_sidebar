@@ -32,6 +32,8 @@
 	})
 
 	$: combinedTheme = { ...defaultTheme, ...theme }
+	// Not using custom property style directive, because compilation results in superfluous wrapper div, see:
+	// https://svelte.dev/docs#template-syntax-component-directives---style-props
 	$: styleString = [
 		`--backgroundColor_linkActive: ${combinedTheme.backgroundColor_linkActive}`,
 		`--backgroundColor_nav: ${combinedTheme.backgroundColor_nav}`,
