@@ -1,37 +1,35 @@
 <script>
-	import { onMount } from 'svelte'
 	import { isDarkMode } from '../utils/detectDarkMode'
 
+	const THEMES = { dark: 'dark', light: 'light' }
+	let isSystemThemeDark = false
+	let initalTheme
+	let currentTheme
 	export let useDarkTheme
-	let darkSystemTheme
 
-	onMount(() => {
-		darkSystemTheme = isDarkMode
-		const useDarkThemePersistedSetting =
-			localStorage && localStorage.getItem('useDarkTheme')
-		// if the user made a theme choice in the past, re-apply it; otherwise use system settings
-		useDarkTheme =
-			useDarkThemePersistedSetting !== null &&
-			useDarkThemePersistedSetting !== undefined
-				? useDarkThemePersistedSetting === 'true'
-				: darkSystemTheme
-	})
+	$: {
+		isSystemThemeDark = isDarkMode
+		initalTheme =
+			localStorage.theme ||
+			(isSystemThemeDark ? THEMES.dark : THEMES.light)
+		currentTheme = initalTheme
+		useDarkTheme = currentTheme === THEMES.dark
+	}
 
 	const toggleTheme = () => {
-		useDarkTheme = !useDarkTheme
-		localStorage && localStorage.setItem('useDarkTheme', useDarkTheme)
+		currentTheme = currentTheme === THEMES.dark ? THEMES.light : THEMES.dark
+		if (localStorage) localStorage.theme = currentTheme
 	}
 </script>
 
 <div class="theme-switcher" class:dark={useDarkTheme}>
-	{#if darkSystemTheme === null}
-		Switch theme
-	{:else if darkSystemTheme === true}Light theme{:else}Dark theme{/if}
+	{initalTheme} theme
 	<label class="switch" for="theme-switcher">
 		<input
 			id="theme-switcher"
 			type="checkbox"
-			checked={darkSystemTheme !== useDarkTheme}
+			aria-label={`Enable ${initalTheme} theme`}
+			checked={currentTheme === initalTheme}
 			on:click={toggleTheme}
 		/>
 		<span class="slider" />
