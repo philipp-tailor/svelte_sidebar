@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher, onDestroy } from 'svelte'
 	import { scale } from 'svelte/transition'
-	import { activeUrl } from './SidebarStore'
+	import { activeUrl, transitionDurationInMs } from './SidebarStore'
 	import NavigationLink from './NavigationLink.svelte'
 
 	export let routes = []
@@ -14,9 +14,6 @@
 	$: groupOpen = isGroupOpenByDefault
 
 	let activeSubRoute = null
-
-	const animate = !window.matchMedia('(prefers-reduced-motion: reduce)')
-		.matches
 
 	const dispatch = createEventDispatcher()
 
@@ -51,12 +48,12 @@
 	 * will change too, which is why the existing active subroute is reset.
 	 * The new active subroute is determined in `handleActiveChange`.
 	 */
-	const unsubscribe = activeUrl.subscribe((value) => {
+	const unsubscribeFromActiveSubRoute = activeUrl.subscribe(() => {
 		activeSubRoute = null
 	})
 
 	// The active unsubscribe is required due the usage of a callback function.
-	onDestroy(unsubscribe)
+	onDestroy(unsubscribeFromActiveSubRoute)
 </script>
 
 <!-- A groups heading is differentiated by having a name and a route -->
@@ -95,7 +92,7 @@
 <ul
 	id={`${route ? route : 'root'}-group`}
 	hidden={!groupOpen || disabled}
-	in:scale={{ duration: animate ? 250 : 0 }}
+	in:scale={{ duration: $transitionDurationInMs }}
 >
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>

@@ -82,6 +82,8 @@ const props = {...}
 | `onLinkClick` | no | `null` | Function that is executed when the user selects a navigation link. Prevents the regular navigation event. Therefore useful in applications with client side routing. | function receiving the event | `(event) => alert(event.target.href)` |
 | `theme` | no | see `defaultTheme` in `src/components/`<wbr>`Sidebar/`<wbr>`Sidebar.svelte` | Allows to customize the most important styles. | object, as described below | `{ backgroundColor_nav: '###ccc' }` |
 | `open` | no | true | Allows to customize whether the navigation sidebar is open or horizontally minimized. | boolean | `true`. To collapse the sidebar by default on smaller viewports, the result of an expression like `window.innerWidth < 720px` could be passed. |
+| `transitionEnabled` | no | `true` | Whether the route's content will transition in when being displayed. The default is `true`. `False` is less playful, and always used when `prefers-reduced-motion` is enabled. | `boolean` |
+
 
 [The playground](https://sidebar.schneiders.space) allows to play around with every property. It shows the sidebar on the left, and the component usage on the right. It's therefore the quickest way to find out how to use the component, and to see whether it covers your needs.
 
@@ -105,7 +107,7 @@ Following the description of a route object's attributes:
 | -------------- | -------- | -------- | ----------- | ---------- |
 | ´name´ | yes | - | The name under which the navigation link will be shown in the navigation hierarchy | `string` |
 | ´route´ | yes | - | The navigation links' URL | `string` |
-| `disabled` | no | `false` | Whether the link can be opened by the user. The default is `false`. `True` can make sense, e.g. if the user is not authorized to access a part of the application. If the route has child routes, the navigation link group can not be uncollapsed by the user. | `boolean` |
+| `disabled` | no | `false` | Whether the link is selectable by the user. The default is `false`. `True` can make sense, e.g. if the user is not authorized to access a part of the application. If the route has child routes, the navigation link group can not be uncollapsed by the user. | `boolean` |
 | `collapseTree` | no | `false` | Allows to customize whether child routes are shown or vertically collapsed by default. | boolean |
 | `childRoutes` | no | `[]` | An array of more route objects. As every route object can have child routes, there's theoretically no limit to the depth of the navigation hierarchy. | `array` |
 

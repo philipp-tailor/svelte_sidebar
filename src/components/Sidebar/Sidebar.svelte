@@ -3,6 +3,7 @@
 	import {
 		activeUrl as storeActiveUrl,
 		onLinkClick as storeOnLinkClick,
+		transitionEnabled as storeTransitionEnabled,
 	} from './SidebarStore'
 	import NavigationLinkGroup from './NavigationLinkGroup.svelte'
 
@@ -23,12 +24,17 @@
 	export let onLinkClick = null
 	export let theme = {}
 	export let open = true
+	export let transitionEnabled = true
 	export let collapseTree = false
 
 	// Initialise the shared store with the values passed to `Sidebar` as props.
 	beforeUpdate(() => {
 		storeActiveUrl.set(activeUrl)
 		storeOnLinkClick.set(onLinkClick)
+		storeTransitionEnabled.set(
+			transitionEnabled &&
+				!window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		)
 	})
 
 	$: combinedTheme = { ...defaultTheme, ...theme }
