@@ -197,7 +197,7 @@
 
 	fieldset {
 		background-color: var(--bg-white);
-		margin-top: 2rem;
+		margin-block-start: 2rem;
 		padding: 2rem 1rem;
 		border: none;
 		border-radius: 0.5rem;
@@ -221,12 +221,12 @@
 
 	.content-fieldset {
 		padding: 2rem;
-		margin-bottom: 1rem;
+		margin-block-end: 1rem;
 	}
 
 	@media (max-width: 440px) {
 		.playground {
-			padding-bottom: 0;
+			padding-block-end: 0;
 		}
 	}
 </style>

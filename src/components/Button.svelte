@@ -20,7 +20,7 @@
 		outline: none;
 		padding: 1rem 2rem;
 		max-width: 26rem;
-		margin-left: auto;
+		margin-inline-start: auto;
 		width: -webkit-fill-available;
 		width: -moz-available;
 	}

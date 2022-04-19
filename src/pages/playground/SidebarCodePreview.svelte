@@ -48,39 +48,39 @@
 		font-weight: bold;
 		text-transform: uppercase;
 		color: var(--dark-primary);
-		margin-top: -4rem;
-		margin-bottom: 2.1rem;
-		margin-left: -1rem;
+		margin-block-start: -4rem;
+		margin-block-end: 2.1rem;
+		margin-inline-start: -1rem;
 	}
 
 	.dark legend {
-		margin-top: -2.9rem;
-		margin-bottom: 1.1rem;
+		margin-block-start: -2.9rem;
+		margin-block-end: 1.1rem;
 		color: var(--light-secondary);
 	}
 
 	.html-tag {
 		color: var(--bg-white);
-		margin-left: 1rem;
+		margin-inline-start: 1rem;
 	}
 
 	.control-character {
 		color: var(--light-primary);
-		margin-right: -1rem;
+		margin-inline-end: -1rem;
 	}
 
 	.component-prop {
 		color: var(--accent-red);
-		margin-left: 1rem;
-		margin-top: 0;
-		margin-bottom: 0;
+		margin-inline-start: 1rem;
+		margin-block-start: 0;
+		margin-block-end: 0;
 		opacity: 0.95;
 	}
 
 	.component-prop-value {
 		display: inline-block;
 		color: var(--accent-orange);
-		padding-left: 2rem;
+		padding-inline-start: 2rem;
 		text-indent: -1rem;
 		opacity: 0.95;
 	}
@@ -88,7 +88,7 @@
 	@media (max-width: 440px) {
 		aside {
 			position: unset;
-			margin-top: 2rem;
+			margin-block-start: 2rem;
 		}
 	}
 </style>

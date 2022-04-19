@@ -105,8 +105,8 @@
 	}
 
 	.theme-switcher {
-		padding-top: 1rem;
-		margin-left: calc(1rem + 10px);
+		padding-block-start: 1rem;
+		margin-inline-start: calc(1rem + 10px);
 	}
 
 	.route-content {

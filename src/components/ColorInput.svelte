@@ -14,14 +14,14 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-right: 1rem;
-		margin-left: 1rem;
+		margin-inline-end: 1rem;
+		margin-inline-start: 1rem;
 	}
 
 	input[type='color'] {
 		border: none;
 		padding: 0;
-		margin-left: 1rem;
+		margin-inline-start: 1rem;
 		height: 4.5rem;
 		width: 4.5rem;
 		-webkit-appearance: none;

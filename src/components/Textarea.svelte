@@ -20,7 +20,7 @@
 <style>
 	label {
 		display: block;
-		margin-bottom: 1rem;
+		margin-block-end: 1rem;
 	}
 
 	textarea {

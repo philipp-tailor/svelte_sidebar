@@ -71,8 +71,8 @@
 		word-wrap: break-word;
 		line-height: 1.3;
 		outline: none;
-		padding-top: calc(var(--fontSize) / 4);
-		padding-bottom: calc(var(--fontSize) / 4);
+		padding-block-start: calc(var(--fontSize) / 4);
+		padding-block-end: calc(var(--fontSize) / 4);
 	}
 
 	a.activeGroup,
@@ -92,9 +92,9 @@
 	a[active='true'],
 	a:active {
 		background-color: var(--backgroundColor_linkActive);
-		margin-left: calc(var(--fontSize) * -0.25);
-		padding-right: calc(var(--fontSize) / 4);
-		padding-left: calc(var(--fontSize) / 4);
+		margin-inline-start: calc(var(--fontSize) * -0.25);
+		padding-inline-end: calc(var(--fontSize) / 4);
+		padding-inline-start: calc(var(--fontSize) / 4);
 		border-radius: calc(var(--fontSize) / 4);
 	}
 

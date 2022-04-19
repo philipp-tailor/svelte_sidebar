@@ -153,11 +153,11 @@
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
-		padding-left: calc(var(--fontSize) + 10px);
+		padding-inline-start: calc(var(--fontSize) + 10px);
 		line-height: 2.25;
 	}
 
 	.group {
-		padding-bottom: var(--fontSize);
+		padding-block-end: var(--fontSize);
 	}
 </style>

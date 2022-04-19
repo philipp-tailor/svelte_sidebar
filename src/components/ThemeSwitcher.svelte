@@ -46,7 +46,7 @@
 
 	/* The switch - the box around the slider */
 	.switch {
-		margin-left: 0.5rem;
+		margin-inline-start: 0.5rem;
 		position: relative;
 		display: inline-block;
 		width: 2.75rem;

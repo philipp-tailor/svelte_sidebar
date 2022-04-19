@@ -137,7 +137,7 @@
 		font-weight: bold;
 		font-size: 2rem;
 		margin: 0;
-		margin-bottom: 0.5rem;
+		margin-block-end: 0.5rem;
 		word-break: break-word;
 		line-height: 1.2;
 		padding: 0.4ch 0;
@@ -149,45 +149,45 @@
 		word-break: break-word;
 		line-height: 1.2;
 		text-transform: capitalize;
-		margin-right: 0;
-		margin-bottom: 1.5rem;
-		margin-left: 0;
+		margin-inline-end: 0;
+		margin-block-end: 1.5rem;
+		margin-inline-start: 0;
 	}
 
 	:global(.readme h2) {
-		margin-top: 2.5rem;
+		margin-block-start: 2.5rem;
 		font-size: 1.75rem;
 		text-transform: uppercase;
 	}
 
 	:global(.readme h3) {
-		margin-top: 2rem;
+		margin-block-start: 2rem;
 		font-size: 1.5rem;
 		font-weight: 400;
 	}
 
 	:global(.readme p) {
 		margin: 0;
-		margin-top: 1.5rem;
+		margin-block-start: 1.5rem;
 	}
 
 	:global(.readme p:first-of-type) {
-		margin-top: 1rem;
+		margin-block-start: 1rem;
 	}
 
 	:global(.readme li) {
-		margin-top: 0.4rem;
+		margin-block-start: 0.4rem;
 	}
 
 	:global(.readme ul + p),
 	:global(.readme ol + p) {
-		margin-top: 0.4rem;
+		margin-block-start: 0.4rem;
 	}
 
 	:global(.readme ul),
 	:global(.readme ol) {
 		margin: 0;
-		padding-left: 2ch;
+		padding-inline-start: 2ch;
 	}
 
 	:global(.readme pre) {
@@ -219,7 +219,7 @@
 
 	:global(.readme table) {
 		position: relative;
-		margin-top: 1rem;
+		margin-block-start: 1rem;
 		width: 100%;
 		background-color: var(--bg-blue);
 		color: var(--light-primary);
@@ -232,7 +232,7 @@
 	}
 
 	:global(.readme tr th:first-of-type) {
-		border-left: none;
+		border-inline-start: none;
 	}
 
 	:global(.readme th) {
@@ -252,15 +252,15 @@
 	@media (min-width: 420px) {
 		:global(.readme h1) {
 			font-size: 3rem;
-			margin-bottom: 1.5rem;
+			margin-block-end: 1.5rem;
 		}
 
 		:global(.readme h2) {
-			margin-top: 3rem;
+			margin-block-start: 3rem;
 		}
 
 		:global(.readme h3) {
-			margin-top: 2.5rem;
+			margin-block-start: 2.5rem;
 		}
 	}
 </style>

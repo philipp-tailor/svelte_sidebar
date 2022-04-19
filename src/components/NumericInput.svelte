@@ -18,12 +18,12 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-right: 1rem;
-		margin-left: 1rem;
+		margin-inline-end: 1rem;
+		margin-inline-start: 1rem;
 	}
 
 	input[type='number'] {
-		margin-left: 1rem;
+		margin-inline-start: 1rem;
 		flex-shrink: 0;
 		height: 4.5rem;
 		width: 4.5rem;

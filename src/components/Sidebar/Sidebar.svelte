@@ -81,10 +81,10 @@
 		box-sizing: border-box;
 		overflow-y: auto;
 		z-index: 2;
-		padding-top: calc(var(--fontSize) + 10px);
-		padding-right: calc(var(--fontSize) * 2 + 10px);
-		padding-bottom: calc(var(--fontSize) + 10px);
-		padding-left: calc(var(--fontSize));
+		padding-block-start: calc(var(--fontSize) + 10px);
+		padding-inline-end: calc(var(--fontSize) * 2 + 10px);
+		padding-block-end: calc(var(--fontSize) + 10px);
+		padding-inline-start: calc(var(--fontSize));
 		background-color: var(--backgroundColor_nav);
 		font-size: var(--fontSize);
 		user-select: none;
