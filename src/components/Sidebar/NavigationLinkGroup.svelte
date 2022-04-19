@@ -89,10 +89,16 @@
 {/if}
 
 <!-- Child routes of the group -->
+<!--
+	Add redundant `role="list"` to counter this behavior of Safari:
+	https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+	svelte-ignore a11y-no-redundant-roles
+-->
 <ul
 	id={`${route ? route : 'root'}-group`}
 	hidden={!groupOpen || disabled}
 	in:scale={{ duration: $transitionDurationInMs }}
+	role="list"
 >
 	{#each routes as route (route.route)}
 		<li class:group={route.childRoutes}>
