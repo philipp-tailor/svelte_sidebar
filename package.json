@@ -24,8 +24,8 @@
 		"Philipp Tailor (http://schneiders.space)"
 	],
 	"exports": {
-		"import": "./index.js",
-		"default": "./index.js"
+		"import": "./dist/index.mjs",
+		"default": "./dist/index.js"
 	},
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
